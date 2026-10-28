@@ -2,601 +2,281 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1020">
-  <meta name="description" content="Oitae — IT Support, Networking, Cloud Solutions and Technology Projects.">
-  <title>Oitae — Technology, Made Simple</title>
-
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #121a2e;
-      --text: #f3f6ff;
-      --muted: #a6b1c8;
-      --accent: #8b9cff;
-      --cyan: #57e4d4;
-      --border: rgba(255,255,255,.11);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-
-    body {
-      margin: 0;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(1120px, 90%); margin: auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(11,16,32,.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 27px;
-      font-weight: 850;
-      letter-spacing: -1.5px;
-    }
-
-    .logo span { color: var(--cyan); }
-
-    nav { display: flex; align-items: center; gap: 26px; }
-    nav a { color: var(--muted); font-size: 14px; }
-    nav a:hover { color: var(--cyan); }
-
-    .menu-btn {
-      display: none;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: white;
-      border-radius: 10px;
-      padding: 7px 12px;
-      cursor: pointer;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 100px 0 85px;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -100px;
-      top: -80px;
-      background: #645dff;
-      filter: blur(150px);
-      opacity: .19;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 13px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      color: var(--cyan);
-      font-size: 13px;
-      background: rgba(255,255,255,.03);
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 12px var(--cyan);
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      letter-spacing: -3px;
-      line-height: 1.12;
-      margin: 24px 0;
-    }
-
-    .gradient {
-      background: linear-gradient(100deg, var(--accent), var(--cyan));
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    .hero p, .section-intro {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 620px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-weight: 650;
-      transition: transform .2s, background .2s;
-      cursor: pointer;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
-      background: linear-gradient(110deg, #8494ff, #5edccd);
-      color: #07121f;
-      border: 0;
-    }
-    .btn-secondary { background: rgba(255,255,255,.04); }
-
-    .visual {
-      min-height: 340px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .orb {
-      width: min(300px, 75vw);
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      border-radius: 42% 58% 63% 37% / 42% 40% 60% 58%;
-      background: linear-gradient(140deg, #6878ff, #2dd9ce);
-      box-shadow: 0 0 100px rgba(98,117,255,.2);
-      animation: float 7s ease-in-out infinite;
-    }
-
-    .orb-inner {
-      width: 83%;
-      height: 83%;
-      display: grid;
-      place-items: center;
-      border-radius: inherit;
-      background: #10172a;
-      border: 1px solid rgba(255,255,255,.18);
-      font-size: 68px;
-      font-weight: 900;
-      letter-spacing: -5px;
-    }
-
-    .orb-inner span { color: var(--cyan); }
-
-    .float-card {
-      position: absolute;
-      padding: 12px 16px;
-      border-radius: 14px;
-      background: #151e33;
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 35px rgba(0,0,0,.2);
-      font-size: 13px;
-    }
-
-    .card-one { top: 28px; left: 0; }
-    .card-two { bottom: 25px; right: 0; }
-
-    section { padding: 85px 0; }
-    .section-head { margin-bottom: 34px; }
-    .section-head h2 {
-      font-size: clamp(30px, 4vw, 44px);
-      letter-spacing: -1.5px;
-      line-height: 1.2;
-      margin: 12px 0;
-    }
-
-    .kicker {
-      color: var(--cyan);
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 750;
-    }
-
-    .grid { display: grid; gap: 18px; }
-    .services { grid-template-columns: repeat(3, 1fr); }
-    .projects { grid-template-columns: repeat(2, 1fr); }
-
-    .panel {
-      padding: 25px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
-      transition: transform .25s, border-color .25s;
-    }
-
-    .panel:hover {
-      transform: translateY(-5px);
-      border-color: rgba(87,228,212,.4);
-    }
-
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      background: rgba(139,156,255,.13);
-      font-size: 23px;
-      margin-bottom: 18px;
-    }
-
-    .panel h3 { margin: 0 0 9px; font-size: 19px; }
-    .panel p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    .project-label {
-      display: inline-block;
-      color: var(--cyan);
-      font-size: 12px;
-      margin-bottom: 12px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 45px;
-      align-items: start;
-    }
-
-    .about-box {
-      padding: 28px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #192545, #11192b);
-      border: 1px solid var(--border);
-    }
-
-    .about-box .big {
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .skill {
-      padding: 7px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: #dce4f8;
-      background: rgba(255,255,255,.025);
-      font-size: 13px;
-    }
-
-    .contact {
-      text-align: center;
-      border: 1px solid var(--border);
-      background: radial-gradient(ellipse at top, rgba(103,119,255,.14), transparent 65%);
-      border-radius: 25px;
-      padding: 55px 25px;
-    }
-
-    .contact h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.2;
-      margin: 12px 0;
-    }
-
-    .contact p { color: var(--muted); }
-    .contact .actions { justify-content: center; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 25px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .footer-links { display: flex; gap: 18px; }
-    .footer-links a:hover { color: var(--cyan); }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(3deg); }
-    }
-
-    @media (max-width: 800px) {
-      .hero { padding-top: 65px; }
-      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 30px; }
-      .visual { min-height: 300px; }
-      .services { grid-template-columns: repeat(2, 1fr); }
-      nav { gap: 15px; }
-    }
-
-    @media (max-width: 560px) {
-      .navbar { min-height: 68px; }
-      .menu-btn { display: block; }
-      nav {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        flex-direction: column;
-        align-items: stretch;
-        background: #0e1527;
-        border-bottom: 1px solid var(--border);
-      }
-      nav.open { display: flex; }
-      nav a { padding: 7px 0; }
-      h1 { letter-spacing: -1.8px; }
-      .services, .projects { grid-template-columns: 1fr; }
-      section { padding: 60px 0; }
-      .panel { padding: 22px; }
-      .footer-row { flex-direction: column; text-align: center; }
-      .card-one { left: -5px; }
-      .card-two { right: -5px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08111f">
+<title>Otai — Fun IT Learning</title>
+<style>
+:root{--bg:#08111f;--panel:#132239;--text:#f4f8ff;--muted:#a7b6cc;--green:#61f0b1;--blue:#7db5ff;--line:#ffffff18}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;background:#08111fee;border-bottom:1px solid var(--line);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.logo{font-weight:950;font-size:1.5rem;letter-spacing:3px;color:var(--green)}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--green)}
+main{max-width:1150px;margin:auto;padding:25px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:65px 0}
+h1{font-size:clamp(2.8rem,7vw,5rem);line-height:1.05;letter-spacing:-3px;margin:15px 0}
+h1 span,h2 span{color:var(--green)}
+p{color:var(--muted)}
+.panel,.card{background:linear-gradient(145deg,#152740,#0e1a2b);border:1px solid var(--line);border-radius:20px;padding:22px}
+.hero .panel{box-shadow:0 20px 60px #0004}
+.pill{color:var(--green);border:1px solid #61f0b155;border-radius:30px;padding:6px 12px;font-size:.8rem}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 16px;font-weight:800;background:var(--green);color:#07160f}
+.btn.secondary{background:transparent;border:1px solid var(--line);color:var(--text)}
+section{padding:38px 0}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card h3{margin:10px 0 5px}
+.icon{font-size:1.8rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.stat{padding:13px;background:#ffffff08;border:1px solid var(--line);border-radius:12px}
+.stat b{display:block;font-size:1.3rem;color:var(--green)}
+.layout{display:grid;grid-template-columns:230px 1fr;gap:16px}
+.topics{display:grid;gap:8px;align-content:start}
+.topic{background:#ffffff08;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;text-align:left}
+.topic.active{border-color:var(--green);background:#61f0b111}
+.question{font-size:1.35rem;font-weight:800;margin:22px 0 6px}
+.answers{display:grid;gap:9px;margin-top:18px}
+.answer{padding:12px;text-align:left;border:1px solid var(--line);border-radius:10px;background:#ffffff06;color:var(--text)}
+.answer:hover{border-color:var(--blue)}
+.answer.correct{border-color:var(--green);background:#61f0b115}
+.answer.wrong{border-color:#ff8585;background:#ff858515}
+.answer:disabled{cursor:default}
+.feedback{display:none;border:1px solid #61f0b155;background:#61f0b10b;border-radius:12px;padding:13px;margin-top:15px}
+.feedback.show{display:block}
+.feedback p{margin:5px 0}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+label{display:block;color:var(--muted);font-size:.9rem;margin:12px 0 5px}
+input{width:100%;padding:11px;border:1px solid var(--line);background:#081321;color:white;border-radius:9px}
+.output{margin-top:12px;padding:12px;border-radius:10px;background:#081321;border:1px solid var(--line);overflow-wrap:anywhere}
+.output b{color:var(--green)}
+footer{text-align:center;border-top:1px solid var(--line);padding:25px;color:var(--muted)}
+@media(max-width:760px){header{align-items:flex-start;gap:12px;flex-direction:column}nav{gap:12px}.hero{grid-template-columns:1fr;padding:35px 0}.grid{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.topics{grid-template-columns:repeat(2,1fr)}main{padding:18px}.stats{grid-template-columns:repeat(3,1fr)}}
+</style>
 </head>
-
 <body>
-  <header>
-    <div class="container navbar">
-      <a class="logo" href="#home" aria-label="Oitae home">oit<span>ae</span>.</a>
+<header>
+  <a class="logo" href="#">OTAI</a>
+  <nav>
+    <a href="#learn">Learn & Play</a>
+    <a href="#tools">IT Tools</a>
+    <a href="#challenge">Challenge</a>
+  </nav>
+</header>
 
-      <button class="menu-btn" id="menuBtn"
-        aria-label="Open navigation" aria-expanded="false"
-        aria-controls="mainNav">☰</button>
-
-      <nav id="mainNav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<main>
+<section class="hero">
+  <div>
+    <span class="pill">✦ FUN IT LEARNING PLATFORM</span>
+    <h1>IT শেখো<br><span>মজা করে!</span></h1>
+    <p>Welcome to Otai — learn IT, play quizzes, solve challenges and build real-world technology skills. সহজভাবে শেখো, খেলতে খেলতে skill বাড়াও!</p>
+    <p><b>Learn IT. Play IT. Master IT.</b><br>Simple Concept. More Effective.</p>
+    <a class="btn" href="#learn">🎮 Start Learning</a>
+    <a class="btn secondary" href="#tools">Explore Tools</a>
+    <div class="stats">
+      <div class="stat"><b id="xp">0</b>XP Points</div>
+      <div class="stat"><b id="correct">0</b>Correct</div>
+      <div class="stat"><b id="level">1</b>Level</div>
     </div>
-  </header>
+  </div>
+  <div class="panel">
+    <div style="font-size:3.5rem">🎮</div>
+    <h2>Your IT Adventure</h2>
+    <p>Learn networking, cybersecurity, Windows, Linux, cloud and web development through interactive quizzes.</p>
+    <div class="output"><b>✓ Learn</b> bite-size lessons</div>
+    <div class="output"><b>✓ Play</b> fun challenges</div>
+    <div class="output"><b>✓ Practise</b> useful IT tools</div>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Technology made simple</span>
-          <h1>Smart IT.<br><span class="gradient">Better Solutions.</span></h1>
-          <p>
-            Welcome to Oitae — a technology brand focused on IT support,
-            networking, cloud solutions and practical digital projects.
-            আমরা প্রযুক্তিকে করি সহজ, কার্যকর ও সবার নাগালে।
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#projects">Explore Projects ↗</a>
-            <a class="btn btn-secondary" href="#contact">Get in Touch</a>
-          </div>
-        </div>
-
-        <div class="visual" aria-label="Oitae brand illustration">
-          <div class="orb">
-            <div class="orb-inner">oi<span>tae</span></div>
-          </div>
-          <div class="float-card card-one">⌘ IT Support & Networking</div>
-          <div class="float-card card-two">✦ Cloud · Security · Innovation</div>
-        </div>
+<section id="learn">
+  <h2>🎯 Learn & <span>Play</span></h2>
+  <p>একটি topic বেছে নাও। সঠিক উত্তরে ১০ XP, ভুল হলে explanation দেখো।</p>
+  <div class="layout">
+    <div class="topics" id="topics"></div>
+    <div class="panel">
+      <span class="pill" id="topicName">Networking</span>
+      <div class="question" id="question">Question</div>
+      <p id="questionBn"></p>
+      <div class="answers" id="answers"></div>
+      <div class="feedback" id="feedback">
+        <b id="result"></b>
+        <p id="explanation"></p>
       </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">What we do</span>
-          <h2>Technology that works for you.</h2>
-          <p class="section-intro">
-            Practical technology, reliable support and useful solutions
-            for everyday IT challenges.
-          </p>
-        </div>
-
-        <div class="grid services">
-          <article class="panel">
-            <div class="icon-box">🖥️</div>
-            <h3>IT Support</h3>
-            <p>Windows troubleshooting, software installation, endpoint support and technical problem solving.</p>
-          </article>
-
-          <article class="panel">
-            <div class="icon-box">🌐</div>
-            <h3>Networking</h3>
-            <p>Network design labs, VLANs, routing, switching, Wi-Fi and network troubleshooting.</p>
-          </article>
-
-          <article class="panel">
-            <div class="icon-box">☁️</div>
-            <h3>Cloud Solutions</h3>
-            <p>Hands-on learning and practical projects with cloud platforms and infrastructure services.</p>
-          </article>
-
-          <article class="panel">
-            <div class="icon-box">🔐</div>
-            <h3>Cybersecurity</h3>
-            <p>Security fundamentals, endpoint protection and safe IT configuration practices.</p>
-          </article>
-
-          <article class="panel">
-            <div class="icon-box">⚙️</div>
-            <h3>Automation</h3>
-            <p>Explore scripts and repeatable workflows that make routine IT tasks easier.</p>
-          </article>
-
-          <article class="panel">
-            <div class="icon-box">💡</div>
-            <h3>Digital Projects</h3>
-            <p>Useful web tools and experiments designed to solve real-world technology problems.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-head">
-          <span class="kicker">Selected work</span>
-          <h2>Projects & experiments.</h2>
-          <p class="section-intro">
-            A growing collection of labs, tools and practical learning projects.
-            Replace these examples with your published work.
-          </p>
-        </div>
-
-        <div class="grid projects">
-          <article class="panel">
-            <span class="project-label">NETWORKING</span>
-            <h3>Network Administration Lab</h3>
-            <p>Practice VLAN configuration, IP addressing, routing and troubleshooting in a lab environment.</p>
-          </article>
-
-          <article class="panel">
-            <span class="project-label">WEB APPLICATION</span>
-            <h3>Oitae Web Projects</h3>
-            <p>A home for small web experiments, useful tools and future digital products.</p>
-          </article>
-
-          <article class="panel">
-            <span class="project-label">IT SUPPORT</span>
-            <h3>Support Knowledge Base</h3>
-            <p>Document common Windows, hardware, software and connectivity troubleshooting steps.</p>
-          </article>
-
-          <article class="panel">
-            <span class="project-label">CLOUD & SECURITY</span>
-            <h3>Cloud Learning Lab</h3>
-            <p>Hands-on exercises for infrastructure, identity, security and cloud administration.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about-grid">
-        <div class="about-box">
-          <div class="big">One brand.<br><span class="gradient">Many possibilities.</span></div>
-          <p style="color:var(--muted)">
-            Oitae is growing into a home for technology, learning and practical digital solutions.
-          </p>
-        </div>
-
-        <div>
-          <span class="kicker">About Oitae</span>
-          <h2 style="font-size:34px;line-height:1.25">Built around curiosity and technology.</h2>
-          <p style="color:var(--muted)">
-            Our goal is to make technology easier to understand and use.
-            From IT support and networking to cloud computing and web projects,
-            Oitae represents continuous learning and practical problem solving.
-          </p>
-          <div class="skills">
-            <span class="skill">IT Support</span>
-            <span class="skill">Cisco Networking</span>
-            <span class="skill">Microsoft 365</span>
-            <span class="skill">AWS</span>
-            <span class="skill">Linux</span>
-            <span class="skill">Cybersecurity</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact">
-          <span class="kicker">Let's connect</span>
-          <h2>Have a project in mind?</h2>
-          <p>Questions, ideas or collaboration opportunities? Get in touch.</p>
-          <div class="actions">
-            <!-- Replace the example email below with your real email -->
-            <a class="btn btn-primary"
-               href="mailto:your-email@example.com">✉ Contact Oitae</a>
-            <a class="btn btn-secondary"
-               href="https://github.com/imam-bd">GitHub Profile ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-row">
-      <a class="logo" href="#home">oit<span>ae.</span></a>
-      <span>© <span id="year"></span> Oitae. Built with curiosity.</span>
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <div class="actions">
+        <button class="btn secondary" id="skip">Skip →</button>
+        <button class="btn" id="next" disabled>Next question →</button>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mainNav = document.getElementById("mainNav");
+<section id="tools">
+  <h2>🧰 Handy IT <span>Tools</span></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🌐</div><h3>IPv4 Checker</h3>
+      <p>Check IPv4 address format.</p>
+      <label for="ip">IPv4 address</label>
+      <input id="ip" value="192.168.1.10">
+      <button class="btn" style="margin-top:12px" id="checkIp">Check IP</button>
+      <div class="output" id="ipOut">Enter an address.</div>
+    </div>
+    <div class="card">
+      <div class="icon">🧮</div><h3>Subnet Calculator</h3>
+      <p>CIDR থেকে subnet mask ও address count বের করো।</p>
+      <label for="cidr">CIDR prefix (0–32)</label>
+      <input id="cidr" type="number" min="0" max="32" value="24">
+      <button class="btn" style="margin-top:12px" id="calc">Calculate</button>
+      <div class="output" id="cidrOut">/24 = 255.255.255.0</div>
+    </div>
+    <div class="card">
+      <div class="icon">🔐</div><h3>Password Practice</h3>
+      <p>শুধু sample password পরীক্ষা করো, real password নয়।</p>
+      <label for="pass">Practice password</label>
+      <input id="pass" type="password" autocomplete="off" placeholder="Enter a fake password">
+      <button class="btn" style="margin-top:12px" id="passCheck">Check strength</button>
+      <div class="output" id="passOut">Checked locally in your browser.</div>
+    </div>
+  </div>
+</section>
 
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-      menuBtn.textContent = isOpen ? "✕" : "☰";
-    });
+<section id="challenge">
+  <h2>🖥️ IT Support <span>Challenge</span></h2>
+  <div class="panel">
+    <span class="pill">CASE 01</span>
+    <h3>Wi-Fi connected, but no internet!</h3>
+    <p>A Windows laptop shows IP address 169.254.18.42 and no default gateway. অন্যদের Wi-Fi ঠিক চলছে। কী করবে?</p>
+    <div class="output">IPv4: 169.254.18.42<br>Default Gateway: Missing</div>
+    <div class="answers" id="challengeAnswers">
+      <button class="answer" data-good="false">A. Replace the laptop immediately</button>
+      <button class="answer" data-good="true">B. Check DHCP/IP settings and renew the address</button>
+      <button class="answer" data-good="false">C. Disable the firewall permanently</button>
+    </div>
+    <div class="feedback" id="challengeFeedback">
+      <b id="challengeResult"></b>
+      <p id="challengeExplanation"></p>
+    </div>
+  </div>
+</section>
 
-    mainNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.textContent = "☰";
-      });
-    });
+<section>
+  <h2>💡 About <span>Otai</span></h2>
+  <div class="panel">
+    <h3>One Stop Resolve Centre</h3>
+    <p>Otai is a fun IT learning concept for beginners and technology enthusiasts. Learn through practice, quizzes, tools and real-world scenarios.</p>
+    <b>Simple Concept. More Effective.</b>
+  </div>
+</section>
+</main>
+<footer>© <span id="year"></span> Otai · Learn IT. Play IT. Master IT.</footer>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+const data={
+ "IT Basics":[
+  ["What does CPU stand for?","CPU-এর পূর্ণরূপ কী?",["Central Processing Unit","Computer Personal Utility","Core Program User","Central Power Unit"],0,"CPU means Central Processing Unit. এটি computer instruction process করে।"],
+  ["Which one is an operating system?","কোনটি Operating System?",["Chrome","Windows 11","Microsoft Word","HDMI"],1,"Windows 11 হলো operating system; Chrome browser, Word application।"],
+  ["What is RAM used for?","RAM কী কাজে লাগে?",["Long-term storage","Temporary working memory","Printing","Wi-Fi"],1,"RAM চলমান program-এর data সাময়িকভাবে রাখে।"]
+ ],
+ "Networking":[
+  ["Which device connects different IP networks?","ভিন্ন IP network connect করে কোন device?",["Hub","Router","Keyboard","Monitor"],1,"Router IP network-এর মধ্যে packet forward করে।"],
+  ["Default HTTPS port?","HTTPS-এর default port কত?",["21","22","80","443"],3,"HTTPS-এর default port TCP 443; HTTP সাধারণত port 80।"],
+  ["Which protocol assigns IP settings automatically?","Automatic IP দেয় কোন protocol?",["DHCP","DNS","FTP","ICMP"],0,"DHCP client-কে IP, subnet mask, gateway ও DNS settings দিতে পারে।"],
+  ["What does /24 mean?","CIDR /24 কী বোঝায়?",["24 hosts","24 network bits","24 routers","24 bytes"],1,"/24-এ 24 bits network prefix এবং 8 bits host অংশ।"]
+ ],
+ "Cybersecurity":[
+  ["What is phishing?","Phishing কী?",["A monitor","Fake message/site used to steal information","A cable","A backup"],1,"Phishing fake message বা website দিয়ে sensitive information চুরি করার চেষ্টা।"],
+  ["What does MFA add?","MFA কী যোগ করে?",["Extra verification factor","More storage","Faster CPU","Screen brightness"],0,"MFA account access-এর জন্য একাধিক verification factor চায়।"],
+  ["Which is safer?","কোনটি নিরাপদ?",["Reuse passwords","Share passwords","Unique long passwords","Use birthday"],2,"প্রতিটি account-এ unique long password ব্যবহার করো; password manager সাহায্য করতে পারে।"]
+ ],
+ "Windows":[
+  ["Which tool shows running processes?","Running processes দেখায় কোন tool?",["Task Manager","Paint","Notepad","Calculator"],0,"Task Manager process, CPU, memory ও network usage দেখায়।"],
+  ["Windows command to show IP configuration?","IP configuration দেখার command?",["ipconfig","mkdir","chmod","format"],0,"ipconfig Windows network configuration দেখায়।"]
+ ],
+ "Linux":[
+  ["Which command lists files?","ফাইল list করে কোন command?",["ls","pwd","grep","touch"],0,"ls directory contents list করে।"],
+  ["What does sudo commonly do?","sudo কী কাজে লাগে?",["Run command with elevated privileges","Increase RAM","Change monitor","Create Wi-Fi"],0,"sudo অনুমোদিত user-কে elevated privilege দিয়ে command চালাতে দেয়।"]
+ ],
+ "Cloud & M365":[
+  ["What is cloud computing?","Cloud computing কী?",["Computing services over a network","USB storage only","A keyboard","A printer"],0,"Cloud computing network-এর মাধ্যমে server, storage ও software service দেয়।"],
+  ["Microsoft Entra ID is used for?","Entra ID কী কাজে লাগে?",["Identity and access","Photo editing","Replacing switch","Screen repair"],0,"Microsoft Entra ID identity ও access management-এ ব্যবহৃত হয়।"]
+ ],
+ "Web & Coding":[
+  ["What does HTML define?","HTML কী define করে?",["Page structure and content","Wi-Fi speed","RAM","Password"],0,"HTML web page-এর structure ও content তৈরি করে।"],
+  ["Which technology styles web pages?","Web page style করে কোনটি?",["CSS","DHCP","BIOS","SMTP"],0,"CSS colour, layout, spacing ও responsive design নিয়ন্ত্রণ করে।"]
+ ]
+};
+let topic="Networking",index=0,locked=false,xp=0,correct=0;
+try{xp=Number(localStorage.getItem("otaiXP")||0);correct=Number(localStorage.getItem("otaiCorrect")||0)}catch(e){}
+const $=id=>document.getElementById(id);
+function stats(){$("xp").textContent=xp;$("correct").textContent=correct;$("level").textContent=Math.floor(xp/100)+1;try{localStorage.setItem("otaiXP",xp);localStorage.setItem("otaiCorrect",correct)}catch(e){}}
+function renderTopics(){
+ $("topics").innerHTML="";
+ Object.keys(data).forEach(name=>{
+  const b=document.createElement("button");b.className="topic"+(name===topic?" active":"");
+  b.textContent=name;b.onclick=()=>{topic=name;index=0;renderTopics();renderQuestion()};
+  $("topics").appendChild(b)
+ })
+}
+function renderQuestion(){
+ locked=false;const q=data[topic][index];
+ $("topicName").textContent=topic;$("question").textContent=q[0];$("questionBn").textContent=q[1];
+ $("answers").innerHTML="";$("feedback").classList.remove("show");$("next").disabled=true;
+ q[2].forEach((answer,i)=>{
+  const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+answer;
+  b.onclick=()=>choose(i);$("answers").appendChild(b)
+ })
+}
+function choose(i){
+ if(locked)return;locked=true;const q=data[topic][index],good=i===q[3];
+ [...$("answers").children].forEach((b,j)=>{b.disabled=true;if(j===q[3])b.classList.add("correct");if(j===i&&!good)b.classList.add("wrong")});
+ if(good){xp+=10;correct++;$("result").textContent="🎉 Correct! +10 XP"}else{$("result").textContent="💡 Good try — learn from this!"}
+ $("explanation").textContent=q[4];$("feedback").classList.add("show");$("next").disabled=false;stats()
+}
+function next(){index=(index+1)%data[topic].length;renderQuestion()}
+$("next").onclick=next;$("skip").onclick=next;
+$("checkIp").onclick=()=>{
+ const parts=$("ip").value.trim().split(".");
+ const valid=parts.length===4&&parts.every(p=>/^\d{1,3}$/.test(p)&&+p>=0&&+p<=255);
+ if(!valid){$("ipOut").innerHTML="<b>Invalid IPv4 format</b><br>Use four numbers from 0 to 255.";return}
+ const n=parts.map(Number);let hint="Public-range candidate";
+ if(n[0]===10||(n[0]===172&&n[1]>=16&&n[1]<=31)||(n[0]===192&&n[1]===168))hint="Private IPv4 address";
+ else if(n[0]===127)hint="Loopback address";
+ else if(n[0]===169&&n[1]===254)hint="Link-local/APIPA — DHCP may have failed";
+ $("ipOut").innerHTML="<b>Valid IPv4 format ✓</b><br>"+n.join(".")+"<br>"+hint+"<br><small>Valid format does not guarantee reachability.</small>"
+};
+function calc(){
+ const p=Number($("cidr").value);
+ if(!Number.isInteger(p)||p<0||p>32){$("cidrOut").innerHTML="<b>Enter a prefix from 0 to 32.</b>";return}
+ const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
+ const str=[mask>>>24,(mask>>>16)&255,(mask>>>8)&255,mask&255].join(".");
+ const total=2**(32-p),usable=p<=30?total-2:(p===31?2:1);
+ $("cidrOut").innerHTML=`<b>/${p} → ${str}</b><br>Total addresses: ${total.toLocaleString()}<br>Usable hosts (traditional): ${usable.toLocaleString()}`
+}
+$("calc").onclick=calc;calc();
+$("passCheck").onclick=()=>{
+ const p=$("pass").value;let score=0,tips=[];
+ if(p.length>=12)score++;else tips.push("Use 12+ characters.");
+ if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;else tips.push("Mix uppercase and lowercase.");
+ if(/\d/.test(p))score++;else tips.push("Consider numbers.");
+ if(/[^A-Za-z0-9]/.test(p))score++;else tips.push("Consider a symbol or longer passphrase.");
+ const label=!p?"Enter a sample":score>=4?"Strong pattern":score>=3?"Fair pattern":"Needs improvement";
+ $("passOut").innerHTML="<b>"+label+"</b><br>"+(p?"Length: "+p.length+" characters<br>":"")+tips.join("<br>")+"<br><small>Simple estimate only. Never enter a real password.</small>"
+};
+$("challengeAnswers").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+ const good=b.dataset.good==="true";
+ $("challengeAnswers").querySelectorAll("button").forEach(x=>x.disabled=true);
+ if(good){xp+=15;correct++;$("challengeResult").textContent="🏆 Correct diagnosis! +15 XP"}
+ else $("challengeResult").textContent="💡 Read the explanation";
+ $("challengeExplanation").textContent="169.254.x.x is a link-local/APIPA address. Check Wi-Fi connectivity, DHCP server/scope and adapter settings; then renew the IP lease if appropriate.";
+ $("challengeFeedback").classList.add("show");stats()
+});
+$("year").textContent=new Date().getFullYear();renderTopics();renderQuestion();stats();
+</script>
 </body>
 </html>
