@@ -3,729 +3,384 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d1b">
-<meta name="description" content="Otai — One Stop Fun Centre. মজায় মজায় IT শেখো। Learn IT, play games and fix tech problems.">
-<title>Otai — মজায় মজায় IT শেখো</title>
-
+<meta name="description" content="Otai — One Stop Fun Centre. মজার ছলে IT শিখি!">
+<title>Otai — মজার ছলে IT শিখি</title>
 <style>
-:root {
-  --bg:#080d1b;
-  --panel:#111a2e;
-  --panel2:#182540;
-  --text:#f3f6ff;
-  --muted:#a7b3ca;
-  --primary:#8878ff;
-  --cyan:#24d9f2;
-  --green:#39e5bd;
-  --border:#293650;
-  --danger:#ff7185;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth;scroll-padding-top:90px}
-body {
-  margin:0;
-  font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;
-  color:var(--text);
-  line-height:1.7;
-  background:
-    radial-gradient(ellipse at top,#172649 0%,var(--bg) 55%);
-}
-a {color:inherit;text-decoration:none}
-button,input,select {font:inherit}
-button,.btn {
-  border:0;
-  border-radius:11px;
-  padding:11px 16px;
-  cursor:pointer;
-  font-weight:750;
-  transition:.2s;
-}
-button:hover,.btn:hover {transform:translateY(-2px);filter:brightness(1.1)}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
-  outline:2px solid var(--cyan);
-  outline-offset:3px;
-}
-.primary {background:linear-gradient(135deg,var(--primary),#5c4ce2);color:white}
-.secondary {background:var(--green);color:#06221a}
-.ghost {background:#202d46;color:white;border:1px solid var(--border)}
-.muted {color:var(--muted)}
-header {
-  position:sticky;top:0;z-index:10;
-  background:rgba(8,13,27,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-.nav {
-  max-width:1180px;margin:auto;padding:12px 22px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-}
-.brand {display:flex;align-items:center;gap:10px;flex-shrink:0}
-.brand-name {font-size:27px;font-weight:950;letter-spacing:-1px}
-.brand-name span {color:var(--cyan)}
-.logo-icon {width:46px;height:46px;flex-shrink:0}
-nav {display:flex;gap:17px;flex-wrap:wrap}
-nav a {font-size:13px;color:var(--muted);font-weight:700}
-nav a:hover {color:var(--cyan)}
-.hero {
-  max-width:1180px;margin:auto;padding:72px 22px 48px;
-  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;
-}
-.eyebrow {
-  display:inline-block;padding:7px 13px;border-radius:99px;
-  color:var(--green);background:#102e30;border:1px solid #20514f;
-  font-size:13px;font-weight:850;
-}
-h1 {font-size:clamp(40px,6vw,70px);line-height:1.1;letter-spacing:-2px;margin:20px 0}
-h1 .accent {color:var(--cyan)}
-.bangla-tagline {
-  color:var(--green);font-size:clamp(24px,4vw,35px);
-  font-weight:900;line-height:1.4;margin:12px 0;
-}
-.hero p {color:var(--muted);font-size:16px;max-width:620px}
-.actions {display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.hero-art {
-  min-height:340px;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;position:relative;overflow:hidden;
-  border:1px solid var(--border);border-radius:28px;
-  background:linear-gradient(145deg,#192a49,#0c1427);
-}
-.hero-art:before,.hero-art:after {
-  content:"";position:absolute;border-radius:50%;pointer-events:none;
-}
-.hero-art:before {width:260px;height:260px;background:#24d9f214;top:-90px;right:-70px}
-.hero-art:after {width:220px;height:220px;background:#8878ff20;bottom:-100px;left:-50px}
-.hero-logo {width:150px;height:150px;z-index:1}
-.hero-brand {z-index:1;font-size:31px;font-weight:950;margin-top:12px}
-.hero-brand span {color:var(--cyan)}
-.hero-caption {z-index:1;color:var(--muted);font-size:13px}
-.stats {
-  max-width:1136px;margin:0 auto 28px;padding:0 22px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-.stat,.card,.quizbox,.toolbox {
-  background:linear-gradient(145deg,var(--panel),#0e1526);
-  border:1px solid var(--border);border-radius:18px;
-}
-.stat {text-align:center;padding:16px}
-.stat strong {display:block;color:var(--green);font-size:24px}
-.stat small {color:var(--muted)}
-section {max-width:1180px;margin:auto;padding:36px 22px}
-.section-head {margin-bottom:22px}
-.section-head h2 {font-size:clamp(26px,4vw,36px);margin:0 0 4px;letter-spacing:-.5px}
-.section-head p {margin:0;color:var(--muted)}
-.grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card {padding:21px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-.emoji {font-size:35px;line-height:1.4;margin-bottom:8px}
-.pill {
-  background:#282448;color:#d1caff;border-radius:99px;
-  padding:3px 9px;font-size:11px;font-weight:850;margin-bottom:9px;
-}
-.card h3 {font-size:19px;margin:0 0 7px}
-.card p {font-size:14px;color:var(--muted);margin:0 0 16px;flex:1}
-.card button,.card .btn {margin-top:auto}
-.quizbox,.toolbox {padding:23px}
-.quiz-top {display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-select,input[type=text],input[type=number],input[type=password] {
-  width:100%;padding:11px 12px;color:var(--text);
-  background:#0a1120;border:1px solid var(--border);border-radius:10px;
-}
-.quiz-top select {width:auto;min-width:180px}
-.progress {height:7px;background:#263149;border-radius:99px;overflow:hidden;margin:14px 0}
-.progress div {height:100%;width:0;background:var(--green);transition:width .2s}
-.question {font-size:19px;font-weight:800;margin:15px 0}
-.answers {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.answer {
-  text-align:left;color:var(--text);background:var(--panel2);
-  border:1px solid var(--border);padding:13px;
-}
-.answer.correct {background:#10352f;border-color:var(--green)}
-.answer.wrong {background:#3b1c2b;border-color:var(--danger)}
-.answer:disabled {cursor:default;transform:none}
-.feedback {min-height:28px;margin:14px 0;font-weight:700}
-.tools-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.toolbox h3 {margin:0 0 6px}
-.field {margin:13px 0}
-.field label {display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
-.result {
-  margin-top:13px;padding:13px;background:#0b1323;border-radius:10px;
-  border:1px solid var(--border);overflow-wrap:anywhere;
-}
-.checklist {display:grid;gap:8px}
-.checklist label {display:flex;gap:10px;align-items:center;color:var(--muted)}
-.checklist input {accent-color:var(--green)}
-.filterbar {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.filterbar button.active {background:var(--green);color:#06221a}
-.notice {font-size:12px;color:var(--muted)}
-[hidden] {display:none!important}
-footer {border-top:1px solid var(--border);margin-top:40px;padding:30px 22px;text-align:center;color:var(--muted)}
-footer strong {color:var(--cyan)}
-@media(max-width:800px) {
-  .hero {grid-template-columns:1fr;padding-top:45px}
-  .hero-art {min-height:270px}
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-  nav {gap:10px}
-}
-@media(max-width:560px) {
-  .nav {align-items:flex-start;flex-direction:column}
-  nav {width:100%;gap:13px}
-  nav a {font-size:12px}
-  .grid,.stats,.answers,.tools-grid {grid-template-columns:1fr}
-  h1 {letter-spacing:-1px}
-  .quiz-top select {width:100%}
-}
+:root{--bg:#080d1b;--panel:#111a2e;--panel2:#192641;--text:#f3f6ff;--muted:#a7b3ca;--cyan:#24d9f2;--green:#39e5bd;--purple:#8878ff;--border:#293650}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at top,#172649,var(--bg) 58%);color:var(--text);font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button,.btn{border:0;border-radius:11px;padding:11px 16px;cursor:pointer;font-weight:750;transition:.2s}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.primary{background:linear-gradient(135deg,var(--purple),#5c4ce2);color:white}
+.secondary{background:var(--green);color:#06221a}
+.ghost{background:#202d46;color:white;border:1px solid var(--border)}
+.muted,.notice{color:var(--muted)}
+header{position:sticky;top:0;z-index:10;background:rgba(8,13,27,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-name{font-size:27px;font-weight:950;letter-spacing:-1px}
+.brand-name span,.accent{color:var(--cyan)}
+.logo-icon{width:46px;height:46px;flex-shrink:0}
+nav{display:flex;gap:17px;flex-wrap:wrap}
+nav a{font-size:13px;color:var(--muted);font-weight:700}
+nav a:hover{color:var(--cyan)}
+.hero{max-width:1180px;margin:auto;padding:72px 22px 48px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+.eyebrow{display:inline-block;padding:7px 13px;border-radius:99px;color:var(--green);background:#102e30;border:1px solid #20514f;font-size:13px;font-weight:850}
+h1{font-size:clamp(40px,6vw,70px);line-height:1.1;letter-spacing:-2px;margin:20px 0}
+.bangla-tagline{color:var(--green);font-size:clamp(24px,4vw,35px);font-weight:900;line-height:1.4;margin:12px 0}
+.hero p{color:var(--muted);font-size:16px;max-width:620px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-art{min-height:340px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden;border:1px solid var(--border);border-radius:28px;background:linear-gradient(145deg,#192a49,#0c1427)}
+.hero-art:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#24d9f214;top:-90px;right:-70px}
+.hero-logo{width:150px;height:150px;z-index:1}
+.hero-brand{z-index:1;font-size:31px;font-weight:950;margin-top:12px}
+.hero-caption{z-index:1;color:var(--muted);font-size:13px}
+.stats{max-width:1136px;margin:0 auto 28px;padding:0 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat,.card,.quizbox,.toolbox{background:linear-gradient(145deg,var(--panel),#0e1526);border:1px solid var(--border);border-radius:18px}
+.stat{text-align:center;padding:16px}
+.stat strong{display:block;color:var(--green);font-size:24px}
+.stat small{color:var(--muted)}
+section{max-width:1180px;margin:auto;padding:36px 22px}
+.section-head{margin-bottom:22px}
+.section-head h2{font-size:clamp(26px,4vw,36px);margin:0 0 4px}
+.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{padding:21px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.emoji{font-size:35px;margin-bottom:8px}
+.pill{background:#282448;color:#d1caff;border-radius:99px;padding:3px 9px;font-size:11px;font-weight:850;margin-bottom:9px}
+.card h3{font-size:19px;margin:0 0 7px}
+.card p{font-size:14px;color:var(--muted);margin:0 0 16px;flex:1}
+.card button,.card .btn{margin-top:auto}
+.quizbox,.toolbox{padding:23px}
+.quiz-top{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+select,input[type=text],input[type=number],input[type=password]{width:100%;padding:11px 12px;color:var(--text);background:#0a1120;border:1px solid var(--border);border-radius:10px}
+.quiz-top select{width:auto;min-width:180px}
+.progress{height:7px;background:#263149;border-radius:99px;overflow:hidden;margin:14px 0}
+.progress div{height:100%;width:0;background:var(--green);transition:width .2s}
+.question{font-size:19px;font-weight:800;margin:15px 0}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.answer{text-align:left;color:var(--text);background:var(--panel2);border:1px solid var(--border);padding:13px}
+.answer.correct{background:#10352f;border-color:var(--green)}
+.answer.wrong{background:#3b1c2b;border-color:#ff7185}
+.answer:disabled{cursor:default;transform:none}
+.feedback{min-height:28px;margin:14px 0;font-weight:700}
+.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{margin:13px 0}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
+.result{margin-top:13px;padding:13px;background:#0b1323;border-radius:10px;border:1px solid var(--border);overflow-wrap:anywhere}
+.checklist{display:grid;gap:8px}
+.checklist label{display:flex;gap:10px;align-items:center;color:var(--muted)}
+.checklist input{accent-color:var(--green)}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filterbar button.active{background:var(--green);color:#06221a}
+.notice{font-size:12px}
+[hidden]{display:none!important}
+footer{border-top:1px solid var(--border);margin-top:40px;padding:30px 22px;text-align:center;color:var(--muted)}
+footer strong{color:var(--cyan)}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:45px}.hero-art{min-height:270px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{gap:10px}}
+@media(max-width:560px){.nav{align-items:flex-start;flex-direction:column}nav{width:100%;gap:13px}nav a{font-size:12px}.grid,.stats,.answers,.tools-grid{grid-template-columns:1fr}h1{letter-spacing:-1px}.quiz-top select{width:100%}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="nav">
-    <a class="brand" href="#home" aria-label="Otai Home">
-      <svg class="logo-icon" viewBox="0 0 100 100" role="img" aria-label="Otai logo">
-        <defs>
-          <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#24d9f2"/>
-            <stop offset="100%" stop-color="#6655ff"/>
-          </linearGradient>
-        </defs>
-        <circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#logoGradient)" stroke-width="4"/>
-        <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-        <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="url(#logoGradient)"/>
-      </svg>
-      <span class="brand-name">Otai<span>.</span></span>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#quiz">IT Quiz</a>
-      <a href="#games">Games</a>
-      <a href="#tools">IT Tools</a>
-      <a href="#comedy">Comedy</a>
-      <a href="#about">About</a>
-    </nav>
-  </div>
+<div class="nav">
+<a class="brand" href="#home" aria-label="Otai Home">
+<svg class="logo-icon" viewBox="0 0 100 100" role="img" aria-label="Otai logo">
+<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24d9f2"/><stop offset="1" stop-color="#6655ff"/></linearGradient></defs>
+<circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#lg)" stroke-width="4"/>
+<path d="M27 30V67H39V48L50 59 61 48V67H73V30L50 48Z" fill="white"/>
+<path d="M20 66Q48 84 78 48 66 78 35 79 25 78 20 66Z" fill="url(#lg)"/>
+</svg>
+<span class="brand-name">Otai<span>.</span></span>
+</a>
+<nav aria-label="Main navigation">
+<a href="#quiz">IT Quiz</a><a href="#games">Games</a><a href="#tools">IT Tools</a><a href="#comedy">Comedy</a><a href="#about">About</a>
+</nav>
+</div>
 </header>
 
 <main>
 <section class="hero" id="home">
-  <div>
-    <div class="eyebrow">Learn IT • Play IT • Fix IT</div>
-    <h1>Otai — One Stop <span class="accent">Fun Centre</span></h1>
-    <div class="bangla-tagline">মজায় মজায় IT শেখো 😎</div>
-    <p>
-      IT শেখা হবে সহজ, মজার আর ইন্টার‍্যাকটিভ! কুইজ খেলো, টেকনোলজির
-      সমস্যা সমাধান করো, Networking ও Cybersecurity শেখো, আর AI-এর
-      মজার দুনিয়া উপভোগ করো।
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="#quiz">🚀 শেখা শুরু করো</a>
-      <a class="btn ghost" href="#games">🎮 গেম খেলো</a>
-    </div>
-    <p class="notice">Simple Concept. More Effective.</p>
-  </div>
-
-  <div class="hero-art">
-    <svg class="hero-logo" viewBox="0 0 100 100" role="img" aria-label="Otai emblem">
-      <defs>
-        <linearGradient id="heroGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#24d9f2"/>
-          <stop offset="100%" stop-color="#6655ff"/>
-        </linearGradient>
-      </defs>
-      <circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#heroGradient)" stroke-width="4"/>
-      <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-      <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="url(#heroGradient)"/>
-    </svg>
-    <div class="hero-brand">Otai<span style="color:var(--cyan)">.</span></div>
-    <div class="hero-caption">LEARN • PLAY • FIX</div>
-  </div>
+<div>
+<div class="eyebrow">Learn IT • Play IT • Fix IT</div>
+<h1>Otai — One Stop <span class="accent">Fun Centre</span></h1>
+<div class="bangla-tagline">মজার ছলে IT শিখি 😎</div>
+<p>IT শেখা হবে সহজ, মজার আর ইন্টার‍্যাকটিভ! কুইজ খেলো, টেকনোলজির সমস্যা সমাধান করো, Networking ও Cybersecurity শেখো, আর AI-এর মজার দুনিয়া উপভোগ করো।</p>
+<div class="actions"><a class="btn primary" href="#quiz">🚀 শেখা শুরু করো</a><a class="btn ghost" href="#games">🎮 গেম খেলো</a></div>
+<p class="notice">Simple Concept. More Effective.</p>
+</div>
+<div class="hero-art">
+<svg class="hero-logo" viewBox="0 0 100 100" role="img" aria-label="Otai emblem">
+<defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#24d9f2"/><stop offset="1" stop-color="#6655ff"/></linearGradient></defs>
+<circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#lg2)" stroke-width="4"/>
+<path d="M27 30V67H39V48L50 59 61 48V67H73V30L50 48Z" fill="white"/>
+<path d="M20 66Q48 84 78 48 66 78 35 79 25 78 20 66Z" fill="url(#lg2)"/>
+</svg>
+<div class="hero-brand">Otai<span>.</span></div><div class="hero-caption">LEARN • PLAY • FIX</div>
+</div>
 </section>
 
 <div class="stats">
-  <div class="stat"><strong id="xp">0 XP</strong><small>তোমার XP</small></div>
-  <div class="stat"><strong id="rank">Beginner</strong><small>তোমার IT Rank</small></div>
-  <div class="stat"><strong id="played">0</strong><small>উত্তর দিয়েছ</small></div>
+<div class="stat"><strong id="xp">0 XP</strong><small>তোমার XP</small></div>
+<div class="stat"><strong id="rank">Beginner</strong><small>তোমার IT Rank</small></div>
+<div class="stat"><strong id="played">0</strong><small>উত্তর দিয়েছ</small></div>
 </div>
 
 <section id="quiz">
-  <div class="section-head">
-    <h2>🧠 IT Knowledge Arena</h2>
-    <p>প্রশ্নের উত্তর দাও, IT শেখো, XP অর্জন করো!</p>
-  </div>
-  <div class="quizbox">
-    <div class="quiz-top">
-      <select id="category" aria-label="Quiz category">
-        <option value="all">সব টপিক</option>
-        <option value="networking">Networking</option>
-        <option value="windows">Windows & IT Support</option>
-        <option value="security">Cybersecurity</option>
-        <option value="linux">Linux</option>
-        <option value="cloud">Cloud & Microsoft 365</option>
-        <option value="coding">Web & Coding</option>
-      </select>
-      <button class="ghost" id="restartQuiz">আবার শুরু</button>
-    </div>
-    <div class="progress"><div id="quizProgress"></div></div>
-    <div id="quizContent" aria-live="polite"></div>
-  </div>
+<div class="section-head"><h2>🧠 IT Knowledge Arena</h2><p>প্রশ্নের উত্তর দাও, IT শেখো, XP অর্জন করো!</p></div>
+<div class="quizbox">
+<div class="quiz-top">
+<select id="category" aria-label="Quiz category">
+<option value="all">সব টপিক</option><option value="networking">Networking</option><option value="windows">Windows & IT Support</option><option value="security">Cybersecurity</option><option value="linux">Linux</option><option value="cloud">Cloud & Microsoft 365</option><option value="coding">Web & Coding</option>
+</select>
+<button class="ghost" id="restartQuiz">আবার শুরু</button>
+</div>
+<div class="progress"><div id="quizProgress"></div></div>
+<div id="quizContent" aria-live="polite"></div>
+</div>
 </section>
 
 <section id="games">
-  <div class="section-head">
-    <h2>🎮 IT Fun Games</h2>
-    <p>খেলতে খেলতে IT স্কিল বাড়াও।</p>
-  </div>
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">🧰</div><span class="pill">HELPDESK</span>
-      <h3>Helpdesk Hero</h3>
-      <p>ইউজারের কম্পিউটারে ইন্টারনেট নেই। প্রথমে কী পরীক্ষা করবে?</p>
-      <button class="primary" onclick="playScenario('helpdesk')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🌐</div><span class="pill">NETWORKING</span>
-      <h3>Network Ninja</h3>
-      <p>নেটওয়ার্ক কানেক্টিভিটি পরীক্ষা করার সঠিক কমান্ড বেছে নাও।</p>
-      <button class="primary" onclick="playScenario('network')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🕵️</div><span class="pill">SECURITY</span>
-      <h3>Cyber Detective</h3>
-      <p>সন্দেহজনক ইমেইল চিনে Phishing থেকে বাঁচতে শেখো।</p>
-      <button class="primary" onclick="playScenario('cyber')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🖨️</div><span class="pill">IT SUPPORT</span>
-      <h3>Printer Panic</h3>
-      <p>মিটিংয়ের আগে প্রিন্টার Offline! কী করবে?</p>
-      <button class="primary" onclick="playScenario('printer')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🐧</div><span class="pill">LINUX</span>
-      <h3>Terminal Rookie</h3>
-      <p>প্রতিদিনের দরকারি Linux কমান্ড চেনো।</p>
-      <button class="primary" onclick="playScenario('linux')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">⚡</div><span class="pill">SPEED ROUND</span>
-      <h3>Ticket Speedrun</h3>
-      <p>Helpdesk ticket-এর অগ্রাধিকার ঠিক করতে শেখো।</p>
-      <button class="primary" onclick="playScenario('speed')">Challenge শুরু</button>
-    </article>
-  </div>
-  <div class="quizbox" id="gameArea" style="margin-top:18px" aria-live="polite">
-    <h3>🦸 Ready, IT Hero?</h3>
-    <p class="muted">উপরের যেকোনো Challenge বেছে নাও।</p>
-  </div>
+<div class="section-head"><h2>🎮 IT Fun Games</h2><p>খেলতে খেলতে IT স্কিল বাড়াও।</p></div>
+<div class="grid">
+<article class="card"><div class="emoji">🧰</div><span class="pill">HELPDESK</span><h3>Helpdesk Hero</h3><p>ইউজারের কম্পিউটারে ইন্টারনেট নেই। প্রথমে কী পরীক্ষা করবে?</p><button class="primary" onclick="playScenario('helpdesk')">Challenge শুরু</button></article>
+<article class="card"><div class="emoji">🌐</div><span class="pill">NETWORKING</span><h3>Network Ninja</h3><p>নেটওয়ার্ক কানেক্টিভিটি পরীক্ষা করার সঠিক কমান্ড বেছে নাও।</p><button class="primary" onclick="playScenario('network')">Challenge শুরু</button></article>
+<article class="card"><div class="emoji">🕵️</div><span class="pill">SECURITY</span><h3>Cyber Detective</h3><p>সন্দেহজনক ইমেইল চিনে Phishing থেকে বাঁচতে শেখো।</p><button class="primary" onclick="playScenario('cyber')">Challenge শুরু</button></article>
+<article class="card"><div class="emoji">🖨️</div><span class="pill">IT SUPPORT</span><h3>Printer Panic</h3><p>মিটিংয়ের আগে প্রিন্টার Offline! কী করবে?</p><button class="primary" onclick="playScenario('printer')">Challenge শুরু</button></article>
+<article class="card"><div class="emoji">🐧</div><span class="pill">LINUX</span><h3>Terminal Rookie</h3><p>প্রতিদিনের দরকারি Linux কমান্ড চেনো।</p><button class="primary" onclick="playScenario('linux')">Challenge শুরু</button></article>
+<article class="card"><div class="emoji">⚡</div><span class="pill">SPEED ROUND</span><h3>Ticket Speedrun</h3><p>Helpdesk ticket-এর অগ্রাধিকার ঠিক করতে শেখো।</p><button class="primary" onclick="playScenario('speed')">Challenge শুরু</button></article>
+</div>
+<div class="quizbox" id="gameArea" style="margin-top:18px" aria-live="polite"><h3>🦸 Ready, IT Hero?</h3><p class="muted">উপরের যেকোনো Challenge বেছে নাও।</p></div>
 </section>
 
 <section id="tools">
-  <div class="section-head">
-    <h2>🛠️ IT Toolbox</h2>
-    <p>দৈনন্দিন IT কাজের কিছু দরকারি টুল।</p>
-  </div>
-  <div class="tools-grid">
-    <div class="toolbox">
-      <h3>🌐 IPv4 Checker</h3>
-      <p class="notice">IPv4 address সঠিক কি না পরীক্ষা করো।</p>
-      <div class="field">
-        <label for="ipInput">IPv4 Address</label>
-        <input type="text" id="ipInput" placeholder="192.168.1.10">
-      </div>
-      <button class="primary" onclick="checkIP()">Check Address</button>
-      <div class="result" id="ipResult" aria-live="polite">এখানে ফলাফল দেখাবে।</div>
-    </div>
-
-    <div class="toolbox">
-      <h3>🧮 CIDR Calculator</h3>
-      <p class="notice">IPv4 Network ও Subnet Mask হিসাব করো।</p>
-      <div class="field">
-        <label for="cidrIP">IPv4 Address</label>
-        <input type="text" id="cidrIP" value="192.168.1.10">
-      </div>
-      <div class="field">
-        <label for="prefix">Prefix Length (0–32)</label>
-        <input type="number" id="prefix" min="0" max="32" value="24">
-      </div>
-      <button class="primary" onclick="calculateCIDR()">Calculate</button>
-      <div class="result" id="cidrResult" aria-live="polite">ফলাফল এখানে দেখাবে।</div>
-    </div>
-
-    <div class="toolbox">
-      <h3>🔐 Password Safety</h3>
-      <p class="notice">এখানে কখনো নিজের আসল পাসওয়ার্ড দেবে না। শুধু কাল্পনিক উদাহরণ ব্যবহার করো।</p>
-      <div class="field">
-        <label for="demoPassword">Demo Password</label>
-        <input type="password" id="demoPassword" placeholder="কাল্পনিক পাসওয়ার্ড" autocomplete="off">
-      </div>
-      <div class="checklist" id="passwordChecks">
-        <label><input type="checkbox" disabled> অন্তত ১২ অক্ষর</label>
-        <label><input type="checkbox" disabled> বড় ও ছোট হাতের অক্ষর</label>
-        <label><input type="checkbox" disabled> একটি সংখ্যা</label>
-        <label><input type="checkbox" disabled> একটি Symbol</label>
-      </div>
-      <div class="result" id="passwordResult" aria-live="polite">এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না।</div>
-      <button class="ghost" style="margin-top:10px" onclick="clearPassword()">Clear</button>
-    </div>
-
-    <div class="toolbox">
-      <h3>📚 Quick IT Reference</h3>
-      <p class="notice">কিছু দরকারি Windows ও Linux কমান্ড।</p>
-      <div class="field">
-        <label for="commandSelect">Command বেছে নাও</label>
-        <select id="commandSelect" onchange="showCommand()">
-          <option value="ipconfig">Windows: ipconfig</option>
-          <option value="ping">ping</option>
-          <option value="tracert">Windows: tracert</option>
-          <option value="nslookup">nslookup</option>
-          <option value="linuxls">Linux: ls -la</option>
-          <option value="linuxpwd">Linux: pwd</option>
-          <option value="linuxdf">Linux: df -h</option>
-        </select>
-      </div>
-      <div class="result" id="commandResult"></div>
-      <button class="ghost" style="margin-top:10px" onclick="copyCommand()">Copy Command</button>
-      <span id="copyFeedback" class="notice" aria-live="polite"></span>
-    </div>
-  </div>
+<div class="section-head"><h2>🛠️ IT Toolbox</h2><p>দৈনন্দিন IT কাজের কিছু দরকারি টুল।</p></div>
+<div class="tools-grid">
+<div class="toolbox">
+<h3>🌐 IPv4 Checker</h3><p class="notice">IPv4 address সঠিক কি না পরীক্ষা করো।</p>
+<div class="field"><label for="ipInput">IPv4 Address</label><input id="ipInput" type="text" placeholder="192.168.1.10"></div>
+<button class="primary" onclick="checkIP()">Check Address</button><div class="result" id="ipResult" aria-live="polite">এখানে ফলাফল দেখাবে।</div>
+</div>
+<div class="toolbox">
+<h3>🧮 CIDR Calculator</h3><p class="notice">IPv4 Network ও Subnet Mask হিসাব করো।</p>
+<div class="field"><label for="cidrIP">IPv4 Address</label><input id="cidrIP" type="text" value="192.168.1.10"></div>
+<div class="field"><label for="prefix">Prefix Length (0–32)</label><input id="prefix" type="number" min="0" max="32" value="24"></div>
+<button class="primary" onclick="calculateCIDR()">Calculate</button><div class="result" id="cidrResult" aria-live="polite">ফলাফল এখানে দেখাবে।</div>
+</div>
+<div class="toolbox">
+<h3>🔐 Password Safety</h3><p class="notice">এখানে নিজের আসল পাসওয়ার্ড দেবে না। শুধু কাল্পনিক উদাহরণ ব্যবহার করো।</p>
+<div class="field"><label for="demoPassword">Demo Password</label><input type="password" id="demoPassword" placeholder="কাল্পনিক পাসওয়ার্ড" autocomplete="off"></div>
+<div class="checklist" id="passwordChecks">
+<label><input type="checkbox" disabled> অন্তত ১২ অক্ষর</label>
+<label><input type="checkbox" disabled> বড় ও ছোট হাতের অক্ষর</label>
+<label><input type="checkbox" disabled> একটি সংখ্যা</label>
+<label><input type="checkbox" disabled> একটি Symbol</label>
+</div>
+<div class="result" id="passwordResult" aria-live="polite">এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না।</div>
+<button class="ghost" style="margin-top:10px" onclick="clearPassword()">Clear</button>
+</div>
+<div class="toolbox">
+<h3>📚 Quick IT Reference</h3><p class="notice">কিছু দরকারি Windows ও Linux কমান্ড।</p>
+<div class="field"><label for="commandSelect">Command বেছে নাও</label>
+<select id="commandSelect" onchange="showCommand()">
+<option value="ipconfig">Windows: ipconfig</option><option value="ping">ping</option><option value="tracert">Windows: tracert</option><option value="nslookup">nslookup</option><option value="linuxls">Linux: ls -la</option><option value="linuxpwd">Linux: pwd</option><option value="linuxdf">Linux: df -h</option>
+</select></div>
+<div class="result" id="commandResult"></div><button class="ghost" style="margin-top:10px" onclick="copyCommand()">Copy Command</button><span id="copyFeedback" class="notice" aria-live="polite"></span>
+</div>
+</div>
 </section>
 
 <section id="comedy">
-  <div class="section-head">
-    <h2>😂 IT Comedy Zone</h2>
-    <p>IT-এর দুনিয়ায় হাসিও আছে, শেখাও আছে!</p>
-  </div>
-  <div class="filterbar" aria-label="Comedy category">
-    <button class="ghost active" data-filter="all">সব</button>
-    <button class="ghost" data-filter="support">IT Support</button>
-    <button class="ghost" data-filter="printer">Printer Drama</button>
-    <button class="ghost" data-filter="ai">AI Fails</button>
-    <button class="ghost" data-filter="coding">Coding Bugs</button>
-  </div>
-  <div class="grid" id="comedyGrid">
-    <article class="card comedy-card" data-type="support">
-      <div class="emoji">🧑‍💻</div>
-      <h3>Classic IT Ticket</h3>
-      <p>ইউজার: “ইন্টারনেট কাজ করছে না!”<br>IT: “Wi-Fi চালু আছে?”<br>ইউজার: “ওহ!” 😅</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+memes">IT Support Videos ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="printer">
-      <div class="emoji">🖨️</div>
-      <h3>Printer Logic</h3>
-      <p>Printer status: Ready.<br>Printer behavior: “আজকে আর কাজ করব না!”</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+problems+IT+memes">Printer Comedy ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="ai">
-      <div class="emoji">🤖</div>
-      <h3>AI Confidence</h3>
-      <p>AI: “আমি ১০০% নিশ্চিত!”<br>তারপর এমন একটা Setting বলে, যেটা কোথাও নেই। 😂</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails">AI Fails ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="coding">
-      <div class="emoji">🐛</div>
-      <h3>One Tiny Bug</h3>
-      <p>একটা Bug ঠিক করলাম। এখন তিনটা নতুন Bug ফ্রি! 🥲</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+coding+bugs+programming+memes">Coding Memes ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="support">
-      <div class="emoji">🔄</div>
-      <h3>IT-এর জাদু</h3>
-      <p>“কম্পিউটারটা একবার Restart দিয়ে দেখুন।”<br>IT Support-এর চিরন্তন মন্ত্র!</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+helpdesk+skits">Helpdesk Skits ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="ai">
-      <div class="emoji">💬</div>
-      <h3>AI Prompt</h3>
-      <p>Prompt: “একদম সহজ করে বলো।”<br>AI: ৪৭ পৃষ্ঠার ব্যাখ্যা! 🤣</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+chatbot+fails">AI Comedy ↗</a>
-    </article>
-  </div>
-  <p class="notice">ভিডিও লিংকগুলো YouTube সার্চ খুলবে; এগুলো নির্দিষ্ট যাচাই করা ভিডিও নয়।</p>
+<div class="section-head"><h2>😂 IT Comedy Zone</h2><p>IT-এর দুনিয়ায় হাসিও আছে, শেখাও আছে!</p></div>
+<div class="filterbar">
+<button class="ghost active" data-filter="all">সব</button><button class="ghost" data-filter="support">IT Support</button><button class="ghost" data-filter="printer">Printer Drama</button><button class="ghost" data-filter="ai">AI Fails</button><button class="ghost" data-filter="coding">Coding Bugs</button>
+</div>
+<div class="grid" id="comedyGrid">
+<article class="card comedy-card" data-type="support"><div class="emoji">🧑‍💻</div><h3>Classic IT Ticket</h3><p>ইউজার: “ইন্টারনেট কাজ করছে না!”<br>IT: “Wi-Fi চালু আছে?”<br>ইউজার: “ওহ!” 😅</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+memes">IT Support Videos ↗</a></article>
+<article class="card comedy-card" data-type="printer"><div class="emoji">🖨️</div><h3>Printer Logic</h3><p>Printer status: Ready.<br>Printer behavior: “আজকে আর কাজ করব না!”</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+problems+IT+memes">Printer Comedy ↗</a></article>
+<article class="card comedy-card" data-type="ai"><div class="emoji">🤖</div><h3>AI Confidence</h3><p>AI: “আমি ১০০% নিশ্চিত!”<br>তারপর এমন একটা Setting বলে, যেটা কোথাও নেই। 😂</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails">AI Fails ↗</a></article>
+<article class="card comedy-card" data-type="coding"><div class="emoji">🐛</div><h3>One Tiny Bug</h3><p>একটা Bug ঠিক করলাম। এখন তিনটা নতুন Bug ফ্রি! 🥲</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+coding+bugs+programming+memes">Coding Memes ↗</a></article>
+<article class="card comedy-card" data-type="support"><div class="emoji">🔄</div><h3>IT-এর জাদু</h3><p>“কম্পিউটারটা একবার Restart দিয়ে দেখুন।”<br>IT Support-এর চিরন্তন মন্ত্র!</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+helpdesk+skits">Helpdesk Skits ↗</a></article>
+<article class="card comedy-card" data-type="ai"><div class="emoji">💬</div><h3>AI Prompt</h3><p>Prompt: “একদম সহজ করে বলো।”<br>AI: ৪৭ পৃষ্ঠার ব্যাখ্যা! 🤣</p><a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+chatbot+fails">AI Comedy ↗</a></article>
+</div>
+<p class="notice">ভিডিও লিংকগুলো YouTube সার্চ খুলবে; এগুলো নির্দিষ্ট যাচাই করা ভিডিও নয়।</p>
 </section>
 
 <section id="about">
-  <div class="section-head">
-    <h2>🚀 The Fun Side of IT & AI</h2>
-    <p>Otai সম্পর্কে</p>
-  </div>
-  <div class="quizbox">
-    <h3>Otai — One Stop Fun Centre</h3>
-    <p>
-      Otai হলো IT শেখার একটি মজার প্ল্যাটফর্মের ধারণা, যেখানে কুইজ,
-      ছোট ছোট গেম, Troubleshooting Tools এবং Technology Comedy একসঙ্গে
-      পাওয়া যাবে।
-    </p>
-    <p class="bangla-tagline">মজায় মজায় IT শেখো!</p>
-    <p><strong style="color:var(--cyan)">Learn IT • Play IT • Fix IT</strong></p>
-    <p class="notice">Simple Concept. More Effective.</p>
-  </div>
+<div class="section-head"><h2>🚀 The Fun Side of IT & AI</h2><p>Otai সম্পর্কে</p></div>
+<div class="quizbox">
+<h3>Otai — One Stop Fun Centre</h3>
+<p>Otai হলো IT শেখার একটি মজার প্ল্যাটফর্ম, যেখানে কুইজ, ছোট ছোট গেম, Troubleshooting Tools এবং Technology Comedy একসঙ্গে পাওয়া যাবে।</p>
+<p class="bangla-tagline">মজার ছলে IT শিখি! 😎</p>
+<p><strong style="color:var(--cyan)">Learn IT • Play IT • Fix IT</strong></p>
+<p class="notice">Simple Concept. More Effective.</p>
+</div>
 </section>
 </main>
 
 <footer>
-  <div class="brand" style="justify-content:center">
-    <svg class="logo-icon" viewBox="0 0 100 100" aria-label="Otai logo">
-      <circle cx="50" cy="50" r="46" fill="#101b35" stroke="#24d9f2" stroke-width="4"/>
-      <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-      <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="#24d9f2"/>
-    </svg>
-    <div class="brand-name">Otai<span>.</span></div>
-  </div>
-  <p><strong>One Stop Fun Centre</strong></p>
-  <p>মজায় মজায় IT শেখো 😎</p>
-  <p>Learn IT • Play IT • Fix IT</p>
-  <p class="notice">© <span id="year"></span> Otai. Learn something, laugh a little, fix something.</p>
+<div class="brand" style="justify-content:center">
+<svg class="logo-icon" viewBox="0 0 100 100" aria-label="Otai logo"><circle cx="50" cy="50" r="46" fill="#101b35" stroke="#24d9f2" stroke-width="4"/><path d="M27 30V67H39V48L50 59 61 48V67H73V30L50 48Z" fill="white"/><path d="M20 66Q48 84 78 48 66 78 35 79 25 78 20 66Z" fill="#24d9f2"/></svg>
+<div class="brand-name">Otai<span>.</span></div>
+</div>
+<p><strong>One Stop Fun Centre</strong></p>
+<p>মজার ছলে IT শিখি 😎</p>
+<p>Learn IT • Play IT • Fix IT</p>
+<p class="notice">© <span id="year"></span> Otai. Learn something, laugh a little, fix something.</p>
 </footer>
 
 <script>
 "use strict";
 
-/* XP AND RANK */
-const STORE_KEY = "otai-fun-centre-v2";
-let progressData = {xp:0,played:0};
+const STORE_KEY="otai-fun-centre-v3";
+let progressData={xp:0,played:0};
+try{
+ const saved=JSON.parse(localStorage.getItem(STORE_KEY)||"{}");
+ progressData.xp=Number.isFinite(saved.xp)?Math.max(0,saved.xp):0;
+ progressData.played=Number.isFinite(saved.played)?Math.max(0,saved.played):0;
+}catch(e){}
 
-try {
-  const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
-  progressData.xp = Number.isFinite(saved.xp) ? Math.max(0,saved.xp) : 0;
-  progressData.played = Number.isFinite(saved.played) ? Math.max(0,saved.played) : 0;
-} catch (_) {}
-
-function saveProgress() {
-  try { localStorage.setItem(STORE_KEY,JSON.stringify(progressData)); } catch (_) {}
-  renderProgress();
+function saveProgress(){
+ try{localStorage.setItem(STORE_KEY,JSON.stringify(progressData));}catch(e){}
+ renderProgress();
 }
-function addXP(amount) {
-  progressData.xp += amount;
-  saveProgress();
-}
-function recordAnswer() {
-  progressData.played++;
-  saveProgress();
-}
-function renderProgress() {
-  document.getElementById("xp").textContent = progressData.xp+" XP";
-  document.getElementById("played").textContent = progressData.played;
-  let rank = "Beginner";
-  if(progressData.xp >= 1000) rank = "IT Legend";
-  else if(progressData.xp >= 500) rank = "IT Expert";
-  else if(progressData.xp >= 200) rank = "Tech Pro";
-  else if(progressData.xp >= 50) rank = "Tech Explorer";
-  document.getElementById("rank").textContent = rank;
+function addXP(amount){progressData.xp+=amount;saveProgress();}
+function recordAnswer(){progressData.played++;saveProgress();}
+function renderProgress(){
+ document.getElementById("xp").textContent=progressData.xp+" XP";
+ document.getElementById("played").textContent=progressData.played;
+ let rank="Beginner";
+ if(progressData.xp>=1000)rank="IT Legend";
+ else if(progressData.xp>=500)rank="IT Expert";
+ else if(progressData.xp>=200)rank="Tech Pro";
+ else if(progressData.xp>=50)rank="Tech Explorer";
+ document.getElementById("rank").textContent=rank;
 }
 
-/* QUIZ QUESTIONS */
-const questions = [
+const questions=[
 {c:"networking",q:"Which device connects different IP networks?",a:["Switch","Router","Repeater","Patch panel"],correct:1,why:"Router বিভিন্ন IP network-এর মধ্যে packet forward করে।"},
-{c:"networking",q:"কোন কমান্ড দিয়ে network connectivity পরীক্ষা করা যায়?",a:["ping","mkdir","format","tasklist"],correct:0,why:"Ping ICMP Echo request পাঠায়; তবে firewall এটি block করতে পারে।"},
+{c:"networking",q:"কোন command দিয়ে connectivity পরীক্ষা করা যায়?",a:["ping","mkdir","format","tasklist"],correct:0,why:"Ping ICMP Echo request পাঠায়; firewall এটি block করতে পারে।"},
 {c:"networking",q:"HTTPS-এর default port কোনটি?",a:["21","25","443","3389"],correct:2,why:"HTTPS সাধারণত TCP port 443 ব্যবহার করে।"},
-{c:"networking",q:"DHCP সাধারণত কী দেয়?",a:["IP configuration","Screen resolution","Antivirus license","User photo"],correct:0,why:"DHCP IP address, gateway ও DNS-এর মতো configuration দিতে পারে।"},
-{c:"networking",q:"কোনটি private IPv4 address?",a:["8.8.8.8","192.168.1.20","1.1.1.1","203.0.113.9"],correct:1,why:"192.168.0.0/16 private IPv4 range।"},
-{c:"windows",q:"PC-তে internet নেই। প্রথমে কী পরীক্ষা করা উচিত?",a:["Motherboard বদলানো","Connection ও IP settings দেখা","Windows reinstall","User profile delete"],correct:1,why:"প্রথমে cable/Wi-Fi, IP settings এবং সমস্যাটি একজনের নাকি সবার তা পরীক্ষা করো।"},
-{c:"windows",q:"Windows-এ IP configuration দেখতে কোন command?",a:["ipconfig","chmod","grep","ls"],correct:0,why:"ipconfig Windows-এর network configuration দেখায়।"},
-{c:"windows",q:"Task Manager কী কাজে লাগে?",a:["Processes ও performance দেখা","DNS zone তৈরি","VLAN trunk তৈরি","Certificate issue"],correct:0,why:"Task Manager running apps, processes ও performance দেখতে সাহায্য করে।"},
+{c:"networking",q:"DHCP সাধারণত কী দেয়?",a:["IP configuration","Screen resolution","Antivirus license","User photo"],correct:0,why:"DHCP IP address, gateway ও DNS configuration দিতে পারে।"},
+{c:"networking",q:"কোনটি private IPv4 address?",a:["8.8.8.8","192.168.1.20","1.1.1.1","203.0.113.9"],correct:1,why:"192.168.0.0/16 একটি private IPv4 range।"},
+{c:"windows",q:"PC-তে internet নেই। প্রথমে কী পরীক্ষা করা উচিত?",a:["Motherboard বদলানো","Connection ও IP settings দেখা","Windows reinstall","Profile delete"],correct:1,why:"প্রথমে cable/Wi-Fi, IP settings এবং সমস্যাটি একজনের নাকি সবার তা পরীক্ষা করো।"},
+{c:"windows",q:"Windows-এ IP configuration দেখার command?",a:["ipconfig","chmod","grep","ls"],correct:0,why:"ipconfig Windows network configuration দেখায়।"},
+{c:"windows",q:"Task Manager কী কাজে লাগে?",a:["Processes ও performance দেখা","DNS zone তৈরি","VLAN trunk তৈরি","Certificate issue"],correct:0,why:"Task Manager running apps, processes ও performance দেখায়।"},
 {c:"security",q:"Phishing কী?",a:["Backup method","তথ্য চুরির প্রতারণামূলক চেষ্টা","Cable type","Disk format"],correct:1,why:"Phishing-এর মাধ্যমে credentials বা sensitive তথ্য চুরি করার চেষ্টা হয়।"},
-{c:"security",q:"অচেনা email attachment এলে কী করবে?",a:["সঙ্গে সঙ্গে খুলবে","সবাইকে forward করবে","Sender যাচাই করে সন্দেহ হলে report করবে","Antivirus বন্ধ করবে"],correct:2,why:"অপ্রত্যাশিত attachment যাচাই করো এবং প্রতিষ্ঠানের security policy অনুসরণ করো।"},
-{c:"security",q:"MFA sign-in-এ কী যোগ করে?",a:["অতিরিক্ত verification factor","Disk space","Wi-Fi speed","নতুন subnet"],correct:0,why:"MFA একাধিক ধরনের verification ব্যবহার করে।"},
-{c:"linux",q:"বর্তমান directory দেখানোর Linux command কোনটি?",a:["pwd","cdrom","ipconfig","cls"],correct:0,why:"pwd current working directory দেখায়।"},
-{c:"linux",q:"Linux-এ file list করতে কোন command?",a:["ls","dirping","showip","taskmgr"],correct:0,why:"ls directory-এর contents দেখায়।"},
-{c:"linux",q:"Linux-এ file permission পরিবর্তনের command কোনটি?",a:["chmod","chname","ipconfig","mkdiruser"],correct:0,why:"chmod file mode permissions পরিবর্তন করে।"},
+{c:"security",q:"সন্দেহজনক email attachment এলে কী করবে?",a:["সঙ্গে সঙ্গে খুলবে","Forward করবে","যাচাই করে report করবে","Antivirus বন্ধ করবে"],correct:2,why:"অপ্রত্যাশিত attachment যাচাই করো এবং security policy অনুসরণ করো।"},
+{c:"security",q:"MFA sign-in-এ কী যোগ করে?",a:["অতিরিক্ত verification factor","Disk space","Wi-Fi speed","Subnet"],correct:0,why:"MFA একাধিক ধরনের verification ব্যবহার করে।"},
+{c:"linux",q:"বর্তমান directory দেখায় কোন command?",a:["pwd","cdrom","ipconfig","cls"],correct:0,why:"pwd current working directory দেখায়।"},
+{c:"linux",q:"Linux-এ file list করতে কোন command?",a:["ls","dirping","showip","taskmgr"],correct:0,why:"ls directory contents দেখায়।"},
+{c:"linux",q:"Linux-এ file permissions বদলায় কোন command?",a:["chmod","chname","ipconfig","mkdiruser"],correct:0,why:"chmod file permissions পরিবর্তন করে।"},
 {c:"cloud",q:"SaaS-এর পূর্ণরূপ কী?",a:["Storage as a Switch","Software as a Service","Security as a Server","System and Software"],correct:1,why:"SaaS হলো Software as a Service।"},
 {c:"cloud",q:"Microsoft Entra ID মূলত কী কাজে ব্যবহৃত হয়?",a:["Identity and access","Physical cabling","Printer toner","CPU cooling"],correct:0,why:"এটি identity ও access management-এর জন্য ব্যবহৃত হয়।"},
-{c:"cloud",q:"Cloud backup-এর প্রধান উপকারিতা কী?",a:["হারানো data recover করা","Monitor বড় করা","সব password মুছে ফেলা","সব outage বন্ধ করা"],correct:0,why:"Backup accidental deletion বা failure-এর পর data recovery-তে সাহায্য করে।"},
-{c:"coding",q:"Web page-এর structure তৈরি করতে কোনটি ব্যবহৃত হয়?",a:["HTML","SMTP","DHCP","SNMP"],correct:0,why:"HTML web page-এর structure ও content নির্ধারণ করে।"},
-{c:"coding",q:"CSS-এ text color পরিবর্তনের property কোনটি?",a:["color","font-file","text-device","paint-ip"],correct:0,why:"CSS-এর color property text-এর foreground color নির্ধারণ করে।"},
+{c:"cloud",q:"Cloud backup-এর প্রধান উপকারিতা কী?",a:["Data recovery","Monitor বড় করা","Password মুছে ফেলা","সব outage বন্ধ করা"],correct:0,why:"Backup data loss বা failure-এর পর recovery-তে সাহায্য করে।"},
+{c:"coding",q:"Web page-এর structure তৈরিতে কোনটি ব্যবহৃত হয়?",a:["HTML","SMTP","DHCP","SNMP"],correct:0,why:"HTML web page-এর structure ও content নির্ধারণ করে।"},
+{c:"coding",q:"CSS-এ text color পরিবর্তনের property কোনটি?",a:["color","font-file","text-device","paint-ip"],correct:0,why:"CSS-এর color property text-এর রং নির্ধারণ করে।"},
 {c:"coding",q:"JavaScript সাধারণত web page-এ কী যোগ করে?",a:["Interactivity","Physical RAM","Network cable","Electric power"],correct:0,why:"JavaScript web page-এ interactive behavior যোগ করে।"}
 ];
 
-let quizList = [];
-let quizIndex = 0;
-let quizLocked = false;
-
-function startQuiz() {
-  const category = document.getElementById("category").value;
-  quizList = questions.filter(q => category === "all" || q.c === category);
-  quizIndex = 0;
-  quizLocked = false;
-  renderQuestion();
+let quizList=[],quizIndex=0,quizLocked=false;
+function startQuiz(){
+ const cat=document.getElementById("category").value;
+ quizList=questions.filter(q=>cat==="all"||q.c===cat);
+ quizIndex=0;renderQuestion();
 }
-function renderQuestion() {
-  const root = document.getElementById("quizContent");
-  const bar = document.getElementById("quizProgress");
-  if(quizIndex >= quizList.length) {
-    bar.style.width = "100%";
-    root.innerHTML = `<h3>🎉 Quiz Complete!</h3>
-      <p>তুমি ${quizList.length}টি প্রশ্ন শেষ করেছ। আরও শিখতে আবার খেলো!</p>
-      <button class="primary" id="againQuiz">আবার খেলো</button>`;
-    document.getElementById("againQuiz").addEventListener("click",startQuiz);
-    return;
-  }
-  quizLocked = false;
-  const item = quizList[quizIndex];
-  bar.style.width = (quizIndex/quizList.length*100)+"%";
-  root.innerHTML = `<p class="notice">Question ${quizIndex+1} / ${quizList.length}</p>
-    <div class="question">${escapeHTML(item.q)}</div>
-    <div class="answers">${item.a.map((answer,i)=>
-      `<button class="answer" data-answer="${i}">${escapeHTML(answer)}</button>`
-    ).join("")}</div>
-    <div class="feedback" id="quizFeedback"></div>
-    <button class="primary" id="nextQuestion" hidden>পরের প্রশ্ন →</button>`;
-  root.querySelectorAll("[data-answer]").forEach(button => {
-    button.addEventListener("click",()=>answerQuestion(Number(button.dataset.answer)));
-  });
-  document.getElementById("nextQuestion").addEventListener("click",()=>{
-    quizIndex++;
-    renderQuestion();
-  });
+function renderQuestion(){
+ const root=document.getElementById("quizContent");
+ document.getElementById("quizProgress").style.width=(quizIndex/quizList.length*100)+"%";
+ if(quizIndex>=quizList.length){
+  document.getElementById("quizProgress").style.width="100%";
+  root.innerHTML="<h3>🎉 Quiz Complete!</h3><p>সব প্রশ্ন শেষ করেছ। আবার খেলো!</p><button class='primary' id='againQuiz'>আবার খেলো</button>";
+  document.getElementById("againQuiz").addEventListener("click",startQuiz);return;
+ }
+ quizLocked=false;
+ const item=quizList[quizIndex];
+ root.innerHTML=`<p class="notice">Question ${quizIndex+1} / ${quizList.length}</p>
+ <div class="question">${escapeHTML(item.q)}</div>
+ <div class="answers">${item.a.map((a,i)=>`<button class="answer" data-answer="${i}">${escapeHTML(a)}</button>`).join("")}</div>
+ <div class="feedback" id="quizFeedback"></div><button class="primary" id="nextQuestion" hidden>পরের প্রশ্ন →</button>`;
+ root.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>answerQuestion(Number(b.dataset.answer))));
+ document.getElementById("nextQuestion").addEventListener("click",()=>{quizIndex++;renderQuestion();});
 }
-function answerQuestion(choice) {
-  if(quizLocked) return;
-  quizLocked = true;
-  recordAnswer();
-  const item = quizList[quizIndex];
-  const buttons = document.querySelectorAll("#quizContent .answer");
-  buttons.forEach((button,i)=>{
-    button.disabled = true;
-    if(i === item.correct) button.classList.add("correct");
-    if(i === choice && choice !== item.correct) button.classList.add("wrong");
-  });
-  const correct = choice === item.correct;
-  if(correct) addXP(10);
-  document.getElementById("quizFeedback").textContent =
-    (correct ? "✅ সঠিক উত্তর! +10 XP. " : "❌ সঠিক উত্তরটি হাইলাইট করা হয়েছে। ") + item.why;
-  const next = document.getElementById("nextQuestion");
-  next.hidden = false;
-  next.textContent = quizIndex === quizList.length-1 ? "ফলাফল দেখো →" : "পরের প্রশ্ন →";
+function answerQuestion(choice){
+ if(quizLocked)return;
+ quizLocked=true;recordAnswer();
+ const item=quizList[quizIndex];
+ document.querySelectorAll("#quizContent .answer").forEach((b,i)=>{
+  b.disabled=true;if(i===item.correct)b.classList.add("correct");
+  if(i===choice&&choice!==item.correct)b.classList.add("wrong");
+ });
+ const correct=choice===item.correct;
+ if(correct)addXP(10);
+ document.getElementById("quizFeedback").textContent=(correct?"✅ সঠিক উত্তর! +10 XP. ":"❌ সঠিক উত্তরটি হাইলাইট করা হয়েছে। ")+item.why;
+ const next=document.getElementById("nextQuestion");next.hidden=false;
+ next.textContent=quizIndex===quizList.length-1?"ফলাফল দেখো →":"পরের প্রশ্ন →";
 }
 document.getElementById("category").addEventListener("change",startQuiz);
 document.getElementById("restartQuiz").addEventListener("click",startQuiz);
 
-/* MINI GAMES */
-const scenarios = {
-helpdesk:{title:"🧰 Helpdesk Hero",q:"একজন ইউজারের internet নেই। প্রথমে কী পরীক্ষা করবে?",a:["Switch বদলাবে","Connection ও IP settings দেখবে","OS reinstall করবে","সব password reset করবে"],correct:1,why:"প্রথমে connection ও IP settings পরীক্ষা করো। সমস্যাটি একজনের নাকি অনেকের সেটিও দেখো।"},
-network:{title:"🌐 Network Ninja",q:"Network connectivity পরীক্ষা করার command কোনটি?",a:["ping","mkdir","notepad","chmod"],correct:0,why:"Ping একটি সাধারণ connectivity test; ICMP block থাকলে reply নাও আসতে পারে।"},
-cyber:{title:"🕵️ Cyber Detective",q:"অচেনা link দিয়ে sign-in করতে বললে কী করবে?",a:["দ্রুত click","Password লিখবে","Trusted channel-এ যাচাই করে report করবে","সবার কাছে forward করবে"],correct:2,why:"এটি phishing হতে পারে। Trusted channel দিয়ে যাচাই করো।"},
-printer:{title:"🖨️ Printer Panic",q:"একজনের printer Offline দেখালে প্রথমে কী দেখবে?",a:["Status, connection ও queue","সব PC বদলাবে","Print server delete","Domain পরিবর্তন"],correct:0,why:"Power, connection, printer status ও stuck jobs পরীক্ষা করো।"},
+const scenarios={
+helpdesk:{title:"🧰 Helpdesk Hero",q:"একজন user-এর internet নেই। প্রথমে কী পরীক্ষা করবে?",a:["Switch বদলাবে","Connection ও IP settings দেখবে","OS reinstall করবে","সব password reset করবে"],correct:1,why:"প্রথমে connection ও IP settings পরীক্ষা করো।"},
+network:{title:"🌐 Network Ninja",q:"Network connectivity পরীক্ষা করার command কোনটি?",a:["ping","mkdir","notepad","chmod"],correct:0,why:"Ping connectivity test করে; ICMP block থাকলে reply নাও আসতে পারে।"},
+cyber:{title:"🕵️ Cyber Detective",q:"অচেনা link দিয়ে sign-in করতে বললে কী করবে?",a:["দ্রুত click","Password লিখবে","যাচাই করে report করবে","Forward করবে"],correct:2,why:"এটি phishing হতে পারে। trusted channel দিয়ে যাচাই করো।"},
+printer:{title:"🖨️ Printer Panic",q:"একজনের printer Offline দেখালে প্রথমে কী দেখবে?",a:["Status, connection ও queue","সব PC বদলাবে","Print server delete","Domain পরিবর্তন"],correct:0,why:"Power, connection, status ও stuck print jobs পরীক্ষা করো।"},
 linux:{title:"🐧 Terminal Rookie",q:"বর্তমান directory দেখায় কোন command?",a:["pwd","chmod","ping","mkdir"],correct:0,why:"pwd current working directory দেখায়।"},
-speed:{title:"⚡ Ticket Speedrun",q:"একসঙ্গে অনেক user-এর network down। কী করবে?",a:["Ignore করবে","Shared outage হিসেবে scope ও impact পরীক্ষা করবে","Wallpaper বদলাবে","সব ticket close করবে"],correct:1,why:"একই সমস্যা অনেক user-এর হলে shared network বা service outage হতে পারে।"}
+speed:{title:"⚡ Ticket Speedrun",q:"অনেক user-এর network একসঙ্গে down। কী করবে?",a:["Ignore করবে","Outage-এর scope ও impact পরীক্ষা করবে","Wallpaper বদলাবে","সব ticket close করবে"],correct:1,why:"Shared outage হলে network বা service পরীক্ষা করো।"}
 };
-
-function playScenario(key) {
-  const s = scenarios[key];
-  const root = document.getElementById("gameArea");
-  root.dataset.done = "no";
-  root.innerHTML = `<span class="pill">MINI CHALLENGE</span>
-    <h3>${s.title}</h3><div class="question">${escapeHTML(s.q)}</div>
-    <div class="answers">${s.a.map((a,i)=>
-      `<button class="answer" data-game-answer="${i}">${escapeHTML(a)}</button>`
-    ).join("")}</div>
-    <div class="feedback" id="gameFeedback"></div>`;
-  root.querySelectorAll("[data-game-answer]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      if(root.dataset.done === "yes") return;
-      root.dataset.done = "yes";
-      const choice = Number(button.dataset.gameAnswer);
-      const correct = choice === s.correct;
-      recordAnswer();
-      if(correct) addXP(15);
-      root.querySelectorAll(".answer").forEach((b,i)=>{
-        b.disabled = true;
-        if(i === s.correct) b.classList.add("correct");
-        if(i === choice && !correct) b.classList.add("wrong");
-      });
-      document.getElementById("gameFeedback").textContent =
-        (correct ? "🎉 সঠিক উত্তর! +15 XP. " : "পরেরবার আরও ভালো হবে! ") + s.why;
-      const retry = document.createElement("button");
-      retry.className = "ghost";
-      retry.style.marginTop = "10px";
-      retry.textContent = "আবার খেলো";
-      retry.addEventListener("click",()=>playScenario(key));
-      root.appendChild(retry);
-    });
-  });
-  root.scrollIntoView({behavior:"smooth",block:"center"});
+function playScenario(key){
+ const s=scenarios[key],root=document.getElementById("gameArea");root.dataset.done="no";
+ root.innerHTML=`<span class="pill">MINI CHALLENGE</span><h3>${s.title}</h3><div class="question">${escapeHTML(s.q)}</div><div class="answers">${s.a.map((a,i)=>`<button class="answer" data-game-answer="${i}">${escapeHTML(a)}</button>`).join("")}</div><div class="feedback" id="gameFeedback"></div>`;
+ root.querySelectorAll("[data-game-answer]").forEach(b=>b.addEventListener("click",()=>{
+  if(root.dataset.done==="yes")return;root.dataset.done="yes";
+  const choice=Number(b.dataset.gameAnswer),correct=choice===s.correct;recordAnswer();if(correct)addXP(15);
+  root.querySelectorAll(".answer").forEach((x,i)=>{x.disabled=true;if(i===s.correct)x.classList.add("correct");if(i===choice&&!correct)x.classList.add("wrong");});
+  document.getElementById("gameFeedback").textContent=(correct?"🎉 সঠিক উত্তর! +15 XP. ":"আবার চেষ্টা করো! ")+s.why;
+  const retry=document.createElement("button");retry.className="ghost";retry.style.marginTop="10px";retry.textContent="আবার খেলো";retry.onclick=()=>playScenario(key);root.appendChild(retry);
+ }));
+ root.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
-/* IPV4 CHECKER */
-function parseIPv4(value) {
-  const parts = value.trim().split(".");
-  if(parts.length !== 4) return null;
-  const result = [];
-  for(const part of parts) {
-    if(!/^\d{1,3}$/.test(part)) return null;
-    const n = Number(part);
-    if(n < 0 || n > 255) return null;
-    result.push(n);
-  }
-  return result;
+function parseIPv4(value){
+ const parts=value.trim().split(".");if(parts.length!==4)return null;
+ const out=[];for(const p of parts){if(!/^\d{1,3}$/.test(p))return null;const n=Number(p);if(n<0||n>255)return null;out.push(n);}return out;
 }
-function checkIP() {
-  const ip = parseIPv4(document.getElementById("ipInput").value);
-  const result = document.getElementById("ipResult");
-  if(!ip) {
-    result.textContent = "❌ Invalid IPv4. চারটি octet দাও; প্রতিটি 0–255 হতে হবে।";
-    return;
-  }
-  let message = "Valid IPv4 format.";
-  if(ip.every(n=>n===0)) message += " এটি unspecified address.";
-  else if(ip[0]===127) message += " এটি loopback range.";
-  else if(ip[0]===169 && ip[1]===254) message += " এটি link-local range.";
-  else if(ip[0]===10 || (ip[0]===172 && ip[1]>=16 && ip[1]<=31) || (ip[0]===192 && ip[1]===168)) message += " এটি private IPv4 address.";
-  else if(ip[0]>=224 && ip[0]<=239) message += " এটি multicast range.";
-  result.textContent = "✅ " + message;
+function checkIP(){
+ const ip=parseIPv4(document.getElementById("ipInput").value),r=document.getElementById("ipResult");
+ if(!ip){r.textContent="❌ Invalid IPv4. চারটি octet দাও; প্রতিটি 0–255 হতে হবে।";return;}
+ let m="Valid IPv4 format.";
+ if(ip.every(n=>n===0))m+=" এটি unspecified address.";
+ else if(ip[0]===127)m+=" এটি loopback range.";
+ else if(ip[0]===169&&ip[1]===254)m+=" এটি link-local range.";
+ else if(ip[0]===10||(ip[0]===172&&ip[1]>=16&&ip[1]<=31)||(ip[0]===192&&ip[1]===168))m+=" এটি private IPv4 address.";
+ else if(ip[0]>=224&&ip[0]<=239)m+=" এটি multicast range.";
+ r.textContent="✅ "+m;
+}
+function ipToInt(o){return (((o[0]*256+o[1])*256+o[2])*256+o[3])>>>0;}
+function intToIP(n){return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".");}
+function calculateCIDR(){
+ const r=document.getElementById("cidrResult"),oct=parseIPv4(document.getElementById("cidrIP").value),p=Number(document.getElementById("prefix").value);
+ if(!oct||!Number.isInteger(p)||p<0||p>32){r.textContent="সঠিক IPv4 address এবং 0–32 prefix দাও।";return;}
+ const ip=ipToInt(oct),mask=p===0?0:(0xffffffff<<(32-p))>>>0,network=(ip&mask)>>>0,broadcast=(network|(~mask>>>0))>>>0,total=Math.pow(2,32-p);
+ let usable=p<=30?Math.max(0,total-2)+" conventional host addresses":p===31?"2 addresses (point-to-point use)":"1 single address";
+ r.innerHTML=`<strong>Network:</strong> ${intToIP(network)}/${p}<br><strong>Subnet Mask:</strong> ${intToIP(mask)}<br><strong>Broadcast:</strong> ${intToIP(broadcast)}<br><strong>Total Addresses:</strong> ${total.toLocaleString()}<br><strong>Host addresses:</strong> ${usable}`;
 }
 
-/* CIDR CALCULATOR */
-function ipToInt(o) {
-  return (((o[0]*256+o[1])*256+o[2])*256+o[3])>>>0;
-}
-function intToIP(n) {
-  return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".");
-}
-function calculateCIDR() {
-  const result = document.getElementById("cidrResult");
-  const octets = parseIPv4(document.getElementById("cidrIP").value);
-  const prefix = Number(document.getElementById("prefix").value);
-  if(!octets || !Number.isInteger(prefix) || prefix<0 || prefix>32) {
-    result.textContent = "সঠিক IPv4 address এবং 0–32 prefix দাও।";
-    return;
-  }
-  const ip = ipToInt(octets);
-  const mask = prefix===0 ? 0 : (0xffffffff << (32-prefix))>>>0;
-  const network = (ip & mask)>>>0;
-  const broadcast = (network | (~mask>>>0))>>>0;
-  const total = Math.pow(2,32-prefix);
-  let usable = "";
-  if(prefix<=30) usable = Math.max(0,total-2)+" conventional host addresses";
-  else if(prefix===31) usable = "2 addresses (point-to-point use)";
-  else usable = "1 single address";
-  result.innerHTML = `<strong>Network:</strong> ${intToIP(network)}/${prefix}<br>
-    <strong>Subnet Mask:</strong> ${intToIP(mask)}<br>
-    <strong>Broadcast:</strong> ${intToIP(broadcast)}<br>
-    <strong>Total Addresses:</strong> ${total.toLocaleString()}<br>
-    <strong>Conventional usable hosts:</strong> ${usable}`;
-}
-
-/* PASSWORD CHECKLIST */
-const passwordInput = document.getElementById("demoPassword");
+const passwordInput=document.getElementById("demoPassword");
 passwordInput.addEventListener("input",()=>{
-  const p = passwordInput.value;
-  const tests = [
-    p.length>=12,
-    /[a-z]/.test(p) && /[A-Z]/.test(p),
-    /\d/.test(p),
-    /[^A-Za-z0-9]/.test(p)
-  ];
-  document.querySelectorAll("#passwordChecks input").forEach((box,i)=>box.checked=tests[i]);
-  const count = tests.filter(Boolean).length;
-  document.getElementById("passwordResult").textContent =
-    p.length===0 ? "এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না।" :
-    `${count}/4টি বৈশিষ্ট্য মিলেছে। এটি কেবল সাধারণ checklist, security guarantee নয়।`;
+ const p=passwordInput.value,tests=[p.length>=12,/[a-z]/.test(p)&&/[A-Z]/.test(p),/\d/.test(p),/[^A-Za-z0-9]/.test(p)];
+ document.querySelectorAll("#passwordChecks input").forEach((b,i)=>b.checked=tests[i]);
+ document.getElementById("passwordResult").textContent=p.length===0?"এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না.":`${tests.filter(Boolean).length}/4টি বৈশিষ্ট্য মিলেছে। এটি শুধু সাধারণ checklist, security guarantee নয়।`;
 });
-function clearPassword() {
-  passwordInput.value = "";
-  passwordInput.dispatchEvent(new Event("input"));
-}
+function clearPassword(){passwordInput.value="";passwordInput.dispatchEvent(new Event("input"));}
 
-/* QUICK COMMAND REFERENCE */
-const commandInfo = {
+const commandInfo={
 ipconfig:["ipconfig /all","Windows network configuration দেখায়।"],
 ping:["ping 8.8.8.8","একটি example IP-তে connectivity পরীক্ষা করে; ICMP block হতে পারে।"],
 tracert:["tracert example.com","Windows-এ destination পর্যন্ত network route দেখায়।"],
@@ -734,47 +389,24 @@ linuxls:["ls -la","Linux-এ hidden entries-সহ file list দেখায়।"
 linuxpwd:["pwd","বর্তমান working directory দেখায়।"],
 linuxdf:["df -h","Human-readable format-এ disk space দেখায়।"]
 };
-function showCommand() {
-  const item = commandInfo[document.getElementById("commandSelect").value];
-  document.getElementById("commandResult").innerHTML =
-    `<code>${escapeHTML(item[0])}</code><br>${escapeHTML(item[1])}`;
-  document.getElementById("copyFeedback").textContent = "";
+function showCommand(){
+ const item=commandInfo[document.getElementById("commandSelect").value];
+ document.getElementById("commandResult").innerHTML=`<code>${escapeHTML(item[0])}</code><br>${escapeHTML(item[1])}`;
+ document.getElementById("copyFeedback").textContent="";
 }
-async function copyCommand() {
-  const item = commandInfo[document.getElementById("commandSelect").value];
-  const feedback = document.getElementById("copyFeedback");
-  try {
-    await navigator.clipboard.writeText(item[0]);
-    feedback.textContent = " Copied!";
-  } catch(_) {
-    feedback.textContent = " কপি করতে command-টি select করো: "+item[0];
-  }
+async function copyCommand(){
+ const cmd=commandInfo[document.getElementById("commandSelect").value][0],f=document.getElementById("copyFeedback");
+ try{await navigator.clipboard.writeText(cmd);f.textContent=" Copied!";}
+ catch(e){f.textContent=" কপি করতে command-টি select করো: "+cmd;}
 }
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+ const f=b.dataset.filter;document.querySelectorAll(".comedy-card").forEach(c=>c.hidden=f!=="all"&&c.dataset.type!==f);
+}));
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
 
-/* COMEDY FILTER */
-document.querySelectorAll("[data-filter]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    document.querySelectorAll("[data-filter]").forEach(b=>b.classList.remove("active"));
-    button.classList.add("active");
-    const filter = button.dataset.filter;
-    document.querySelectorAll(".comedy-card").forEach(card=>{
-      card.hidden = filter!=="all" && card.dataset.type!==filter;
-    });
-  });
-});
-
-/* SAFE HTML TEXT */
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g,ch=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[ch]);
-}
-
-/* INITIALIZE */
-document.getElementById("year").textContent = new Date().getFullYear();
-renderProgress();
-showCommand();
-startQuiz();
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProgress();showCommand();startQuiz();
 </script>
 </body>
 </html>
