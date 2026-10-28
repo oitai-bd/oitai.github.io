@@ -3,198 +3,176 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d1b">
-<meta name="description" content="Otai — One Stop Fun Centre. মজায় মজায় IT শেখো। Learn IT, play games and fix tech problems.">
-<title>Otai — মজায় মজায় IT শেখো</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090e1b">
+<meta name="description" content="Otai — One Stop Fun Centre. মজার ছলে IT শিখি।">
+<title>Otai | মজার ছলে IT শিখি</title>
 <style>
 :root {
-  --bg:#080d1b;
-  --panel:#111a2e;
-  --panel2:#182540;
-  --text:#f3f6ff;
-  --muted:#a7b3ca;
-  --primary:#8878ff;
-  --cyan:#24d9f2;
-  --green:#39e5bd;
-  --border:#293650;
-  --danger:#ff7185;
+  color-scheme: dark;
+  --bg:#090e1b;
+  --surface:#111a2c;
+  --surface2:#17243a;
+  --border:#293851;
+  --text:#f4f7ff;
+  --muted:#a7b5cd;
+  --cyan:#42ddf5;
+  --green:#53efc0;
+  --purple:#a394ff;
+  --red:#ff8397;
+  --radius:20px;
 }
-* {box-sizing:border-box}
-html {scroll-behavior:smooth;scroll-padding-top:90px}
-body {
-  margin:0;
-  font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;
-  color:var(--text);
-  line-height:1.7;
-  background:
-    radial-gradient(ellipse at top,#172649 0%,var(--bg) 55%);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;background:radial-gradient(ellipse at 50% -15%,#20385b 0%,var(--bg) 50%);
+  color:var(--text);font-family:"Noto Sans Bengali","Segoe UI",Arial,sans-serif;
+  line-height:1.7;min-height:100vh
 }
-a {color:inherit;text-decoration:none}
-button,input,select {font:inherit}
-button,.btn {
-  border:0;
-  border-radius:11px;
-  padding:11px 16px;
-  cursor:pointer;
-  font-weight:750;
-  transition:.2s;
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button,.btn{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--cyan);outline-offset:3px
 }
-button:hover,.btn:hover {transform:translateY(-2px);filter:brightness(1.1)}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
-  outline:2px solid var(--cyan);
-  outline-offset:3px;
+button:disabled{opacity:.65;cursor:not-allowed}
+.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+header{
+  position:sticky;top:0;z-index:20;background:#090e1bf2;
+  border-bottom:1px solid var(--border);backdrop-filter:blur(16px)
 }
-.primary {background:linear-gradient(135deg,var(--primary),#5c4ce2);color:white}
-.secondary {background:var(--green);color:#06221a}
-.ghost {background:#202d46;color:white;border:1px solid var(--border)}
-.muted {color:var(--muted)}
-header {
-  position:sticky;top:0;z-index:10;
-  background:rgba(8,13,27,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:29px;font-weight:950;letter-spacing:-1.5px}
+.brand span{color:var(--cyan)}
+.navlinks{display:flex;align-items:center;gap:20px}
+.navlinks a{font-size:13px;color:var(--muted);font-weight:750}
+.navlinks a:hover{color:var(--green)}
+.menu-btn{display:none}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 17px;border-radius:12px;border:1px solid transparent;
+  font-weight:800;transition:transform .18s,filter .18s,background .18s
 }
-.nav {
-  max-width:1180px;margin:auto;padding:12px 22px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.primary{background:linear-gradient(120deg,#8173ff,#6553dc);color:white}
+.green-btn{background:var(--green);color:#06251d}
+.outline{background:#17233a;border-color:var(--border);color:var(--text)}
+.hero{padding:75px 0 38px;display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;border:1px solid #285552;
+  background:#10302f;color:var(--green);border-radius:50px;padding:6px 12px;
+  font-size:12px;font-weight:850;letter-spacing:.4px
 }
-.brand {display:flex;align-items:center;gap:10px;flex-shrink:0}
-.brand-name {font-size:27px;font-weight:950;letter-spacing:-1px}
-.brand-name span {color:var(--cyan)}
-.logo-icon {width:46px;height:46px;flex-shrink:0}
-nav {display:flex;gap:17px;flex-wrap:wrap}
-nav a {font-size:13px;color:var(--muted);font-weight:700}
-nav a:hover {color:var(--cyan)}
-.hero {
-  max-width:1180px;margin:auto;padding:72px 22px 48px;
-  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;
+h1{font-size:clamp(39px,6vw,68px);line-height:1.13;letter-spacing:-2px;margin:20px 0 12px}
+.accent{color:var(--cyan)}
+.tagline{font-size:clamp(25px,4vw,36px);font-weight:900;color:var(--green);margin:12px 0}
+.hero p{color:var(--muted);max-width:600px}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin:24px 0}
+.hero-panel{
+  border:1px solid var(--border);border-radius:28px;padding:28px;
+  background:linear-gradient(145deg,#182a46,#10182a);
+  box-shadow:0 20px 70px #0003;position:relative;overflow:hidden
 }
-.eyebrow {
-  display:inline-block;padding:7px 13px;border-radius:99px;
-  color:var(--green);background:#102e30;border:1px solid #20514f;
-  font-size:13px;font-weight:850;
+.hero-panel:after{
+  content:"";position:absolute;width:210px;height:210px;border-radius:50%;
+  background:#42ddf51a;right:-80px;top:-80px;pointer-events:none
 }
-h1 {font-size:clamp(40px,6vw,70px);line-height:1.1;letter-spacing:-2px;margin:20px 0}
-h1 .accent {color:var(--cyan)}
-.bangla-tagline {
-  color:var(--green);font-size:clamp(24px,4vw,35px);
-  font-weight:900;line-height:1.4;margin:12px 0;
+.panel-label{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:1.5px}
+.hero-panel h2{font-size:32px;line-height:1.25;margin:12px 0}
+.mini-row{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.mini-row:last-child{border:0}
+.mini-icon{font-size:24px;width:40px;text-align:center}
+.mini-row small{display:block;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;padding:12px 0 25px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:16px;text-align:center;padding:14px}
+.stat strong{display:block;color:var(--green);font-size:25px}
+.stat small{color:var(--muted)}
+section{padding:36px 0}
+.section-head{margin-bottom:21px}
+.section-head h2{font-size:clamp(25px,4vw,35px);margin:0 0 5px;letter-spacing:-.6px}
+.section-head p{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card,.panel{
+  background:linear-gradient(145deg,var(--surface),#0e1626);
+  border:1px solid var(--border);border-radius:var(--radius)
 }
-.hero p {color:var(--muted);font-size:16px;max-width:620px}
-.actions {display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.hero-art {
-  min-height:340px;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;position:relative;overflow:hidden;
-  border:1px solid var(--border);border-radius:28px;
-  background:linear-gradient(145deg,#192a49,#0c1427);
+.card{padding:21px;display:flex;flex-direction:column;align-items:flex-start;min-width:0;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#53688c}
+.card-icon{font-size:32px;margin-bottom:8px}
+.tag{font-size:10px;font-weight:900;letter-spacing:.7px;color:var(--purple);background:#272342;border-radius:50px;padding:4px 9px;margin-bottom:10px}
+.card h3{font-size:18px;margin:0 0 7px}
+.card p{font-size:13px;color:var(--muted);margin:0 0 16px;flex:1}
+.card .btn{margin-top:auto;font-size:13px}
+.panel{padding:23px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+select,input[type=text],input[type=password],input[type=number]{
+  background:#0b1322;color:var(--text);border:1px solid var(--border);
+  border-radius:11px;padding:11px 12px;max-width:100%
 }
-.hero-art:before,.hero-art:after {
-  content:"";position:absolute;border-radius:50%;pointer-events:none;
+select{min-width:175px}
+.progress{height:7px;background:#27344a;border-radius:30px;overflow:hidden;margin:14px 0}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--green));transition:width .25s}
+.question{font-size:19px;font-weight:850;margin:15px 0}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.answer{padding:13px;text-align:left;color:var(--text);background:var(--surface2);border:1px solid var(--border);border-radius:12px}
+.answer:hover:not(:disabled){border-color:var(--cyan)}
+.answer.correct{background:#12372f;border-color:var(--green)}
+.answer.wrong{background:#3c1c2b;border-color:var(--red)}
+.feedback{min-height:30px;margin:15px 0;font-size:14px}
+.muted,.notice{color:var(--muted)}
+.notice{font-size:12px}
+.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.tool h3{margin:0 0 6px}
+.tool>p{color:var(--muted);font-size:13px}
+.field{margin:13px 0}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
+.field input,.field select{width:100%}
+.result{margin-top:13px;background:#0a1221;border:1px solid var(--border);border-radius:12px;padding:13px;font-size:13px;overflow-wrap:anywhere}
+.checks{display:grid;gap:8px;margin:12px 0}
+.checks label{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:13px}
+.checks input{accent-color:var(--green)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:50px;padding:8px 13px;font-size:12px}
+.filters button.active{background:var(--green);color:#06251d;border-color:var(--green)}
+.callout{border:1px solid #27544e;background:#102522;border-radius:16px;padding:17px;margin-top:17px}
+.callout strong{color:var(--green)}
+footer{border-top:1px solid var(--border);margin-top:42px;padding:32px 0;text-align:center;color:var(--muted)}
+footer .brand{color:var(--text)}
+footer p{margin:5px 0}
+[hidden]{display:none!important}
+@media(max-width:800px){
+ .hero{grid-template-columns:1fr;padding-top:48px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .navlinks{gap:11px}
+ .navlinks a{font-size:12px}
 }
-.hero-art:before {width:260px;height:260px;background:#24d9f214;top:-90px;right:-70px}
-.hero-art:after {width:220px;height:220px;background:#8878ff20;bottom:-100px;left:-50px}
-.hero-logo {width:150px;height:150px;z-index:1}
-.hero-brand {z-index:1;font-size:31px;font-weight:950;margin-top:12px}
-.hero-brand span {color:var(--cyan)}
-.hero-caption {z-index:1;color:var(--muted);font-size:13px}
-.stats {
-  max-width:1136px;margin:0 auto 28px;padding:0 22px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-.stat,.card,.quizbox,.toolbox {
-  background:linear-gradient(145deg,var(--panel),#0e1526);
-  border:1px solid var(--border);border-radius:18px;
-}
-.stat {text-align:center;padding:16px}
-.stat strong {display:block;color:var(--green);font-size:24px}
-.stat small {color:var(--muted)}
-section {max-width:1180px;margin:auto;padding:36px 22px}
-.section-head {margin-bottom:22px}
-.section-head h2 {font-size:clamp(26px,4vw,36px);margin:0 0 4px;letter-spacing:-.5px}
-.section-head p {margin:0;color:var(--muted)}
-.grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card {padding:21px;display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-.emoji {font-size:35px;line-height:1.4;margin-bottom:8px}
-.pill {
-  background:#282448;color:#d1caff;border-radius:99px;
-  padding:3px 9px;font-size:11px;font-weight:850;margin-bottom:9px;
-}
-.card h3 {font-size:19px;margin:0 0 7px}
-.card p {font-size:14px;color:var(--muted);margin:0 0 16px;flex:1}
-.card button,.card .btn {margin-top:auto}
-.quizbox,.toolbox {padding:23px}
-.quiz-top {display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-select,input[type=text],input[type=number],input[type=password] {
-  width:100%;padding:11px 12px;color:var(--text);
-  background:#0a1120;border:1px solid var(--border);border-radius:10px;
-}
-.quiz-top select {width:auto;min-width:180px}
-.progress {height:7px;background:#263149;border-radius:99px;overflow:hidden;margin:14px 0}
-.progress div {height:100%;width:0;background:var(--green);transition:width .2s}
-.question {font-size:19px;font-weight:800;margin:15px 0}
-.answers {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.answer {
-  text-align:left;color:var(--text);background:var(--panel2);
-  border:1px solid var(--border);padding:13px;
-}
-.answer.correct {background:#10352f;border-color:var(--green)}
-.answer.wrong {background:#3b1c2b;border-color:var(--danger)}
-.answer:disabled {cursor:default;transform:none}
-.feedback {min-height:28px;margin:14px 0;font-weight:700}
-.tools-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.toolbox h3 {margin:0 0 6px}
-.field {margin:13px 0}
-.field label {display:block;font-size:13px;color:var(--muted);margin-bottom:5px}
-.result {
-  margin-top:13px;padding:13px;background:#0b1323;border-radius:10px;
-  border:1px solid var(--border);overflow-wrap:anywhere;
-}
-.checklist {display:grid;gap:8px}
-.checklist label {display:flex;gap:10px;align-items:center;color:var(--muted)}
-.checklist input {accent-color:var(--green)}
-.filterbar {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-.filterbar button.active {background:var(--green);color:#06221a}
-.notice {font-size:12px;color:var(--muted)}
-[hidden] {display:none!important}
-footer {border-top:1px solid var(--border);margin-top:40px;padding:30px 22px;text-align:center;color:var(--muted)}
-footer strong {color:var(--cyan)}
-@media(max-width:800px) {
-  .hero {grid-template-columns:1fr;padding-top:45px}
-  .hero-art {min-height:270px}
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-  nav {gap:10px}
-}
-@media(max-width:560px) {
-  .nav {align-items:flex-start;flex-direction:column}
-  nav {width:100%;gap:13px}
-  nav a {font-size:12px}
-  .grid,.stats,.answers,.tools-grid {grid-template-columns:1fr}
-  h1 {letter-spacing:-1px}
-  .quiz-top select {width:100%}
+@media(max-width:560px){
+ .wrap{width:calc(100% - 28px)}
+ .nav{min-height:67px;flex-wrap:wrap;padding:10px 0}
+ .menu-btn{display:inline-flex}
+ .nav-top{display:flex;align-items:center;justify-content:space-between;width:100%}
+ .navlinks{display:none;width:100%;padding:10px 0 14px;flex-direction:column;align-items:flex-start}
+ .navlinks.open{display:flex}
+ .navlinks a{font-size:14px}
+ .hero{padding-top:35px}
+ h1{letter-spacing:-1.2px}
+ .grid,.stats,.tools-grid,.answers{grid-template-columns:1fr}
+ .stats{gap:8px}
+ .stat{padding:10px}
+ .stat strong{font-size:21px}
+ .panel{padding:17px}
+ select{width:100%}
 }
 </style>
 </head>
-
 <body>
 <header>
-  <div class="nav">
-    <a class="brand" href="#home" aria-label="Otai Home">
-      <svg class="logo-icon" viewBox="0 0 100 100" role="img" aria-label="Otai logo">
-        <defs>
-          <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#24d9f2"/>
-            <stop offset="100%" stop-color="#6655ff"/>
-          </linearGradient>
-        </defs>
-        <circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#logoGradient)" stroke-width="4"/>
-        <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-        <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="url(#logoGradient)"/>
-      </svg>
-      <span class="brand-name">Otai<span>.</span></span>
-    </a>
-    <nav aria-label="Main navigation">
+  <div class="wrap nav">
+    <div class="nav-top">
+      <a class="brand" href="#home">Otai<span>.</span></a>
+      <button class="btn outline menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks">☰ Menu</button>
+    </div>
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
       <a href="#quiz">IT Quiz</a>
       <a href="#games">Games</a>
       <a href="#tools">IT Tools</a>
@@ -204,577 +182,400 @@ footer strong {color:var(--cyan)}
   </div>
 </header>
 
-<main>
-<section class="hero" id="home">
-  <div>
-    <div class="eyebrow">Learn IT • Play IT • Fix IT</div>
-    <h1>Otai — One Stop <span class="accent">Fun Centre</span></h1>
-    <div class="bangla-tagline">মজায় মজায় IT শেখো 😎</div>
-    <p>
-      IT শেখা হবে সহজ, মজার আর ইন্টার‍্যাকটিভ! কুইজ খেলো, টেকনোলজির
-      সমস্যা সমাধান করো, Networking ও Cybersecurity শেখো, আর AI-এর
-      মজার দুনিয়া উপভোগ করো।
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="#quiz">🚀 শেখা শুরু করো</a>
-      <a class="btn ghost" href="#games">🎮 গেম খেলো</a>
-    </div>
-    <p class="notice">Simple Concept. More Effective.</p>
-  </div>
-
-  <div class="hero-art">
-    <svg class="hero-logo" viewBox="0 0 100 100" role="img" aria-label="Otai emblem">
-      <defs>
-        <linearGradient id="heroGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#24d9f2"/>
-          <stop offset="100%" stop-color="#6655ff"/>
-        </linearGradient>
-      </defs>
-      <circle cx="50" cy="50" r="46" fill="#101b35" stroke="url(#heroGradient)" stroke-width="4"/>
-      <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-      <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="url(#heroGradient)"/>
-    </svg>
-    <div class="hero-brand">Otai<span style="color:var(--cyan)">.</span></div>
-    <div class="hero-caption">LEARN • PLAY • FIX</div>
-  </div>
-</section>
-
-<div class="stats">
-  <div class="stat"><strong id="xp">0 XP</strong><small>তোমার XP</small></div>
-  <div class="stat"><strong id="rank">Beginner</strong><small>তোমার IT Rank</small></div>
-  <div class="stat"><strong id="played">0</strong><small>উত্তর দিয়েছ</small></div>
-</div>
-
-<section id="quiz">
-  <div class="section-head">
-    <h2>🧠 IT Knowledge Arena</h2>
-    <p>প্রশ্নের উত্তর দাও, IT শেখো, XP অর্জন করো!</p>
-  </div>
-  <div class="quizbox">
-    <div class="quiz-top">
-      <select id="category" aria-label="Quiz category">
-        <option value="all">সব টপিক</option>
-        <option value="networking">Networking</option>
-        <option value="windows">Windows & IT Support</option>
-        <option value="security">Cybersecurity</option>
-        <option value="linux">Linux</option>
-        <option value="cloud">Cloud & Microsoft 365</option>
-        <option value="coding">Web & Coding</option>
-      </select>
-      <button class="ghost" id="restartQuiz">আবার শুরু</button>
-    </div>
-    <div class="progress"><div id="quizProgress"></div></div>
-    <div id="quizContent" aria-live="polite"></div>
-  </div>
-</section>
-
-<section id="games">
-  <div class="section-head">
-    <h2>🎮 IT Fun Games</h2>
-    <p>খেলতে খেলতে IT স্কিল বাড়াও।</p>
-  </div>
-  <div class="grid">
-    <article class="card">
-      <div class="emoji">🧰</div><span class="pill">HELPDESK</span>
-      <h3>Helpdesk Hero</h3>
-      <p>ইউজারের কম্পিউটারে ইন্টারনেট নেই। প্রথমে কী পরীক্ষা করবে?</p>
-      <button class="primary" onclick="playScenario('helpdesk')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🌐</div><span class="pill">NETWORKING</span>
-      <h3>Network Ninja</h3>
-      <p>নেটওয়ার্ক কানেক্টিভিটি পরীক্ষা করার সঠিক কমান্ড বেছে নাও।</p>
-      <button class="primary" onclick="playScenario('network')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🕵️</div><span class="pill">SECURITY</span>
-      <h3>Cyber Detective</h3>
-      <p>সন্দেহজনক ইমেইল চিনে Phishing থেকে বাঁচতে শেখো।</p>
-      <button class="primary" onclick="playScenario('cyber')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🖨️</div><span class="pill">IT SUPPORT</span>
-      <h3>Printer Panic</h3>
-      <p>মিটিংয়ের আগে প্রিন্টার Offline! কী করবে?</p>
-      <button class="primary" onclick="playScenario('printer')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">🐧</div><span class="pill">LINUX</span>
-      <h3>Terminal Rookie</h3>
-      <p>প্রতিদিনের দরকারি Linux কমান্ড চেনো।</p>
-      <button class="primary" onclick="playScenario('linux')">Challenge শুরু</button>
-    </article>
-    <article class="card">
-      <div class="emoji">⚡</div><span class="pill">SPEED ROUND</span>
-      <h3>Ticket Speedrun</h3>
-      <p>Helpdesk ticket-এর অগ্রাধিকার ঠিক করতে শেখো।</p>
-      <button class="primary" onclick="playScenario('speed')">Challenge শুরু</button>
-    </article>
-  </div>
-  <div class="quizbox" id="gameArea" style="margin-top:18px" aria-live="polite">
-    <h3>🦸 Ready, IT Hero?</h3>
-    <p class="muted">উপরের যেকোনো Challenge বেছে নাও।</p>
-  </div>
-</section>
-
-<section id="tools">
-  <div class="section-head">
-    <h2>🛠️ IT Toolbox</h2>
-    <p>দৈনন্দিন IT কাজের কিছু দরকারি টুল।</p>
-  </div>
-  <div class="tools-grid">
-    <div class="toolbox">
-      <h3>🌐 IPv4 Checker</h3>
-      <p class="notice">IPv4 address সঠিক কি না পরীক্ষা করো।</p>
-      <div class="field">
-        <label for="ipInput">IPv4 Address</label>
-        <input type="text" id="ipInput" placeholder="192.168.1.10">
+<main class="wrap">
+  <section class="hero" id="home">
+    <div>
+      <span class="eyebrow">✦ LEARN IT • PLAY IT • FIX IT</span>
+      <h1>Otai — One Stop <span class="accent">Fun Centre</span></h1>
+      <div class="tagline">মজার ছলে IT শিখি 😎</div>
+      <p>Networking, Windows, Cybersecurity, Linux এবং Cloud—কঠিন IT বিষয়গুলো সহজভাবে শেখো। কুইজ খেলো, সমস্যা সমাধান করো, আর নিজের IT স্কিল বাড়াও!</p>
+      <div class="actions">
+        <a class="btn primary" href="#quiz">🚀 শেখা শুরু করো</a>
+        <a class="btn outline" href="#games">🎮 গেম খেলো</a>
       </div>
-      <button class="primary" onclick="checkIP()">Check Address</button>
-      <div class="result" id="ipResult" aria-live="polite">এখানে ফলাফল দেখাবে।</div>
+      <p class="notice">Simple Concept. More Effective.</p>
     </div>
+    <aside class="hero-panel">
+      <div class="panel-label">YOUR IT ADVENTURE STARTS HERE</div>
+      <h2>Learn something.<br><span class="accent">Fix something.</span></h2>
+      <div class="mini-row"><span class="mini-icon">🧠</span><div><strong>Knowledge Quiz</strong><small>নিজের IT knowledge পরীক্ষা করো</small></div></div>
+      <div class="mini-row"><span class="mini-icon">🛠️</span><div><strong>Practical Tools</strong><small>দরকারি networking tools ব্যবহার করো</small></div></div>
+      <div class="mini-row"><span class="mini-icon">😂</span><div><strong>IT Comedy</strong><small>শেখার সঙ্গে একটু হাসিও হোক</small></div></div>
+    </aside>
+  </section>
 
-    <div class="toolbox">
-      <h3>🧮 CIDR Calculator</h3>
-      <p class="notice">IPv4 Network ও Subnet Mask হিসাব করো।</p>
-      <div class="field">
-        <label for="cidrIP">IPv4 Address</label>
-        <input type="text" id="cidrIP" value="192.168.1.10">
-      </div>
-      <div class="field">
-        <label for="prefix">Prefix Length (0–32)</label>
-        <input type="number" id="prefix" min="0" max="32" value="24">
-      </div>
-      <button class="primary" onclick="calculateCIDR()">Calculate</button>
-      <div class="result" id="cidrResult" aria-live="polite">ফলাফল এখানে দেখাবে।</div>
-    </div>
+  <div class="stats">
+    <div class="stat"><strong id="xp">0 XP</strong><small>তোমার XP</small></div>
+    <div class="stat"><strong id="rank">Beginner</strong><small>তোমার Rank</small></div>
+    <div class="stat"><strong id="played">0</strong><small>উত্তর দিয়েছ</small></div>
+  </div>
 
-    <div class="toolbox">
-      <h3>🔐 Password Safety</h3>
-      <p class="notice">এখানে কখনো নিজের আসল পাসওয়ার্ড দেবে না। শুধু কাল্পনিক উদাহরণ ব্যবহার করো।</p>
-      <div class="field">
-        <label for="demoPassword">Demo Password</label>
-        <input type="password" id="demoPassword" placeholder="কাল্পনিক পাসওয়ার্ড" autocomplete="off">
-      </div>
-      <div class="checklist" id="passwordChecks">
-        <label><input type="checkbox" disabled> অন্তত ১২ অক্ষর</label>
-        <label><input type="checkbox" disabled> বড় ও ছোট হাতের অক্ষর</label>
-        <label><input type="checkbox" disabled> একটি সংখ্যা</label>
-        <label><input type="checkbox" disabled> একটি Symbol</label>
-      </div>
-      <div class="result" id="passwordResult" aria-live="polite">এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না।</div>
-      <button class="ghost" style="margin-top:10px" onclick="clearPassword()">Clear</button>
-    </div>
-
-    <div class="toolbox">
-      <h3>📚 Quick IT Reference</h3>
-      <p class="notice">কিছু দরকারি Windows ও Linux কমান্ড।</p>
-      <div class="field">
-        <label for="commandSelect">Command বেছে নাও</label>
-        <select id="commandSelect" onchange="showCommand()">
-          <option value="ipconfig">Windows: ipconfig</option>
-          <option value="ping">ping</option>
-          <option value="tracert">Windows: tracert</option>
-          <option value="nslookup">nslookup</option>
-          <option value="linuxls">Linux: ls -la</option>
-          <option value="linuxpwd">Linux: pwd</option>
-          <option value="linuxdf">Linux: df -h</option>
+  <section id="quiz">
+    <div class="section-head"><h2>🧠 IT Knowledge Arena</h2><p>সঠিক উত্তর দাও, XP অর্জন করো এবং নতুন টপিক শেখো।</p></div>
+    <div class="panel">
+      <div class="toolbar">
+        <select id="category" aria-label="Quiz category">
+          <option value="all">সব টপিক</option>
+          <option value="networking">Networking</option>
+          <option value="windows">Windows & IT Support</option>
+          <option value="security">Cybersecurity</option>
+          <option value="linux">Linux</option>
+          <option value="cloud">Cloud & Microsoft 365</option>
+          <option value="coding">Web & Coding</option>
         </select>
+        <button class="btn outline" id="restartQuiz">↻ আবার শুরু</button>
       </div>
-      <div class="result" id="commandResult"></div>
-      <button class="ghost" style="margin-top:10px" onclick="copyCommand()">Copy Command</button>
-      <span id="copyFeedback" class="notice" aria-live="polite"></span>
+      <div class="progress"><div id="quizProgress"></div></div>
+      <div id="quizContent" aria-live="polite"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="comedy">
-  <div class="section-head">
-    <h2>😂 IT Comedy Zone</h2>
-    <p>IT-এর দুনিয়ায় হাসিও আছে, শেখাও আছে!</p>
-  </div>
-  <div class="filterbar" aria-label="Comedy category">
-    <button class="ghost active" data-filter="all">সব</button>
-    <button class="ghost" data-filter="support">IT Support</button>
-    <button class="ghost" data-filter="printer">Printer Drama</button>
-    <button class="ghost" data-filter="ai">AI Fails</button>
-    <button class="ghost" data-filter="coding">Coding Bugs</button>
-  </div>
-  <div class="grid" id="comedyGrid">
-    <article class="card comedy-card" data-type="support">
-      <div class="emoji">🧑‍💻</div>
-      <h3>Classic IT Ticket</h3>
-      <p>ইউজার: “ইন্টারনেট কাজ করছে না!”<br>IT: “Wi-Fi চালু আছে?”<br>ইউজার: “ওহ!” 😅</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+memes">IT Support Videos ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="printer">
-      <div class="emoji">🖨️</div>
-      <h3>Printer Logic</h3>
-      <p>Printer status: Ready.<br>Printer behavior: “আজকে আর কাজ করব না!”</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+problems+IT+memes">Printer Comedy ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="ai">
-      <div class="emoji">🤖</div>
-      <h3>AI Confidence</h3>
-      <p>AI: “আমি ১০০% নিশ্চিত!”<br>তারপর এমন একটা Setting বলে, যেটা কোথাও নেই। 😂</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails">AI Fails ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="coding">
-      <div class="emoji">🐛</div>
-      <h3>One Tiny Bug</h3>
-      <p>একটা Bug ঠিক করলাম। এখন তিনটা নতুন Bug ফ্রি! 🥲</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+coding+bugs+programming+memes">Coding Memes ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="support">
-      <div class="emoji">🔄</div>
-      <h3>IT-এর জাদু</h3>
-      <p>“কম্পিউটারটা একবার Restart দিয়ে দেখুন।”<br>IT Support-এর চিরন্তন মন্ত্র!</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+helpdesk+skits">Helpdesk Skits ↗</a>
-    </article>
-    <article class="card comedy-card" data-type="ai">
-      <div class="emoji">💬</div>
-      <h3>AI Prompt</h3>
-      <p>Prompt: “একদম সহজ করে বলো।”<br>AI: ৪৭ পৃষ্ঠার ব্যাখ্যা! 🤣</p>
-      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+chatbot+fails">AI Comedy ↗</a>
-    </article>
-  </div>
-  <p class="notice">ভিডিও লিংকগুলো YouTube সার্চ খুলবে; এগুলো নির্দিষ্ট যাচাই করা ভিডিও নয়।</p>
-</section>
+  <section id="games">
+    <div class="section-head"><h2>🎮 IT Fun Games</h2><p>বাস্তব IT support পরিস্থিতিতে কী করবে, তা অনুশীলন করো।</p></div>
+    <div class="grid">
+      <article class="card"><div class="card-icon">🧰</div><span class="tag">HELPDESK</span><h3>Helpdesk Hero</h3><p>একজন user-এর internet নেই। প্রথমে কী পরীক্ষা করবে?</p><button class="btn primary" onclick="playGame('helpdesk')">Challenge শুরু →</button></article>
+      <article class="card"><div class="card-icon">🌐</div><span class="tag">NETWORKING</span><h3>Network Ninja</h3><p>কোন command দিয়ে network connectivity পরীক্ষা করবে?</p><button class="btn primary" onclick="playGame('network')">Challenge শুরু →</button></article>
+      <article class="card"><div class="card-icon">🕵️</div><span class="tag">SECURITY</span><h3>Cyber Detective</h3><p>সন্দেহজনক email এবং phishing link চিনতে শেখো।</p><button class="btn primary" onclick="playGame('security')">Challenge শুরু →</button></article>
+      <article class="card"><div class="card-icon">🖨️</div><span class="tag">IT SUPPORT</span><h3>Printer Panic</h3><p>প্রিন্টার Offline দেখালে troubleshooting কোথা থেকে শুরু করবে?</p><button class="btn primary" onclick="playGame('printer')">Challenge শুরু →</button></article>
+      <article class="card"><div class="card-icon">🐧</div><span class="tag">LINUX</span><h3>Terminal Rookie</h3><p>দরকারি Linux command চিনে নাও।</p><button class="btn primary" onclick="playGame('linux')">Challenge শুরু →</button></article>
+      <article class="card"><div class="card-icon">⚡</div><span class="tag">TROUBLESHOOTING</span><h3>Ticket Speedrun</h3><p>অনেক user-এর সমস্যা হলে কোনটি আগে করবে?</p><button class="btn primary" onclick="playGame('ticket')">Challenge শুরু →</button></article>
+    </div>
+    <div class="panel" id="gameArea" style="margin-top:16px" aria-live="polite"><h3>Ready, IT Hero? 💪</h3><p class="muted">একটি Challenge বেছে নিয়ে শুরু করো।</p></div>
+  </section>
 
-<section id="about">
-  <div class="section-head">
-    <h2>🚀 The Fun Side of IT & AI</h2>
-    <p>Otai সম্পর্কে</p>
-  </div>
-  <div class="quizbox">
-    <h3>Otai — One Stop Fun Centre</h3>
-    <p>
-      Otai হলো IT শেখার একটি মজার প্ল্যাটফর্মের ধারণা, যেখানে কুইজ,
-      ছোট ছোট গেম, Troubleshooting Tools এবং Technology Comedy একসঙ্গে
-      পাওয়া যাবে।
-    </p>
-    <p class="bangla-tagline">মজায় মজায় IT শেখো!</p>
-    <p><strong style="color:var(--cyan)">Learn IT • Play IT • Fix IT</strong></p>
-    <p class="notice">Simple Concept. More Effective.</p>
-  </div>
-</section>
+  <section id="tools">
+    <div class="section-head"><h2>🛠️ IT Toolbox</h2><p>কিছু দরকারি IT কাজ এক জায়গায়।</p></div>
+    <div class="tools-grid">
+      <div class="panel tool">
+        <h3>🌐 IPv4 Checker</h3><p>IPv4 address-এর format যাচাই করো।</p>
+        <div class="field"><label for="ipInput">IPv4 Address</label><input id="ipInput" type="text" placeholder="192.168.1.10" autocomplete="off"></div>
+        <button class="btn primary" id="checkIP">Check Address</button>
+        <div class="result" id="ipResult" aria-live="polite">ফলাফল এখানে দেখাবে।</div>
+      </div>
+      <div class="panel tool">
+        <h3>🧮 CIDR Calculator</h3><p>Network address, subnet mask ও broadcast হিসাব করো।</p>
+        <div class="field"><label for="cidrIP">IPv4 Address</label><input id="cidrIP" type="text" value="192.168.1.10"></div>
+        <div class="field"><label for="prefix">Prefix Length (0–32)</label><input id="prefix" type="number" min="0" max="32" value="24"></div>
+        <button class="btn primary" id="calcCIDR">Calculate</button>
+        <div class="result" id="cidrResult" aria-live="polite">ফলাফল এখানে দেখাবে।</div>
+      </div>
+      <div class="panel tool">
+        <h3>🔐 Password Safety</h3>
+        <p>আসল password নয়—শুধু কাল্পনিক উদাহরণ ব্যবহার করো।</p>
+        <div class="field"><label for="demoPassword">Demo Password</label><input id="demoPassword" type="password" placeholder="কাল্পনিক password" autocomplete="off"></div>
+        <div class="checks" id="passwordChecks">
+          <label><input type="checkbox" disabled> অন্তত ১২ অক্ষর</label>
+          <label><input type="checkbox" disabled> বড় ও ছোট হাতের অক্ষর</label>
+          <label><input type="checkbox" disabled> একটি সংখ্যা</label>
+          <label><input type="checkbox" disabled> একটি Symbol</label>
+        </div>
+        <div class="result" id="passwordResult" aria-live="polite">Password এই পেজের বাইরে পাঠানো হয় না।</div>
+        <button class="btn outline" id="clearPassword" style="margin-top:10px">Clear</button>
+      </div>
+      <div class="panel tool">
+        <h3>📚 Quick Command Reference</h3><p>Windows ও Linux-এর কিছু সাধারণ command।</p>
+        <div class="field"><label for="commandSelect">Command বেছে নাও</label>
+          <select id="commandSelect">
+            <option value="ipconfig">Windows: ipconfig /all</option>
+            <option value="ping">ping</option>
+            <option value="tracert">Windows: tracert</option>
+            <option value="nslookup">nslookup</option>
+            <option value="ls">Linux: ls -la</option>
+            <option value="pwd">Linux: pwd</option>
+            <option value="df">Linux: df -h</option>
+          </select>
+        </div>
+        <div class="result" id="commandResult"></div>
+        <button class="btn outline" id="copyCommand" style="margin-top:10px">Copy Command</button>
+        <span class="notice" id="copyStatus" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="comedy">
+    <div class="section-head"><h2>😂 IT Comedy Zone</h2><p>IT life-এর পরিচিত ঘটনা—হাসতে হাসতে শেখো!</p></div>
+    <div class="filters">
+      <button class="active" data-filter="all">সব</button>
+      <button data-filter="support">IT Support</button>
+      <button data-filter="printer">Printer Drama</button>
+      <button data-filter="ai">AI Fails</button>
+      <button data-filter="coding">Coding Bugs</button>
+    </div>
+    <div class="grid" id="comedyGrid">
+      <article class="card comedy-card" data-type="support"><div class="card-icon">🧑‍💻</div><h3>Classic IT Ticket</h3><p>User: “Internet কাজ করছে না!”<br>IT: “Wi-Fi চালু আছে?”<br>User: “ওহ! 😅”</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+memes">IT Support Videos ↗</a></article>
+      <article class="card comedy-card" data-type="printer"><div class="card-icon">🖨️</div><h3>Printer Logic</h3><p>Status: Ready.<br>Behavior: “আজকে আর কাজ করব না!” 😂</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+problems">Printer Comedy ↗</a></article>
+      <article class="card comedy-card" data-type="ai"><div class="card-icon">🤖</div><h3>AI Confidence</h3><p>AI: “আমি ১০০% নিশ্চিত!”<br>তারপর এমন setting বলে, যেটা কোথাও নেই।</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails">AI Fails ↗</a></article>
+      <article class="card comedy-card" data-type="coding"><div class="card-icon">🐛</div><h3>One Tiny Bug</h3><p>একটা bug ঠিক করলাম। এখন তিনটা নতুন bug ফ্রি! 🥲</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+programming+memes">Coding Memes ↗</a></article>
+      <article class="card comedy-card" data-type="support"><div class="card-icon">🔄</div><h3>IT-এর জাদু</h3><p>“একবার restart দিয়ে দেখুন।”<br>IT Support-এর চিরন্তন মন্ত্র!</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+helpdesk+skits">Helpdesk Skits ↗</a></article>
+      <article class="card comedy-card" data-type="ai"><div class="card-icon">💬</div><h3>AI Prompt</h3><p>Prompt: “একদম সহজ করে বলো।”<br>AI: ৪৭ পৃষ্ঠার ব্যাখ্যা! 🤣</p><a class="btn outline" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+chatbot+fails">AI Comedy ↗</a></article>
+    </div>
+    <p class="notice">ভিডিও লিংকগুলো YouTube search খুলবে; এগুলো নির্দিষ্ট যাচাইকৃত ভিডিও নয়।</p>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><h2>✨ The Fun Side of IT & AI</h2><p>শেখা হবে সহজ, ব্যবহারিক এবং আনন্দের।</p></div>
+    <div class="panel">
+      <h3>Otai — One Stop Fun Centre</h3>
+      <p class="muted">Otai একটি interactive IT learning website। এখানে quiz, troubleshooting challenges, networking tools, command reference এবং technology jokes এক জায়গায় সাজানো হয়েছে।</p>
+      <div class="callout"><strong>মজার ছলে IT শিখি 😎</strong><br><span class="muted">Learn IT • Play IT • Fix IT</span></div>
+      <p class="notice">এই সাইটের quiz ও tools শেখার উদ্দেশ্যে তৈরি। বাস্তব production network-এ পরিবর্তন করার আগে ফলাফল যাচাই করো।</p>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="brand" style="justify-content:center">
-    <svg class="logo-icon" viewBox="0 0 100 100" aria-label="Otai logo">
-      <circle cx="50" cy="50" r="46" fill="#101b35" stroke="#24d9f2" stroke-width="4"/>
-      <path d="M27 30 L27 67 L39 67 L39 48 L50 59 L61 48 L61 67 L73 67 L73 30 L50 48 Z" fill="white"/>
-      <path d="M20 66 Q48 84 78 48 Q66 78 35 79 Q25 78 20 66Z" fill="#24d9f2"/>
-    </svg>
-    <div class="brand-name">Otai<span>.</span></div>
+  <div class="wrap">
+    <div class="brand">Otai<span>.</span></div>
+    <p><strong>One Stop Fun Centre</strong></p>
+    <p>মজার ছলে IT শিখি 😎</p>
+    <p>Learn IT • Play IT • Fix IT</p>
+    <p class="notice">© <span id="year"></span> Otai · Simple Concept. More Effective.</p>
   </div>
-  <p><strong>One Stop Fun Centre</strong></p>
-  <p>মজায় মজায় IT শেখো 😎</p>
-  <p>Learn IT • Play IT • Fix IT</p>
-  <p class="notice">© <span id="year"></span> Otai. Learn something, laugh a little, fix something.</p>
 </footer>
 
 <script>
 "use strict";
 
-/* XP AND RANK */
-const STORE_KEY = "otai-fun-centre-v2";
-let progressData = {xp:0,played:0};
+const $ = id => document.getElementById(id);
+const STORE_KEY = "otai-polished-progress-v1";
+let progress = {xp:0,played:0};
 
 try {
   const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
-  progressData.xp = Number.isFinite(saved.xp) ? Math.max(0,saved.xp) : 0;
-  progressData.played = Number.isFinite(saved.played) ? Math.max(0,saved.played) : 0;
-} catch (_) {}
+  if (Number.isFinite(saved.xp)) progress.xp = Math.max(0,saved.xp);
+  if (Number.isFinite(saved.played)) progress.played = Math.max(0,saved.played);
+} catch(e) {}
 
-function saveProgress() {
-  try { localStorage.setItem(STORE_KEY,JSON.stringify(progressData)); } catch (_) {}
+function saveProgress(){
+  try { localStorage.setItem(STORE_KEY,JSON.stringify(progress)); } catch(e) {}
   renderProgress();
 }
-function addXP(amount) {
-  progressData.xp += amount;
-  saveProgress();
+function addXP(n){progress.xp+=n;saveProgress();}
+function recordAnswer(){progress.played++;saveProgress();}
+function renderProgress(){
+  $("xp").textContent=progress.xp+" XP";
+  $("played").textContent=progress.played;
+  $("rank").textContent=progress.xp>=1000?"IT Legend":
+    progress.xp>=500?"IT Expert":
+    progress.xp>=200?"Tech Pro":
+    progress.xp>=50?"Tech Explorer":"Beginner";
 }
-function recordAnswer() {
-  progressData.played++;
-  saveProgress();
-}
-function renderProgress() {
-  document.getElementById("xp").textContent = progressData.xp+" XP";
-  document.getElementById("played").textContent = progressData.played;
-  let rank = "Beginner";
-  if(progressData.xp >= 1000) rank = "IT Legend";
-  else if(progressData.xp >= 500) rank = "IT Expert";
-  else if(progressData.xp >= 200) rank = "Tech Pro";
-  else if(progressData.xp >= 50) rank = "Tech Explorer";
-  document.getElementById("rank").textContent = rank;
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
 }
 
-/* QUIZ QUESTIONS */
-const questions = [
-{c:"networking",q:"Which device connects different IP networks?",a:["Switch","Router","Repeater","Patch panel"],correct:1,why:"Router বিভিন্ন IP network-এর মধ্যে packet forward করে।"},
-{c:"networking",q:"কোন কমান্ড দিয়ে network connectivity পরীক্ষা করা যায়?",a:["ping","mkdir","format","tasklist"],correct:0,why:"Ping ICMP Echo request পাঠায়; তবে firewall এটি block করতে পারে।"},
-{c:"networking",q:"HTTPS-এর default port কোনটি?",a:["21","25","443","3389"],correct:2,why:"HTTPS সাধারণত TCP port 443 ব্যবহার করে।"},
-{c:"networking",q:"DHCP সাধারণত কী দেয়?",a:["IP configuration","Screen resolution","Antivirus license","User photo"],correct:0,why:"DHCP IP address, gateway ও DNS-এর মতো configuration দিতে পারে।"},
-{c:"networking",q:"কোনটি private IPv4 address?",a:["8.8.8.8","192.168.1.20","1.1.1.1","203.0.113.9"],correct:1,why:"192.168.0.0/16 private IPv4 range।"},
-{c:"windows",q:"PC-তে internet নেই। প্রথমে কী পরীক্ষা করা উচিত?",a:["Motherboard বদলানো","Connection ও IP settings দেখা","Windows reinstall","User profile delete"],correct:1,why:"প্রথমে cable/Wi-Fi, IP settings এবং সমস্যাটি একজনের নাকি সবার তা পরীক্ষা করো।"},
-{c:"windows",q:"Windows-এ IP configuration দেখতে কোন command?",a:["ipconfig","chmod","grep","ls"],correct:0,why:"ipconfig Windows-এর network configuration দেখায়।"},
-{c:"windows",q:"Task Manager কী কাজে লাগে?",a:["Processes ও performance দেখা","DNS zone তৈরি","VLAN trunk তৈরি","Certificate issue"],correct:0,why:"Task Manager running apps, processes ও performance দেখতে সাহায্য করে।"},
-{c:"security",q:"Phishing কী?",a:["Backup method","তথ্য চুরির প্রতারণামূলক চেষ্টা","Cable type","Disk format"],correct:1,why:"Phishing-এর মাধ্যমে credentials বা sensitive তথ্য চুরি করার চেষ্টা হয়।"},
-{c:"security",q:"অচেনা email attachment এলে কী করবে?",a:["সঙ্গে সঙ্গে খুলবে","সবাইকে forward করবে","Sender যাচাই করে সন্দেহ হলে report করবে","Antivirus বন্ধ করবে"],correct:2,why:"অপ্রত্যাশিত attachment যাচাই করো এবং প্রতিষ্ঠানের security policy অনুসরণ করো।"},
-{c:"security",q:"MFA sign-in-এ কী যোগ করে?",a:["অতিরিক্ত verification factor","Disk space","Wi-Fi speed","নতুন subnet"],correct:0,why:"MFA একাধিক ধরনের verification ব্যবহার করে।"},
-{c:"linux",q:"বর্তমান directory দেখানোর Linux command কোনটি?",a:["pwd","cdrom","ipconfig","cls"],correct:0,why:"pwd current working directory দেখায়।"},
-{c:"linux",q:"Linux-এ file list করতে কোন command?",a:["ls","dirping","showip","taskmgr"],correct:0,why:"ls directory-এর contents দেখায়।"},
-{c:"linux",q:"Linux-এ file permission পরিবর্তনের command কোনটি?",a:["chmod","chname","ipconfig","mkdiruser"],correct:0,why:"chmod file mode permissions পরিবর্তন করে।"},
-{c:"cloud",q:"SaaS-এর পূর্ণরূপ কী?",a:["Storage as a Switch","Software as a Service","Security as a Server","System and Software"],correct:1,why:"SaaS হলো Software as a Service।"},
-{c:"cloud",q:"Microsoft Entra ID মূলত কী কাজে ব্যবহৃত হয়?",a:["Identity and access","Physical cabling","Printer toner","CPU cooling"],correct:0,why:"এটি identity ও access management-এর জন্য ব্যবহৃত হয়।"},
-{c:"cloud",q:"Cloud backup-এর প্রধান উপকারিতা কী?",a:["হারানো data recover করা","Monitor বড় করা","সব password মুছে ফেলা","সব outage বন্ধ করা"],correct:0,why:"Backup accidental deletion বা failure-এর পর data recovery-তে সাহায্য করে।"},
-{c:"coding",q:"Web page-এর structure তৈরি করতে কোনটি ব্যবহৃত হয়?",a:["HTML","SMTP","DHCP","SNMP"],correct:0,why:"HTML web page-এর structure ও content নির্ধারণ করে।"},
-{c:"coding",q:"CSS-এ text color পরিবর্তনের property কোনটি?",a:["color","font-file","text-device","paint-ip"],correct:0,why:"CSS-এর color property text-এর foreground color নির্ধারণ করে।"},
-{c:"coding",q:"JavaScript সাধারণত web page-এ কী যোগ করে?",a:["Interactivity","Physical RAM","Network cable","Electric power"],correct:0,why:"JavaScript web page-এ interactive behavior যোগ করে।"}
-];
+$("menuBtn").addEventListener("click",()=>{
+  const nav=$("navlinks");
+  const open=nav.classList.toggle("open");
+  $("menuBtn").setAttribute("aria-expanded",String(open));
+});
+$("navlinks").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  $("navlinks").classList.remove("open");
+  $("menuBtn").setAttribute("aria-expanded","false");
+}));
 
-let quizList = [];
-let quizIndex = 0;
-let quizLocked = false;
+const questions=[
+["networking","Router কোন কাজটি করে?",["ভিন্ন IP network যুক্ত করে","শুধু document print করে","Password তৈরি করে","Monitor চালায়"],0,"Router বিভিন্ন IP network-এর মধ্যে packet forward করে।"],
+["networking","Connectivity test করতে কোন command ব্যবহার করা হয়?",["mkdir","ping","format","notepad"],1,"Ping ICMP Echo request ব্যবহার করে; firewall reply block করতে পারে।"],
+["networking","HTTPS-এর default port কোনটি?",["21","25","443","3389"],2,"HTTPS সাধারণত TCP port 443 ব্যবহার করে।"],
+["networking","DHCP সাধারণত কী সরবরাহ করে?",["IP configuration","Screen resolution","Printer toner","CPU speed"],0,"DHCP IP address, gateway ও DNS settings দিতে পারে।"],
+["networking","কোনটি private IPv4 address?",["8.8.8.8","192.168.1.20","1.1.1.1","9.9.9.9"],1,"192.168.0.0/16 একটি private IPv4 range।"],
+["networking","VLAN-এর প্রধান কাজ কী?",["Logical network segmentation","Monitor resolution বাড়ানো","File compress করা","CPU cooling"],0,"VLAN একটি Layer 2 network-কে logical segment-এ ভাগ করে।"],
+["windows","Windows-এ IP configuration দেখার command?",["ipconfig","chmod","grep","pwd"],0,"ipconfig /all আরও বিস্তারিত configuration দেখায়।"],
+["windows","PC-তে internet নেই। প্রথমে কী করবে?",["OS reinstall","Connection ও IP settings পরীক্ষা","Motherboard বদল","সব password reset"],1,"প্রথমে physical/Wi-Fi connection, IP settings এবং issue-এর scope পরীক্ষা করো।"],
+["windows","Task Manager কী কাজে লাগে?",["Processes ও performance দেখা","DNS zone তৈরি","VLAN তৈরি","Certificate issue"],0,"Task Manager running apps, processes ও resource usage দেখায়।"],
+["windows","DNS-এর কাজ কী?",["Domain name resolve করা","RAM বাড়ানো","Print queue মুছা","VLAN tag করা"],0,"DNS domain name-কে সংশ্লিষ্ট IP address-এ resolve করতে সাহায্য করে।"],
+["security","Phishing কী?",["তথ্য চুরির প্রতারণামূলক চেষ্টা","Backup type","Cable standard","Disk partition"],0,"Phishing-এর মাধ্যমে credentials বা sensitive তথ্য চুরি করার চেষ্টা হয়।"],
+["security","সন্দেহজনক email attachment এলে কী করবে?",["সঙ্গে সঙ্গে খুলবে","যাচাই করে report করবে","সবাইকে forward করবে","Antivirus বন্ধ করবে"],1,"অপ্রত্যাশিত attachment যাচাই করো এবং প্রতিষ্ঠানের security policy অনুসরণ করো।"],
+["security","MFA কী যোগ করে?",["অতিরিক্ত verification factor","Disk space","Wi-Fi speed","Subnet mask"],0,"MFA একাধিক ধরনের verification factor ব্যবহার করে।"],
+["security","Password manager-এর কাজ কী?",["Password নিরাপদে সংরক্ষণে সাহায্য","Internet speed দ্বিগুণ","Virus নিশ্চিতভাবে মুছে ফেলা","IP address দেওয়া"],0,"বিশ্বস্ত password manager unique password ব্যবহার সহজ করে।"],
+["linux","বর্তমান directory দেখায় কোন command?",["pwd","chmod","ping","df"],0,"pwd current working directory দেখায়।"],
+["linux","Linux-এ directory contents দেখাতে কোন command?",["ls","mkdir","passwd","shutdown"],0,"ls -la hidden entries-সহ listing দেখায়।"],
+["linux","Linux file permissions বদলায় কোন command?",["chmod","chname","ipconfig","nslookup"],0,"chmod file permission পরিবর্তন করে।"],
+["linux","Disk space দেখাতে কোন command?",["df -h","pwd","whoami","echo"],0,"df -h filesystem-এর disk usage human-readable format-এ দেখায়।"],
+["cloud","SaaS-এর পূর্ণরূপ কী?",["Software as a Service","Storage as a Switch","Security as a Server","System and Software"],0,"SaaS-এ internet-এর মাধ্যমে software service ব্যবহার করা হয়।"],
+["cloud","Microsoft Entra ID মূলত কী কাজে লাগে?",["Identity ও access management","Physical cabling","CPU cooling","Printer toner"],0,"এটি identity এবং access management-এর জন্য ব্যবহৃত হয়।"],
+["cloud","Cloud backup-এর উপকারিতা কী?",["Data recovery-তে সাহায্য","সব outage বন্ধ","Password নিজে মুছে ফেলা","Monitor বড় করা"],0,"Backup data loss বা failure-এর পরে recovery-তে সাহায্য করে।"],
+["coding","Web page structure-এর জন্য কোনটি ব্যবহৃত হয়?",["HTML","SMTP","DHCP","SNMP"],0,"HTML web content-এর structure নির্ধারণ করে।"],
+["coding","CSS-এ text color property কোনটি?",["color","font-file","paint-ip","text-device"],0,"CSS color property text-এর রং নির্ধারণ করে।"],
+["coding","JavaScript সাধারণত কী যোগ করে?",["Interactivity","Physical RAM","Network cable","Electric power"],0,"JavaScript web page-এ interactive behavior যোগ করতে পারে।"]
+].map(q=>({c:q[0],q:q[1],a:q[2],correct:q[3],why:q[4]}));
 
-function startQuiz() {
-  const category = document.getElementById("category").value;
-  quizList = questions.filter(q => category === "all" || q.c === category);
-  quizIndex = 0;
-  quizLocked = false;
+let quizList=[],quizIndex=0,quizLocked=false;
+function startQuiz(){
+  const cat=$("category").value;
+  quizList=questions.filter(q=>cat==="all"||q.c===cat);
+  quizIndex=0;
   renderQuestion();
 }
-function renderQuestion() {
-  const root = document.getElementById("quizContent");
-  const bar = document.getElementById("quizProgress");
-  if(quizIndex >= quizList.length) {
-    bar.style.width = "100%";
-    root.innerHTML = `<h3>🎉 Quiz Complete!</h3>
-      <p>তুমি ${quizList.length}টি প্রশ্ন শেষ করেছ। আরও শিখতে আবার খেলো!</p>
-      <button class="primary" id="againQuiz">আবার খেলো</button>`;
-    document.getElementById("againQuiz").addEventListener("click",startQuiz);
+function renderQuestion(){
+  const root=$("quizContent");
+  $("quizProgress").style.width=(quizIndex/quizList.length*100)+"%";
+  if(quizIndex>=quizList.length){
+    $("quizProgress").style.width="100%";
+    root.innerHTML="<h3>🎉 Quiz complete!</h3><p>সব প্রশ্ন শেষ করেছ। অন্য category বেছে নিয়ে আবার চেষ্টা করো।</p><button class='btn primary' id='againQuiz'>আবার খেলো</button>";
+    $("againQuiz").addEventListener("click",startQuiz);
     return;
   }
-  quizLocked = false;
-  const item = quizList[quizIndex];
-  bar.style.width = (quizIndex/quizList.length*100)+"%";
-  root.innerHTML = `<p class="notice">Question ${quizIndex+1} / ${quizList.length}</p>
-    <div class="question">${escapeHTML(item.q)}</div>
-    <div class="answers">${item.a.map((answer,i)=>
-      `<button class="answer" data-answer="${i}">${escapeHTML(answer)}</button>`
-    ).join("")}</div>
+  quizLocked=false;
+  const q=quizList[quizIndex];
+  root.innerHTML=`<p class="notice">Question ${quizIndex+1} / ${quizList.length}</p>
+    <div class="question">${escapeHTML(q.q)}</div>
+    <div class="answers">${q.a.map((a,i)=>`<button class="answer" data-choice="${i}">${escapeHTML(a)}</button>`).join("")}</div>
     <div class="feedback" id="quizFeedback"></div>
-    <button class="primary" id="nextQuestion" hidden>পরের প্রশ্ন →</button>`;
-  root.querySelectorAll("[data-answer]").forEach(button => {
-    button.addEventListener("click",()=>answerQuestion(Number(button.dataset.answer)));
-  });
-  document.getElementById("nextQuestion").addEventListener("click",()=>{
-    quizIndex++;
-    renderQuestion();
-  });
+    <button class="btn primary" id="nextQuestion" hidden>পরের প্রশ্ন →</button>`;
+  root.querySelectorAll("[data-choice]").forEach(b=>b.addEventListener("click",()=>answerQuestion(Number(b.dataset.choice))));
+  $("nextQuestion").addEventListener("click",()=>{quizIndex++;renderQuestion();});
 }
-function answerQuestion(choice) {
-  if(quizLocked) return;
-  quizLocked = true;
+function answerQuestion(choice){
+  if(quizLocked)return;
+  quizLocked=true;
   recordAnswer();
-  const item = quizList[quizIndex];
-  const buttons = document.querySelectorAll("#quizContent .answer");
-  buttons.forEach((button,i)=>{
-    button.disabled = true;
-    if(i === item.correct) button.classList.add("correct");
-    if(i === choice && choice !== item.correct) button.classList.add("wrong");
+  const q=quizList[quizIndex],correct=choice===q.correct;
+  if(correct)addXP(10);
+  $("quizContent").querySelectorAll(".answer").forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.correct)b.classList.add("correct");
+    if(i===choice&&!correct)b.classList.add("wrong");
   });
-  const correct = choice === item.correct;
-  if(correct) addXP(10);
-  document.getElementById("quizFeedback").textContent =
-    (correct ? "✅ সঠিক উত্তর! +10 XP. " : "❌ সঠিক উত্তরটি হাইলাইট করা হয়েছে। ") + item.why;
-  const next = document.getElementById("nextQuestion");
-  next.hidden = false;
-  next.textContent = quizIndex === quizList.length-1 ? "ফলাফল দেখো →" : "পরের প্রশ্ন →";
+  $("quizFeedback").textContent=(correct?"✅ সঠিক উত্তর! +10 XP. ":"❌ সঠিক উত্তরটি দেখানো হয়েছে। ")+q.why;
+  $("nextQuestion").hidden=false;
+  $("nextQuestion").textContent=quizIndex===quizList.length-1?"ফলাফল দেখো →":"পরের প্রশ্ন →";
 }
-document.getElementById("category").addEventListener("change",startQuiz);
-document.getElementById("restartQuiz").addEventListener("click",startQuiz);
+$("category").addEventListener("change",startQuiz);
+$("restartQuiz").addEventListener("click",startQuiz);
 
-/* MINI GAMES */
-const scenarios = {
-helpdesk:{title:"🧰 Helpdesk Hero",q:"একজন ইউজারের internet নেই। প্রথমে কী পরীক্ষা করবে?",a:["Switch বদলাবে","Connection ও IP settings দেখবে","OS reinstall করবে","সব password reset করবে"],correct:1,why:"প্রথমে connection ও IP settings পরীক্ষা করো। সমস্যাটি একজনের নাকি অনেকের সেটিও দেখো।"},
-network:{title:"🌐 Network Ninja",q:"Network connectivity পরীক্ষা করার command কোনটি?",a:["ping","mkdir","notepad","chmod"],correct:0,why:"Ping একটি সাধারণ connectivity test; ICMP block থাকলে reply নাও আসতে পারে।"},
-cyber:{title:"🕵️ Cyber Detective",q:"অচেনা link দিয়ে sign-in করতে বললে কী করবে?",a:["দ্রুত click","Password লিখবে","Trusted channel-এ যাচাই করে report করবে","সবার কাছে forward করবে"],correct:2,why:"এটি phishing হতে পারে। Trusted channel দিয়ে যাচাই করো।"},
-printer:{title:"🖨️ Printer Panic",q:"একজনের printer Offline দেখালে প্রথমে কী দেখবে?",a:["Status, connection ও queue","সব PC বদলাবে","Print server delete","Domain পরিবর্তন"],correct:0,why:"Power, connection, printer status ও stuck jobs পরীক্ষা করো।"},
-linux:{title:"🐧 Terminal Rookie",q:"বর্তমান directory দেখায় কোন command?",a:["pwd","chmod","ping","mkdir"],correct:0,why:"pwd current working directory দেখায়।"},
-speed:{title:"⚡ Ticket Speedrun",q:"একসঙ্গে অনেক user-এর network down। কী করবে?",a:["Ignore করবে","Shared outage হিসেবে scope ও impact পরীক্ষা করবে","Wallpaper বদলাবে","সব ticket close করবে"],correct:1,why:"একই সমস্যা অনেক user-এর হলে shared network বা service outage হতে পারে।"}
+const games={
+helpdesk:{title:"🧰 Helpdesk Hero",q:"একজন user-এর internet নেই। প্রথমে কী পরীক্ষা করবে?",a:["OS reinstall","Connection ও IP settings","সব password reset","Motherboard বদল"],correct:1,why:"প্রথমে connection, IP configuration এবং অন্য user-দেরও সমস্যা হচ্ছে কি না পরীক্ষা করো।"},
+network:{title:"🌐 Network Ninja",q:"Connectivity test করার সাধারণ command কোনটি?",a:["mkdir","ping","chmod","format"],correct:1,why:"Ping connectivity পরীক্ষা করে; ICMP block থাকলে reply নাও আসতে পারে।"},
+security:{title:"🕵️ Cyber Detective",q:"অচেনা link-এ password দিতে বললে কী করবে?",a:["তৎক্ষণাৎ login","Link forward","Sender যাচাই ও report","MFA বন্ধ"],correct:2,why:"বিশ্বস্ত channel দিয়ে sender যাচাই করো এবং সন্দেহজনক link এড়িয়ে চলো।"},
+printer:{title:"🖨️ Printer Panic",q:"Printer Offline দেখালে প্রথমে কী পরীক্ষা করবে?",a:["Connection, status ও queue","Domain delete","সব PC বদল","Windows reinstall"],correct:0,why:"Power, connection, selected printer এবং stuck jobs পরীক্ষা করো।"},
+linux:{title:"🐧 Terminal Rookie",q:"Current working directory দেখার command কোনটি?",a:["pwd","chmod","ping","mkdir"],correct:0,why:"pwd current working directory দেখায়।"},
+ticket:{title:"⚡ Ticket Speedrun",q:"অনেক user-এর network একসঙ্গে down। কী করবে?",a:["সব ticket close","Scope ও business impact যাচাই","Ignore করবে","Wallpaper বদলাবে"],correct:1,why:"Incident-এর scope, impact এবং shared network/service আগে যাচাই করো।"}
 };
-
-function playScenario(key) {
-  const s = scenarios[key];
-  const root = document.getElementById("gameArea");
-  root.dataset.done = "no";
-  root.innerHTML = `<span class="pill">MINI CHALLENGE</span>
-    <h3>${s.title}</h3><div class="question">${escapeHTML(s.q)}</div>
-    <div class="answers">${s.a.map((a,i)=>
-      `<button class="answer" data-game-answer="${i}">${escapeHTML(a)}</button>`
-    ).join("")}</div>
+function playGame(key){
+  const g=games[key],root=$("gameArea");
+  root.dataset.done="no";
+  root.innerHTML=`<span class="tag">MINI CHALLENGE</span><h3>${g.title}</h3>
+    <div class="question">${escapeHTML(g.q)}</div>
+    <div class="answers">${g.a.map((a,i)=>`<button class="answer" data-game-choice="${i}">${escapeHTML(a)}</button>`).join("")}</div>
     <div class="feedback" id="gameFeedback"></div>`;
-  root.querySelectorAll("[data-game-answer]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      if(root.dataset.done === "yes") return;
-      root.dataset.done = "yes";
-      const choice = Number(button.dataset.gameAnswer);
-      const correct = choice === s.correct;
-      recordAnswer();
-      if(correct) addXP(15);
-      root.querySelectorAll(".answer").forEach((b,i)=>{
-        b.disabled = true;
-        if(i === s.correct) b.classList.add("correct");
-        if(i === choice && !correct) b.classList.add("wrong");
-      });
-      document.getElementById("gameFeedback").textContent =
-        (correct ? "🎉 সঠিক উত্তর! +15 XP. " : "পরেরবার আরও ভালো হবে! ") + s.why;
-      const retry = document.createElement("button");
-      retry.className = "ghost";
-      retry.style.marginTop = "10px";
-      retry.textContent = "আবার খেলো";
-      retry.addEventListener("click",()=>playScenario(key));
-      root.appendChild(retry);
+  root.querySelectorAll("[data-game-choice]").forEach(b=>b.addEventListener("click",()=>{
+    if(root.dataset.done==="yes")return;
+    root.dataset.done="yes";
+    const choice=Number(b.dataset.gameChoice),correct=choice===g.correct;
+    recordAnswer();
+    if(correct)addXP(15);
+    root.querySelectorAll(".answer").forEach((x,i)=>{
+      x.disabled=true;
+      if(i===g.correct)x.classList.add("correct");
+      if(i===choice&&!correct)x.classList.add("wrong");
     });
-  });
+    $("gameFeedback").textContent=(correct?"🎉 সঠিক উত্তর! +15 XP. ":"আবার চেষ্টা করো! ")+g.why;
+    const retry=document.createElement("button");
+    retry.className="btn outline";retry.textContent="আবার খেলো";
+    retry.style.marginTop="8px";retry.addEventListener("click",()=>playGame(key));
+    root.appendChild(retry);
+  }));
   root.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
-/* IPV4 CHECKER */
-function parseIPv4(value) {
-  const parts = value.trim().split(".");
-  if(parts.length !== 4) return null;
-  const result = [];
-  for(const part of parts) {
-    if(!/^\d{1,3}$/.test(part)) return null;
-    const n = Number(part);
-    if(n < 0 || n > 255) return null;
+function parseIPv4(value){
+  const parts=value.trim().split(".");
+  if(parts.length!==4)return null;
+  const result=[];
+  for(const part of parts){
+    if(!/^\d{1,3}$/.test(part))return null;
+    const n=Number(part);
+    if(n<0||n>255)return null;
     result.push(n);
   }
   return result;
 }
-function checkIP() {
-  const ip = parseIPv4(document.getElementById("ipInput").value);
-  const result = document.getElementById("ipResult");
-  if(!ip) {
-    result.textContent = "❌ Invalid IPv4. চারটি octet দাও; প্রতিটি 0–255 হতে হবে।";
-    return;
+function ipToInt(o){return (((o[0]*256+o[1])*256+o[2])*256+o[3])>>>0;}
+function intToIP(n){return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".");}
+$("checkIP").addEventListener("click",()=>{
+  const ip=parseIPv4($("ipInput").value),r=$("ipResult");
+  if(!ip){r.textContent="❌ Invalid IPv4. চারটি octet দাও; প্রতিটি 0–255 হতে হবে।";return;}
+  let msg="সঠিক IPv4 format।";
+  if(ip[0]===127)msg+=" এটি loopback range.";
+  else if(ip[0]===169&&ip[1]===254)msg+=" এটি link-local range.";
+  else if(ip[0]===10||(ip[0]===172&&ip[1]>=16&&ip[1]<=31)||(ip[0]===192&&ip[1]===168))msg+=" এটি private IPv4 range.";
+  else if(ip[0]>=224&&ip[0]<=239)msg+=" এটি multicast range.";
+  else if(ip.every(n=>n===0))msg+=" এটি unspecified address.";
+  r.textContent="✅ "+msg;
+});
+$("calcCIDR").addEventListener("click",()=>{
+  const ip=parseIPv4($("cidrIP").value),p=Number($("prefix").value),r=$("cidrResult");
+  if(!ip||!Number.isInteger(p)||p<0||p>32){
+    r.textContent="সঠিক IPv4 address এবং 0–32 prefix দাও।";return;
   }
-  let message = "Valid IPv4 format.";
-  if(ip.every(n=>n===0)) message += " এটি unspecified address.";
-  else if(ip[0]===127) message += " এটি loopback range.";
-  else if(ip[0]===169 && ip[1]===254) message += " এটি link-local range.";
-  else if(ip[0]===10 || (ip[0]===172 && ip[1]>=16 && ip[1]<=31) || (ip[0]===192 && ip[1]===168)) message += " এটি private IPv4 address.";
-  else if(ip[0]>=224 && ip[0]<=239) message += " এটি multicast range.";
-  result.textContent = "✅ " + message;
-}
-
-/* CIDR CALCULATOR */
-function ipToInt(o) {
-  return (((o[0]*256+o[1])*256+o[2])*256+o[3])>>>0;
-}
-function intToIP(n) {
-  return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".");
-}
-function calculateCIDR() {
-  const result = document.getElementById("cidrResult");
-  const octets = parseIPv4(document.getElementById("cidrIP").value);
-  const prefix = Number(document.getElementById("prefix").value);
-  if(!octets || !Number.isInteger(prefix) || prefix<0 || prefix>32) {
-    result.textContent = "সঠিক IPv4 address এবং 0–32 prefix দাও।";
-    return;
-  }
-  const ip = ipToInt(octets);
-  const mask = prefix===0 ? 0 : (0xffffffff << (32-prefix))>>>0;
-  const network = (ip & mask)>>>0;
-  const broadcast = (network | (~mask>>>0))>>>0;
-  const total = Math.pow(2,32-prefix);
-  let usable = "";
-  if(prefix<=30) usable = Math.max(0,total-2)+" conventional host addresses";
-  else if(prefix===31) usable = "2 addresses (point-to-point use)";
-  else usable = "1 single address";
-  result.innerHTML = `<strong>Network:</strong> ${intToIP(network)}/${prefix}<br>
+  const addr=ipToInt(ip);
+  const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
+  const network=(addr&mask)>>>0;
+  const broadcast=(network|(~mask>>>0))>>>0;
+  const total=Math.pow(2,32-p);
+  const hosts=p<=30?`${total-2} conventional host addresses`:p===31?"2 addresses (point-to-point use)":"1 address";
+  r.innerHTML=`<strong>Network:</strong> ${intToIP(network)}/${p}<br>
     <strong>Subnet Mask:</strong> ${intToIP(mask)}<br>
     <strong>Broadcast:</strong> ${intToIP(broadcast)}<br>
-    <strong>Total Addresses:</strong> ${total.toLocaleString()}<br>
-    <strong>Conventional usable hosts:</strong> ${usable}`;
-}
-
-/* PASSWORD CHECKLIST */
-const passwordInput = document.getElementById("demoPassword");
-passwordInput.addEventListener("input",()=>{
-  const p = passwordInput.value;
-  const tests = [
-    p.length>=12,
-    /[a-z]/.test(p) && /[A-Z]/.test(p),
-    /\d/.test(p),
-    /[^A-Za-z0-9]/.test(p)
-  ];
-  document.querySelectorAll("#passwordChecks input").forEach((box,i)=>box.checked=tests[i]);
-  const count = tests.filter(Boolean).length;
-  document.getElementById("passwordResult").textContent =
-    p.length===0 ? "এই পেজে কোনো পাসওয়ার্ড পাঠানো হয় না।" :
-    `${count}/4টি বৈশিষ্ট্য মিলেছে। এটি কেবল সাধারণ checklist, security guarantee নয়।`;
+    <strong>Total addresses:</strong> ${total.toLocaleString()}<br>
+    <strong>Host addresses:</strong> ${hosts}`;
 });
-function clearPassword() {
-  passwordInput.value = "";
-  passwordInput.dispatchEvent(new Event("input"));
-}
 
-/* QUICK COMMAND REFERENCE */
-const commandInfo = {
-ipconfig:["ipconfig /all","Windows network configuration দেখায়।"],
-ping:["ping 8.8.8.8","একটি example IP-তে connectivity পরীক্ষা করে; ICMP block হতে পারে।"],
-tracert:["tracert example.com","Windows-এ destination পর্যন্ত network route দেখায়।"],
-nslookup:["nslookup example.com","DNS query করে।"],
-linuxls:["ls -la","Linux-এ hidden entries-সহ file list দেখায়।"],
-linuxpwd:["pwd","বর্তমান working directory দেখায়।"],
-linuxdf:["df -h","Human-readable format-এ disk space দেখায়।"]
+$("demoPassword").addEventListener("input",()=>{
+  const p=$("demoPassword").value;
+  const tests=[p.length>=12,/[a-z]/.test(p)&&/[A-Z]/.test(p),/\d/.test(p),/[^A-Za-z0-9]/.test(p)];
+  $("passwordChecks").querySelectorAll("input").forEach((x,i)=>x.checked=tests[i]);
+  $("passwordResult").textContent=p.length?`${tests.filter(Boolean).length}/4টি বৈশিষ্ট্য মিলেছে। এটি সাধারণ checklist—security guarantee নয়।`:"Password এই পেজের বাইরে পাঠানো হয় না।";
+});
+$("clearPassword").addEventListener("click",()=>{
+  $("demoPassword").value="";
+  $("demoPassword").dispatchEvent(new Event("input"));
+});
+
+const commands={
+  ipconfig:{cmd:"ipconfig /all",desc:"Windows network configuration বিস্তারিত দেখায়।"},
+  ping:{cmd:"ping 8.8.8.8",desc:"একটি example IP-তে connectivity পরীক্ষা করে। ICMP block হতে পারে।"},
+  tracert:{cmd:"tracert example.com",desc:"Windows-এ destination পর্যন্ত route পরীক্ষা করে।"},
+  nslookup:{cmd:"nslookup example.com",desc:"DNS query করে।"},
+  ls:{cmd:"ls -la",desc:"Linux-এ hidden entries-সহ file listing দেখায়।"},
+  pwd:{cmd:"pwd",desc:"বর্তমান working directory দেখায়।"},
+  df:{cmd:"df -h",desc:"Filesystem disk usage human-readable format-এ দেখায়।"}
 };
-function showCommand() {
-  const item = commandInfo[document.getElementById("commandSelect").value];
-  document.getElementById("commandResult").innerHTML =
-    `<code>${escapeHTML(item[0])}</code><br>${escapeHTML(item[1])}`;
-  document.getElementById("copyFeedback").textContent = "";
+function showCommand(){
+  const c=commands[$("commandSelect").value];
+  $("commandResult").innerHTML=`<strong><code>${escapeHTML(c.cmd)}</code></strong><br>${escapeHTML(c.desc)}`;
+  $("copyStatus").textContent="";
 }
-async function copyCommand() {
-  const item = commandInfo[document.getElementById("commandSelect").value];
-  const feedback = document.getElementById("copyFeedback");
-  try {
-    await navigator.clipboard.writeText(item[0]);
-    feedback.textContent = " Copied!";
-  } catch(_) {
-    feedback.textContent = " কপি করতে command-টি select করো: "+item[0];
+$("commandSelect").addEventListener("change",showCommand);
+$("copyCommand").addEventListener("click",async()=>{
+  const c=commands[$("commandSelect").value];
+  try{
+    if(!navigator.clipboard)throw new Error("Clipboard unavailable");
+    await navigator.clipboard.writeText(c.cmd);
+    $("copyStatus").textContent=" Copied!";
+  }catch(e){
+    $("copyStatus").textContent=" Command: "+c.cmd;
   }
-}
-
-/* COMEDY FILTER */
-document.querySelectorAll("[data-filter]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    document.querySelectorAll("[data-filter]").forEach(b=>b.classList.remove("active"));
-    button.classList.add("active");
-    const filter = button.dataset.filter;
-    document.querySelectorAll(".comedy-card").forEach(card=>{
-      card.hidden = filter!=="all" && card.dataset.type!==filter;
-    });
-  });
 });
 
-/* SAFE HTML TEXT */
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g,ch=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[ch]);
-}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  const filter=b.dataset.filter;
+  document.querySelectorAll(".comedy-card").forEach(card=>{
+    card.hidden=filter!=="all"&&card.dataset.type!==filter;
+  });
+}));
 
-/* INITIALIZE */
-document.getElementById("year").textContent = new Date().getFullYear();
+$("year").textContent=new Date().getFullYear();
 renderProgress();
 showCommand();
 startQuiz();
 </script>
 </body>
 </html>
++
