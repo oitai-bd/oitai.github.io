@@ -1,282 +1,514 @@
 
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08111f">
-<title>Otai — Fun IT Learning</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>Otai — Fun IT Learning Platform</title>
+<meta name="description" content="Learn IT through games, troubleshooting missions, networking tools, and funny AI videos.">
 <style>
-:root{--bg:#08111f;--panel:#132239;--text:#f4f8ff;--muted:#a7b6cc;--green:#61f0b1;--blue:#7db5ff;--line:#ffffff18}
+:root {
+  --bg:#0b1120; --panel:#141e30; --panel2:#1c2940;
+  --text:#edf4ff; --muted:#a9b8d0; --green:#7cf5c5;
+  --purple:#b9a2ff; --border:#2c3b54; --red:#ff929b;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,"Segoe UI",sans-serif}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:var(--green);text-decoration:none}
+button,input,select{font:inherit}
 button{cursor:pointer}
-header{position:sticky;top:0;background:#08111fee;border-bottom:1px solid var(--line);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.logo{font-weight:950;font-size:1.5rem;letter-spacing:3px;color:var(--green)}
-nav{display:flex;gap:18px;flex-wrap:wrap}
+header{position:sticky;top:0;z-index:10;background:#0b1120ed;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.nav{max-width:1150px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--green)}
+nav{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
 nav a{color:var(--muted)}
 nav a:hover{color:var(--green)}
-main{max-width:1150px;margin:auto;padding:25px}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:65px 0}
-h1{font-size:clamp(2.8rem,7vw,5rem);line-height:1.05;letter-spacing:-3px;margin:15px 0}
-h1 span,h2 span{color:var(--green)}
+.container{max-width:1150px;margin:auto;padding:24px 18px}
+.hero{padding:55px 0 35px;display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:center}
+.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,65px);line-height:1.04;letter-spacing:-2px;margin:12px 0}
+h2{font-size:clamp(25px,4vw,36px);line-height:1.15;margin:8px 0}
+h3{line-height:1.3}
 p{color:var(--muted)}
-.panel,.card{background:linear-gradient(145deg,#152740,#0e1a2b);border:1px solid var(--line);border-radius:20px;padding:22px}
-.hero .panel{box-shadow:0 20px 60px #0004}
-.pill{color:var(--green);border:1px solid #61f0b155;border-radius:30px;padding:6px 12px;font-size:.8rem}
-.btn{display:inline-block;border:0;border-radius:10px;padding:11px 16px;font-weight:800;background:var(--green);color:#07160f}
-.btn.secondary{background:transparent;border:1px solid var(--line);color:var(--text)}
-section{padding:38px 0}
-h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;margin-bottom:8px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.card h3{margin:10px 0 5px}
-.icon{font-size:1.8rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
-.stat{padding:13px;background:#ffffff08;border:1px solid var(--line);border-radius:12px}
-.stat b{display:block;font-size:1.3rem;color:var(--green)}
-.layout{display:grid;grid-template-columns:230px 1fr;gap:16px}
-.topics{display:grid;gap:8px;align-content:start}
-.topic{background:#ffffff08;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;text-align:left}
-.topic.active{border-color:var(--green);background:#61f0b111}
-.question{font-size:1.35rem;font-weight:800;margin:22px 0 6px}
-.answers{display:grid;gap:9px;margin-top:18px}
-.answer{padding:12px;text-align:left;border:1px solid var(--line);border-radius:10px;background:#ffffff06;color:var(--text)}
-.answer:hover{border-color:var(--blue)}
-.answer.correct{border-color:var(--green);background:#61f0b115}
-.answer.wrong{border-color:#ff8585;background:#ff858515}
+.hero p{font-size:17px;max-width:650px}
+.gradient{background:linear-gradient(90deg,var(--green),var(--purple));background-clip:text;-webkit-background-clip:text;color:transparent}
+.btn{display:inline-block;border:1px solid var(--border);border-radius:10px;padding:10px 15px;background:var(--panel2);color:var(--text);font-weight:700}
+.btn.primary{background:var(--green);color:#092019;border-color:var(--green)}
+.btn:hover{filter:brightness(1.1)}
+.hero-box,.panel,.card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px}
+.hero-box{background:linear-gradient(145deg,#172a38,#211c3b)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
+.stat{padding:12px;background:#0e1929;border-radius:12px;text-align:center}
+.stat strong{display:block;font-size:23px;color:var(--green)}
+.stat small{color:var(--muted)}
+.section{padding:32px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:18px}
+.section-head p{margin:5px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:#58708f}
+.card .emoji{font-size:30px}
+.card h3{margin:8px 0}
+.card p{font-size:14px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+label{display:block;color:var(--muted);font-size:13px;margin:10px 0 5px}
+input,select{background:#0d1727;color:var(--text);border:1px solid var(--border);border-radius:9px;padding:11px;width:100%;min-width:0}
+.result{padding:12px;background:#0d1727;border:1px solid var(--border);border-radius:10px;color:var(--muted);margin-top:12px;overflow-wrap:anywhere}
+.small{font-size:12px;color:var(--muted)}
+.pill{display:inline-block;padding:4px 9px;background:#26374e;border-radius:20px;font-size:12px;color:var(--green)}
+.answer-list{display:grid;gap:10px;margin:15px 0}
+.answer{padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--text);text-align:left}
+.answer.correct{background:#123a32;border-color:var(--green)}
+.answer.wrong{background:#43252e;border-color:var(--red)}
 .answer:disabled{cursor:default}
-.feedback{display:none;border:1px solid #61f0b155;background:#61f0b10b;border-radius:12px;padding:13px;margin-top:15px}
-.feedback.show{display:block}
-.feedback p{margin:5px 0}
-.actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
-label{display:block;color:var(--muted);font-size:.9rem;margin:12px 0 5px}
-input{width:100%;padding:11px;border:1px solid var(--line);background:#081321;color:white;border-radius:9px}
-.output{margin-top:12px;padding:12px;border-radius:10px;background:#081321;border:1px solid var(--line);overflow-wrap:anywhere}
-.output b{color:var(--green)}
-footer{text-align:center;border-top:1px solid var(--line);padding:25px;color:var(--muted)}
-@media(max-width:760px){header{align-items:flex-start;gap:12px;flex-direction:column}nav{gap:12px}.hero{grid-template-columns:1fr;padding:35px 0}.grid{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.topics{grid-template-columns:repeat(2,1fr)}main{padding:18px}.stats{grid-template-columns:repeat(3,1fr)}}
+.feedback{background:#0d1727;border-radius:10px;padding:12px;color:var(--muted);margin:12px 0;min-height:44px}
+.feedback.good{color:#baffdf;border:1px solid #367e67}
+.feedback.bad{color:#ffd4d8;border:1px solid #8d5962}
+.progress{height:7px;border-radius:20px;background:#0d1727;overflow:hidden;margin:12px 0}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--purple))}
+footer{border-top:1px solid var(--border);padding:28px 18px;text-align:center;color:var(--muted)}
+.comedy-card{overflow:hidden}
+.comedy-card[hidden]{display:none}
+.comedy-card a{display:inline-block;margin-top:6px}
+.comedy-filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.comedy-filters button{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:22px;padding:8px 12px}
+.comedy-filters button:hover{border-color:var(--green)}
+code{background:#0b1422;padding:2px 5px;border-radius:5px;color:var(--green)}
+hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+@media(max-width:760px){
+ .hero{grid-template-columns:1fr;padding-top:35px}
+ nav{gap:10px}
+ .container{padding:18px 14px}
+ h1{letter-spacing:-1px}
+}
 </style>
 </head>
 <body>
 <header>
-  <a class="logo" href="#">OTAI</a>
-  <nav>
-    <a href="#learn">Learn & Play</a>
-    <a href="#tools">IT Tools</a>
-    <a href="#challenge">Challenge</a>
-  </nav>
+  <div class="nav">
+    <a class="logo" href="#home">Otai<span style="color:var(--purple)">.</span></a>
+    <nav>
+      <a href="#learn">Learn</a>
+      <a href="#games">Games</a>
+      <a href="#tools">IT Tools</a>
+      <a href="#comedy">Funny Videos</a>
+    </nav>
+  </div>
 </header>
 
-<main>
-<section class="hero">
-  <div>
-    <span class="pill">✦ FUN IT LEARNING PLATFORM</span>
-    <h1>IT শেখো<br><span>মজা করে!</span></h1>
-    <p>Welcome to Otai — learn IT, play quizzes, solve challenges and build real-world technology skills. সহজভাবে শেখো, খেলতে খেলতে skill বাড়াও!</p>
-    <p><b>Learn IT. Play IT. Master IT.</b><br>Simple Concept. More Effective.</p>
-    <a class="btn" href="#learn">🎮 Start Learning</a>
-    <a class="btn secondary" href="#tools">Explore Tools</a>
-    <div class="stats">
-      <div class="stat"><b id="xp">0</b>XP Points</div>
-      <div class="stat"><b id="correct">0</b>Correct</div>
-      <div class="stat"><b id="level">1</b>Level</div>
+<main class="container" id="home">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">One Stop Resolve Centre</div>
+      <h1>IT শেখো <span class="gradient">মজা করে!</span></h1>
+      <p>Learn IT. Play IT. Fix IT. বাস্তব IT support problem সমাধান করো, networking শেখো, quiz খেলো আর AI-এর funny কাণ্ড দেখে হাসো!</p>
+      <div class="row">
+        <a class="btn primary" href="#games">🎮 Play Games</a>
+        <a class="btn" href="#tools">🛠️ Explore Tools</a>
+      </div>
     </div>
-  </div>
-  <div class="panel">
-    <div style="font-size:3.5rem">🎮</div>
-    <h2>Your IT Adventure</h2>
-    <p>Learn networking, cybersecurity, Windows, Linux, cloud and web development through interactive quizzes.</p>
-    <div class="output"><b>✓ Learn</b> bite-size lessons</div>
-    <div class="output"><b>✓ Play</b> fun challenges</div>
-    <div class="output"><b>✓ Practise</b> useful IT tools</div>
-  </div>
-</section>
+    <div class="hero-box">
+      <div class="eyebrow">Your IT journey</div>
+      <h2>From IT Beginner to <span class="gradient">IT Hero</span></h2>
+      <p>Practice real-world troubleshooting, one funny mission at a time.</p>
+      <div class="stat-grid">
+        <div class="stat"><strong id="xp">0</strong><small>Total XP</small></div>
+        <div class="stat"><strong id="solved">0</strong><small>Solved</small></div>
+        <div class="stat"><strong id="level">1</strong><small>Level</small></div>
+      </div>
+      <p class="small" id="rank">Rank: IT Intern</p>
+    </div>
+  </section>
 
-<section id="learn">
-  <h2>🎯 Learn & <span>Play</span></h2>
-  <p>একটি topic বেছে নাও। সঠিক উত্তরে ১০ XP, ভুল হলে explanation দেখো।</p>
-  <div class="layout">
-    <div class="topics" id="topics"></div>
+  <section class="section" id="learn">
+    <div class="section-head">
+      <div><div class="eyebrow">Learn by playing</div><h2>🎯 IT Knowledge Quiz</h2>
+      <p>প্রশ্নের উত্তর দাও, explanation পড়ো, XP অর্জন করো।</p></div>
+    </div>
     <div class="panel">
-      <span class="pill" id="topicName">Networking</span>
-      <div class="question" id="question">Question</div>
-      <p id="questionBn"></p>
-      <div class="answers" id="answers"></div>
-      <div class="feedback" id="feedback">
-        <b id="result"></b>
-        <p id="explanation"></p>
+      <label for="topic">Choose a topic</label>
+      <select id="topic">
+        <option value="all">Mixed IT Quiz</option>
+        <option value="network">Networking</option>
+        <option value="windows">Windows & IT Support</option>
+        <option value="security">Cybersecurity</option>
+        <option value="linux">Linux</option>
+        <option value="cloud">Cloud & Microsoft 365</option>
+        <option value="web">Web & Coding</option>
+      </select>
+      <div class="progress"><span id="quiz-progress"></span></div>
+      <div class="small" id="quiz-count">Question 1</div>
+      <h3 id="quiz-question">Ready to test your IT skills?</h3>
+      <div class="answer-list" id="quiz-answers"></div>
+      <div class="feedback" id="quiz-feedback">Choose the correct answer to begin.</div>
+      <div class="row">
+        <button class="btn primary" id="quiz-next" disabled>Next question →</button>
+        <button class="btn" id="quiz-reset">Restart quiz</button>
       </div>
-      <div class="actions">
-        <button class="btn secondary" id="skip">Skip →</button>
-        <button class="btn" id="next" disabled>Next question →</button>
+    </div>
+  </section>
+
+  <section class="section" id="games">
+    <div class="section-head">
+      <div><div class="eyebrow">Funny real-world missions</div><h2>🛠️ IT Support Game Zone</h2>
+      <p>User-এর problem শুনে সঠিক troubleshooting step বেছে নাও।</p></div>
+      <span class="pill">Earn up to 20 XP per case</span>
+    </div>
+    <div class="grid" style="margin-bottom:16px">
+      <button class="card" data-game="helpdesk" style="color:var(--text);text-align:left">
+        <span class="emoji">🦸</span><h3>Helpdesk Hero</h3><p>Wi-Fi, printer, Outlook আর slow PC fix করো।</p>
+      </button>
+      <button class="card" data-game="network" style="color:var(--text);text-align:left">
+        <span class="emoji">🥷</span><h3>Network Ninja</h3><p>DHCP, DNS, IP ও gateway mystery solve করো।</p>
+      </button>
+      <button class="card" data-game="cyber" style="color:var(--text);text-align:left">
+        <span class="emoji">🕵️</span><h3>Cyber Detective</h3><p>Phishing, MFA এবং password safety চিনে নাও।</p>
+      </button>
+      <button class="card" data-game="speed" style="color:var(--text);text-align:left">
+        <span class="emoji">⚡</span><h3>Ticket Speedrun</h3><p>দ্রুত incident-solving challenge!</p>
+      </button>
+    </div>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between">
+        <span class="pill" id="game-name">🦸 Helpdesk Hero</span>
+        <span class="small" id="case-count">Case 1</span>
+      </div>
+      <div class="progress"><span id="game-progress"></span></div>
+      <div class="result" id="game-dialogue">👩‍💼 User: “Wi-Fi নাই! Internet আমার সঙ্গে কথা বলা বন্ধ করে দিয়েছে!”</div>
+      <h3 id="game-question">প্রথমে কী করবে?</h3>
+      <div class="answer-list" id="game-answers"></div>
+      <div class="feedback" id="game-feedback">Hint চাইলে Hint চাপো। Evidence first, panic never!</div>
+      <div class="row">
+        <button class="btn" id="game-hint">💡 Hint</button>
+        <button class="btn primary" id="game-next" disabled>Next case →</button>
+        <button class="btn" id="game-restart">Restart</button>
+      </div>
+      <p class="small">Educational simulator. Real incidents-এ organisation policy ও proper permission follow করবে।</p>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="section-head"><div><div class="eyebrow">Practical IT utilities</div><h2>🧰 IT Tools Lab</h2>
+    <p>Browser-এর ভেতরেই কিছু basic calculation ও validation করো।</p></div></div>
+    <div class="grid">
+      <div class="panel">
+        <h3>🌐 IPv4 Address Checker</h3>
+        <label for="ip-input">IPv4 address</label>
+        <input id="ip-input" placeholder="Example: 192.168.1.10">
+        <button class="btn primary" style="margin-top:10px" id="ip-check">Check IP</button>
+        <div class="result" id="ip-result">Enter an IPv4 address to check its format.</div>
+      </div>
+      <div class="panel">
+        <h3>🧮 CIDR Calculator</h3>
+        <label for="cidr-ip">Network IPv4 address</label>
+        <input id="cidr-ip" value="192.168.1.10" placeholder="192.168.1.10">
+        <label for="prefix">Prefix length</label>
+        <select id="prefix"></select>
+        <button class="btn primary" style="margin-top:10px" id="cidr-check">Calculate subnet</button>
+        <div class="result" id="cidr-result">Choose an IPv4 address and prefix.</div>
+      </div>
+      <div class="panel">
+        <h3>🔐 Password Safety Tips</h3>
+        <p>এই tool-এ real password দেবে না। নিচের checklist ব্যবহার করো।</p>
+        <label><input type="checkbox" class="pw-check" style="width:auto"> Unique password/passphrase</label>
+        <label><input type="checkbox" class="pw-check" style="width:auto"> Long enough (prefer 14+ characters)</label>
+        <label><input type="checkbox" class="pw-check" style="width:auto"> MFA enabled</label>
+        <label><input type="checkbox" class="pw-check" style="width:auto"> Password manager used</label>
+        <div class="result" id="pw-result">0/4 safety practices checked.</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="tools">
-  <h2>🧰 Handy IT <span>Tools</span></h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">🌐</div><h3>IPv4 Checker</h3>
-      <p>Check IPv4 address format.</p>
-      <label for="ip">IPv4 address</label>
-      <input id="ip" value="192.168.1.10">
-      <button class="btn" style="margin-top:12px" id="checkIp">Check IP</button>
-      <div class="output" id="ipOut">Enter an address.</div>
+  <section class="section" id="comedy">
+    <div class="section-head">
+      <div><div class="eyebrow">Laugh • Learn • Reboot</div>
+      <h2>🤣 IT Fails & AI Comedy</h2>
+      <p>AI fails, programmer bugs, printer drama আর helpdesk comedy—fun video খুঁজে দেখো!</p></div>
     </div>
-    <div class="card">
-      <div class="icon">🧮</div><h3>Subnet Calculator</h3>
-      <p>CIDR থেকে subnet mask ও address count বের করো।</p>
-      <label for="cidr">CIDR prefix (0–32)</label>
-      <input id="cidr" type="number" min="0" max="32" value="24">
-      <button class="btn" style="margin-top:12px" id="calc">Calculate</button>
-      <div class="output" id="cidrOut">/24 = 255.255.255.0</div>
+    <div class="comedy-filters">
+      <button data-filter="all">🎬 All</button>
+      <button data-filter="it">🖥️ IT Support</button>
+      <button data-filter="ai">🤖 AI Funny</button>
+      <button data-filter="code">🐛 Coding Fails</button>
+      <button data-filter="printer">🖨️ Printer Drama</button>
     </div>
-    <div class="card">
-      <div class="icon">🔐</div><h3>Password Practice</h3>
-      <p>শুধু sample password পরীক্ষা করো, real password নয়।</p>
-      <label for="pass">Practice password</label>
-      <input id="pass" type="password" autocomplete="off" placeholder="Enter a fake password">
-      <button class="btn" style="margin-top:12px" id="passCheck">Check strength</button>
-      <div class="output" id="passOut">Checked locally in your browser.</div>
+    <div class="grid">
+      <article class="card comedy-card" data-category="it">
+        <div class="emoji">🦸‍♂️</div><h3>IT Support Gone Wrong</h3>
+        <p>User: “Internet নাই!” Tech: “Wi-Fi connected?” User: “না, আমি Wi-Fi বন্ধ করে রেখেছি!” 😭</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+helpdesk+comedy">▶ Find IT support comedy ↗</a>
+      </article>
+      <article class="card comedy-card" data-category="ai">
+        <div class="emoji">🤖</div><h3>AI Gone Crazy</h3>
+        <p>AI-কে simple question করো, answer শুনে মনে হবে robot-এরও Monday চলছে!</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails+comedy+shorts">▶ Watch AI fails ↗</a>
+      </article>
+      <article class="card comedy-card" data-category="code">
+        <div class="emoji">🐛</div><h3>Programmer vs Bugs</h3>
+        <p>একটা bug fix করলাম। Gift হিসেবে আরও পাঁচটা bug পেলাম। 🎁</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+programmer+coding+bugs+memes">▶ Watch coding comedy ↗</a>
+      </article>
+      <article class="card comedy-card" data-category="printer">
+        <div class="emoji">🖨️</div><h3>Printer Horror Stories</h3>
+        <p>Printer offline, paper jam, driver error. IT engineer-এর final boss!</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+IT+support+memes">▶ Find printer memes ↗</a>
+      </article>
+      <article class="card comedy-card" data-category="it">
+        <div class="emoji">💻</div><h3>Windows Update Surprise</h3>
+        <p>Meeting শুরু হতে ১ মিনিট বাকি—Windows বলছে “Updating 1%”. 💀</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+Windows+update+IT+memes">▶ Find Windows memes ↗</a>
+      </article>
+      <article class="card comedy-card" data-category="ai">
+        <div class="emoji">🧠</div><h3>Human vs AI</h3>
+        <p>AI বলে “I can help with that.” তারপর user-কে আরও 17টা প্রশ্ন করে। 😅</p>
+        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=AI+assistant+funny+skit+robot+comedy">▶ Watch AI comedy ↗</a>
+      </article>
     </div>
-  </div>
-</section>
+    <p class="small">ভিডিওগুলো YouTube search-এ খোলে। Search result ও availability সময়ের সঙ্গে বদলাতে পারে।</p>
+  </section>
 
-<section id="challenge">
-  <h2>🖥️ IT Support <span>Challenge</span></h2>
-  <div class="panel">
-    <span class="pill">CASE 01</span>
-    <h3>Wi-Fi connected, but no internet!</h3>
-    <p>A Windows laptop shows IP address 169.254.18.42 and no default gateway. অন্যদের Wi-Fi ঠিক চলছে। কী করবে?</p>
-    <div class="output">IPv4: 169.254.18.42<br>Default Gateway: Missing</div>
-    <div class="answers" id="challengeAnswers">
-      <button class="answer" data-good="false">A. Replace the laptop immediately</button>
-      <button class="answer" data-good="true">B. Check DHCP/IP settings and renew the address</button>
-      <button class="answer" data-good="false">C. Disable the firewall permanently</button>
+  <section class="section">
+    <div class="panel">
+      <div class="eyebrow">Our mission</div>
+      <h2>One Stop Resolve Centre</h2>
+      <p><strong>Simple Concept. More Effective.</strong> IT শেখাকে সহজ, practical এবং enjoyable করাই Otai-এর লক্ষ্য।</p>
+      <p class="small">Learning prototype • No account required • XP saved in this browser</p>
     </div>
-    <div class="feedback" id="challengeFeedback">
-      <b id="challengeResult"></b>
-      <p id="challengeExplanation"></p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>💡 About <span>Otai</span></h2>
-  <div class="panel">
-    <h3>One Stop Resolve Centre</h3>
-    <p>Otai is a fun IT learning concept for beginners and technology enthusiasts. Learn through practice, quizzes, tools and real-world scenarios.</p>
-    <b>Simple Concept. More Effective.</b>
-  </div>
-</section>
+  </section>
 </main>
-<footer>© <span id="year"></span> Otai · Learn IT. Play IT. Master IT.</footer>
+
+<footer>
+  <strong>Otai.</strong> — Learn IT. Play IT. Fix IT.<br>
+  <span class="small">Made for curious minds and future IT heroes.</span>
+</footer>
 
 <script>
-const data={
- "IT Basics":[
-  ["What does CPU stand for?","CPU-এর পূর্ণরূপ কী?",["Central Processing Unit","Computer Personal Utility","Core Program User","Central Power Unit"],0,"CPU means Central Processing Unit. এটি computer instruction process করে।"],
-  ["Which one is an operating system?","কোনটি Operating System?",["Chrome","Windows 11","Microsoft Word","HDMI"],1,"Windows 11 হলো operating system; Chrome browser, Word application।"],
-  ["What is RAM used for?","RAM কী কাজে লাগে?",["Long-term storage","Temporary working memory","Printing","Wi-Fi"],1,"RAM চলমান program-এর data সাময়িকভাবে রাখে।"]
- ],
- "Networking":[
-  ["Which device connects different IP networks?","ভিন্ন IP network connect করে কোন device?",["Hub","Router","Keyboard","Monitor"],1,"Router IP network-এর মধ্যে packet forward করে।"],
-  ["Default HTTPS port?","HTTPS-এর default port কত?",["21","22","80","443"],3,"HTTPS-এর default port TCP 443; HTTP সাধারণত port 80।"],
-  ["Which protocol assigns IP settings automatically?","Automatic IP দেয় কোন protocol?",["DHCP","DNS","FTP","ICMP"],0,"DHCP client-কে IP, subnet mask, gateway ও DNS settings দিতে পারে।"],
-  ["What does /24 mean?","CIDR /24 কী বোঝায়?",["24 hosts","24 network bits","24 routers","24 bytes"],1,"/24-এ 24 bits network prefix এবং 8 bits host অংশ।"]
- ],
- "Cybersecurity":[
-  ["What is phishing?","Phishing কী?",["A monitor","Fake message/site used to steal information","A cable","A backup"],1,"Phishing fake message বা website দিয়ে sensitive information চুরি করার চেষ্টা।"],
-  ["What does MFA add?","MFA কী যোগ করে?",["Extra verification factor","More storage","Faster CPU","Screen brightness"],0,"MFA account access-এর জন্য একাধিক verification factor চায়।"],
-  ["Which is safer?","কোনটি নিরাপদ?",["Reuse passwords","Share passwords","Unique long passwords","Use birthday"],2,"প্রতিটি account-এ unique long password ব্যবহার করো; password manager সাহায্য করতে পারে।"]
- ],
- "Windows":[
-  ["Which tool shows running processes?","Running processes দেখায় কোন tool?",["Task Manager","Paint","Notepad","Calculator"],0,"Task Manager process, CPU, memory ও network usage দেখায়।"],
-  ["Windows command to show IP configuration?","IP configuration দেখার command?",["ipconfig","mkdir","chmod","format"],0,"ipconfig Windows network configuration দেখায়।"]
- ],
- "Linux":[
-  ["Which command lists files?","ফাইল list করে কোন command?",["ls","pwd","grep","touch"],0,"ls directory contents list করে।"],
-  ["What does sudo commonly do?","sudo কী কাজে লাগে?",["Run command with elevated privileges","Increase RAM","Change monitor","Create Wi-Fi"],0,"sudo অনুমোদিত user-কে elevated privilege দিয়ে command চালাতে দেয়।"]
- ],
- "Cloud & M365":[
-  ["What is cloud computing?","Cloud computing কী?",["Computing services over a network","USB storage only","A keyboard","A printer"],0,"Cloud computing network-এর মাধ্যমে server, storage ও software service দেয়।"],
-  ["Microsoft Entra ID is used for?","Entra ID কী কাজে লাগে?",["Identity and access","Photo editing","Replacing switch","Screen repair"],0,"Microsoft Entra ID identity ও access management-এ ব্যবহৃত হয়।"]
- ],
- "Web & Coding":[
-  ["What does HTML define?","HTML কী define করে?",["Page structure and content","Wi-Fi speed","RAM","Password"],0,"HTML web page-এর structure ও content তৈরি করে।"],
-  ["Which technology styles web pages?","Web page style করে কোনটি?",["CSS","DHCP","BIOS","SMTP"],0,"CSS colour, layout, spacing ও responsive design নিয়ন্ত্রণ করে।"]
- ]
-};
-let topic="Networking",index=0,locked=false,xp=0,correct=0;
-try{xp=Number(localStorage.getItem("otaiXP")||0);correct=Number(localStorage.getItem("otaiCorrect")||0)}catch(e){}
-const $=id=>document.getElementById(id);
-function stats(){$("xp").textContent=xp;$("correct").textContent=correct;$("level").textContent=Math.floor(xp/100)+1;try{localStorage.setItem("otaiXP",xp);localStorage.setItem("otaiCorrect",correct)}catch(e){}}
-function renderTopics(){
- $("topics").innerHTML="";
- Object.keys(data).forEach(name=>{
-  const b=document.createElement("button");b.className="topic"+(name===topic?" active":"");
-  b.textContent=name;b.onclick=()=>{topic=name;index=0;renderTopics();renderQuestion()};
-  $("topics").appendChild(b)
- })
+/* ---------- Progress / XP ---------- */
+const STORAGE_KEY = "otaiFullPlatformV1";
+let progress = {xp:0,solved:0,correct:0};
+try { progress = {...progress,...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}; } catch(e){}
+function saveProgress(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));}catch(e){}
+  updateStats();
 }
-function renderQuestion(){
- locked=false;const q=data[topic][index];
- $("topicName").textContent=topic;$("question").textContent=q[0];$("questionBn").textContent=q[1];
- $("answers").innerHTML="";$("feedback").classList.remove("show");$("next").disabled=true;
- q[2].forEach((answer,i)=>{
+function updateStats(){
+  document.getElementById("xp").textContent=progress.xp;
+  document.getElementById("solved").textContent=progress.solved;
+  document.getElementById("level").textContent=Math.floor(progress.xp/50)+1;
+  let rank=progress.xp>=250?"IT Legend 🏆":progress.xp>=150?"Senior Tech 🔧":progress.xp>=75?"Troubleshooter 🧠":progress.xp>=25?"Junior Tech 💻":"IT Intern";
+  document.getElementById("rank").textContent="Rank: "+rank;
+}
+function earn(points,correct=true){
+  progress.xp+=points;progress.solved++;
+  if(correct)progress.correct++;
+  saveProgress();
+}
+updateStats();
+
+/* ---------- Knowledge Quiz ---------- */
+const quizBank=[
+ {t:"network",q:"Which service automatically assigns IP addresses to clients?",a:["DNS","DHCP","HTTP"],c:1,e:"DHCP dynamically provides IP configuration to clients."},
+ {t:"network",q:"What does DNS mainly do?",a:["Resolves domain names to IP addresses","Prints documents","Encrypts every file"],c:0,e:"DNS resolves names such as example.com to IP addresses."},
+ {t:"network",q:"A Windows PC has 169.254.x.x. What is a common cause?",a:["DHCP lease failed","The monitor is off","The keyboard is broken"],c:0,e:"APIPA/link-local addressing often appears when a DHCP lease cannot be obtained."},
+ {t:"network",q:"Which command shows Windows IP configuration?",a:["ipconfig","mkdir","format"],c:0,e:"Use ipconfig; ipconfig /all shows more details."},
+ {t:"windows",q:"Which shortcut opens Task Manager directly?",a:["Ctrl + Shift + Esc","Alt + F4 only","Win + L"],c:0,e:"Ctrl + Shift + Esc opens Task Manager."},
+ {t:"windows",q:"A printer is offline. What is a good first step?",a:["Check power, connection and print queue","Delete System32","Replace every PC"],c:0,e:"Start with safe physical checks, printer status and queue."},
+ {t:"windows",q:"What should you do before a risky change?",a:["Check impact and backup/policy requirements","Guess settings","Disable all security"],c:0,e:"Assess impact and follow approved change procedures."},
+ {t:"security",q:"An email demands your password urgently. What should you do?",a:["Click immediately","Verify independently and report if suspicious","Forward to everyone"],c:1,e:"Urgency and unexpected credential requests are phishing warning signs."},
+ {t:"security",q:"What is MFA?",a:["Multi-factor authentication","Multiple file attachment","Monitor frequency adjustment"],c:0,e:"MFA uses two or more types of evidence to verify identity."},
+ {t:"security",q:"Should you share a one-time MFA code with a caller?",a:["Yes if they sound important","No; verify through approved channels","Post it in a group"],c:1,e:"Never share one-time codes or approve unexpected authentication requests."},
+ {t:"linux",q:"Which command lists files in Linux?",a:["ls","ipconfig","tasklist /delete"],c:0,e:"The ls command lists directory contents."},
+ {t:"linux",q:"Which command shows the current directory?",a:["pwd","cdrom","show-ip"],c:0,e:"pwd prints the current working directory."},
+ {t:"cloud",q:"Microsoft Entra ID is mainly associated with what?",a:["Identity and access management","Printer toner","Laptop screen brightness"],c:0,e:"Microsoft Entra ID provides cloud identity and access capabilities."},
+ {t:"cloud",q:"What does SaaS stand for?",a:["Software as a Service","Storage as a Switch","Security at a Site"],c:0,e:"SaaS delivers software as a service over a network."},
+ {t:"web",q:"What does HTML primarily define?",a:["Web page structure","Network cable length","Wi-Fi password strength"],c:0,e:"HTML provides the structure and content of web pages."},
+ {t:"web",q:"What does CSS control?",a:["Visual presentation and layout","IP address leasing","DNS records only"],c:0,e:"CSS styles the presentation and layout of web content."}
+];
+let quizQuestions=[],quizIndex=0,quizAnswered=false;
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+function startQuiz(){
+  const topic=document.getElementById("topic").value;
+  quizQuestions=shuffle(quizBank.filter(x=>topic==="all"||x.t===topic)).slice(0,8);
+  quizIndex=0;renderQuiz();
+}
+function renderQuiz(){
+  quizAnswered=false;
+  const q=quizQuestions[quizIndex];
+  document.getElementById("quiz-count").textContent=`Question ${quizIndex+1} / ${quizQuestions.length}`;
+  document.getElementById("quiz-progress").style.width=`${quizIndex/quizQuestions.length*100}%`;
+  document.getElementById("quiz-question").textContent=q.q;
+  document.getElementById("quiz-feedback").className="feedback";
+  document.getElementById("quiz-feedback").textContent="Choose the best answer.";
+  document.getElementById("quiz-next").disabled=true;
+  document.getElementById("quiz-next").textContent=quizIndex===quizQuestions.length-1?"Finish quiz ✓":"Next question →";
+  const box=document.getElementById("quiz-answers");box.innerHTML="";
+  q.a.forEach((answer,i)=>{
+    const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+answer;
+    b.onclick=()=>answerQuiz(i);box.appendChild(b);
+  });
+}
+function answerQuiz(i){
+  if(quizAnswered)return;quizAnswered=true;
+  const q=quizQuestions[quizIndex],ok=i===q.c;
+  [...document.querySelectorAll("#quiz-answers button")].forEach((b,j)=>{
+    b.disabled=true;if(j===q.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("wrong");
+  });
+  const f=document.getElementById("quiz-feedback");
+  f.className="feedback "+(ok?"good":"bad");
+  if(ok){earn(10);f.textContent="✅ Correct! +10 XP. "+q.e;}
+  else{f.textContent="❌ Not quite. Correct: "+q.a[q.c]+". "+q.e;}
+  document.getElementById("quiz-progress").style.width=`${(quizIndex+1)/quizQuestions.length*100}%`;
+  document.getElementById("quiz-next").disabled=false;
+}
+document.getElementById("topic").onchange=startQuiz;
+document.getElementById("quiz-reset").onclick=startQuiz;
+document.getElementById("quiz-next").onclick=()=>{
+  if(quizIndex<quizQuestions.length-1){quizIndex++;renderQuiz();}
+  else{document.getElementById("quiz-question").textContent="🎉 Quiz complete! Play again to practice more.";document.getElementById("quiz-answers").innerHTML="";document.getElementById("quiz-feedback").textContent="Great work! Choose another topic or restart.";document.getElementById("quiz-next").disabled=true;document.getElementById("quiz-progress").style.width="100%";}
+};
+startQuiz();
+
+/* ---------- Troubleshooting Games ---------- */
+const games={
+helpdesk:{name:"🦸 Helpdesk Hero",cases:[
+{d:"👩‍💼 User: “Wi-Fi নাই! Internet আমার সঙ্গে breakup করেছে!”",q:"What is the best first step?",a:["Factory reset the router","Check Wi-Fi status and whether other devices are affected","Order a new laptop"],c:1,h:"Find out if the issue affects one device or the whole network.",e:"Check connection status, scope and other devices before changing network settings."},
+{d:"🖨️ User: “Printer offline! আমি printer-কে motivation দিয়েছি!”",q:"What should you check first?",a:["Power, paper, connection and print queue","Uninstall every driver in the office","Hit the printer"],c:0,h:"Start with simple physical checks and printer status.",e:"Check power, paper, errors, connection and queue before driver troubleshooting."},
+{d:"📧 User: “Outlook কাজ করছে না। আমার career শেষ!”",q:"What evidence should you collect?",a:["Delete the mailbox","Error message, connectivity and webmail status","Ask for their password in chat"],c:1,h:"Find the exact error and check whether webmail works.",e:"Compare Outlook and webmail, inspect the error and follow approved account recovery. Never ask for passwords in chat."},
+{d:"💻 User: “Laptop slow. Mouse-ও loading নিচ্ছে!”",q:"What is a safe first diagnostic step?",a:["Delete system folders","Check Task Manager CPU, RAM and Disk usage","Install an unknown booster"],c:1,h:"Identify the resource bottleneck first.",e:"Review resource usage, startup apps, disk space and approved updates before making changes."}
+]},
+network:{name:"🥷 Network Ninja",cases:[
+{d:"🌐 User: “IP 169.254.x.x! PC নিজের network বানিয়েছে?”",q:"What is a likely cause?",a:["DHCP lease failed","DNS is too fast","Monitor brightness is low"],c:0,h:"This is a common APIPA/link-local address range.",e:"Check link, VLAN, DHCP server/scope and relay. If authorised, try ipconfig /renew."},
+{d:"🧭 User: “IP ping হয়, কিন্তু website খোলে না!”",q:"Which test helps investigate DNS?",a:["nslookup example.com","Change wallpaper","Unplug the keyboard"],c:0,h:"Test name resolution separately.",e:"Use nslookup and compare name resolution with IP connectivity. Also consider proxy, firewall and browser issues."},
+{d:"🚪 User: “Local network চলে, internet নেই!”",q:"What should you check?",a:["Default gateway and upstream route","Keyboard language","Desktop icons"],c:0,h:"The default gateway routes traffic beyond the local subnet.",e:"Check IP/subnet, gateway reachability, routing and upstream service."},
+{d:"🔌 User: “One desk has no network, nearby desk works.”",q:"Best next step?",a:["Restart the entire office switch","Compare cable, link, NIC and switch port/VLAN","Change everyone's IP"],c:1,h:"Isolate the affected endpoint or port.",e:"Compare cable, NIC, link light, port status and VLAN before broader changes."}
+]},
+cyber:{name:"🕵️ Cyber Detective",cases:[
+{d:"📩 Email: “Account closes in 5 minutes! Click NOW!”",q:"What is the safest action?",a:["Click and enter password","Verify sender independently and report if suspicious","Forward it to everyone"],c:1,h:"Urgency and unexpected links are red flags.",e:"Avoid the link and follow your organisation's phishing-report process."},
+{d:"🔐 User: “Password123! Safe তো?”",q:"What is better advice?",a:["Reuse it everywhere","Use unique long passwords, a manager and MFA","Write it on a public note"],c:1,h:"Password reuse makes multiple accounts vulnerable.",e:"Use unique passwords/passphrases, an approved password manager and MFA."},
+{d:"☎️ Caller: “I am the CEO. Tell me your MFA code!”",q:"What should you do?",a:["Share the code","Never share it; verify through approved channels","Post it in the team chat"],c:1,h:"Urgency is not identity verification.",e:"Never share MFA codes. Verify requests using approved contact details."},
+{d:"💾 A USB labelled FREE RAM BOOST is found.",q:"What is the safe action?",a:["Plug it into your work PC","Report and hand it over according to security policy","Install its software"],c:1,h:"Unknown removable media may contain malware.",e:"Do not connect unknown media; follow your organisation's security procedure."}
+]},
+speed:{name:"⚡ Ticket Speedrun",cases:[
+{d:"🎧 User: “No sound! Meeting-এ lip-reading করছি!”",q:"First checks?",a:["Output device, mute, volume and headset","Delete the audio driver immediately","Kick everyone out"],c:0,h:"The selected output device or mute setting may be responsible.",e:"Check output, system/app volume, connection and meeting settings."},
+{d:"🔑 User: “Account locked. Guess করতে করতে হাত ব্যথা!”",q:"Best next step?",a:["Keep guessing","Verify identity and use approved unlock/reset process","Send passwords in a spreadsheet"],c:1,h:"Repeated attempts may worsen lockout.",e:"Verify identity, review the lockout state and follow the approved recovery workflow."},
+{d:"🖥️ User: “External monitor says No Signal!”",q:"What should you check first?",a:["Input source, cable and display mode","Pour water on the monitor","Change random settings"],c:0,h:"Start with the signal path and selected input.",e:"Check monitor input, cable/dock and Windows display mode (Win+P)."},
+{d:"🧹 User: “Disk almost full. 0 bytes free!”",q:"Safe first step?",a:["Delete random system files","Review storage usage and approved cleanup options","Install an unknown cleaner"],c:1,h:"Find what consumes space before removing files.",e:"Use Storage settings and approved cleanup; protect user data and system files."}
+]}
+};
+let currentGame="helpdesk",caseIndex=0,gameAnswered=false,hintUsed=false;
+function renderGame(){
+ const g=games[currentGame],c=g.cases[caseIndex];gameAnswered=false;hintUsed=false;
+ document.getElementById("game-name").textContent=g.name;
+ document.getElementById("case-count").textContent=`Case ${caseIndex+1} / ${g.cases.length}`;
+ document.getElementById("game-progress").style.width=`${caseIndex/g.cases.length*100}%`;
+ document.getElementById("game-dialogue").textContent=c.d;
+ document.getElementById("game-question").textContent=c.q;
+ document.getElementById("game-feedback").className="feedback";
+ document.getElementById("game-feedback").textContent="Choose the safest troubleshooting step.";
+ document.getElementById("game-next").disabled=true;
+ document.getElementById("game-next").textContent=caseIndex===g.cases.length-1?"Finish mission 🏁":"Next case →";
+ document.getElementById("game-hint").disabled=false;
+ const box=document.getElementById("game-answers");box.innerHTML="";
+ c.a.forEach((answer,i)=>{
   const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+answer;
-  b.onclick=()=>choose(i);$("answers").appendChild(b)
- })
+  b.onclick=()=>answerGame(i);box.appendChild(b);
+ });
 }
-function choose(i){
- if(locked)return;locked=true;const q=data[topic][index],good=i===q[3];
- [...$("answers").children].forEach((b,j)=>{b.disabled=true;if(j===q[3])b.classList.add("correct");if(j===i&&!good)b.classList.add("wrong")});
- if(good){xp+=10;correct++;$("result").textContent="🎉 Correct! +10 XP"}else{$("result").textContent="💡 Good try — learn from this!"}
- $("explanation").textContent=q[4];$("feedback").classList.add("show");$("next").disabled=false;stats()
+function answerGame(i){
+ if(gameAnswered)return;gameAnswered=true;
+ const c=games[currentGame].cases[caseIndex],ok=i===c.c;
+ [...document.querySelectorAll("#game-answers button")].forEach((b,j)=>{b.disabled=true;if(j===c.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("wrong");});
+ const f=document.getElementById("game-feedback");
+ f.className="feedback "+(ok?"good":"bad");
+ if(ok){const pts=hintUsed?10:15;earn(pts);f.textContent=`✅ Mission success! +${pts} XP. ${c.e}`;}
+ else{f.textContent=`❌ Correct answer: ${c.a[c.c]}. ${c.e}`;}
+ document.getElementById("game-progress").style.width=`${(caseIndex+1)/games[currentGame].cases.length*100}%`;
+ document.getElementById("game-next").disabled=false;
+ document.getElementById("game-hint").disabled=true;
 }
-function next(){index=(index+1)%data[topic].length;renderQuestion()}
-$("next").onclick=next;$("skip").onclick=next;
-$("checkIp").onclick=()=>{
- const parts=$("ip").value.trim().split(".");
- const valid=parts.length===4&&parts.every(p=>/^\d{1,3}$/.test(p)&&+p>=0&&+p<=255);
- if(!valid){$("ipOut").innerHTML="<b>Invalid IPv4 format</b><br>Use four numbers from 0 to 255.";return}
- const n=parts.map(Number);let hint="Public-range candidate";
- if(n[0]===10||(n[0]===172&&n[1]>=16&&n[1]<=31)||(n[0]===192&&n[1]===168))hint="Private IPv4 address";
- else if(n[0]===127)hint="Loopback address";
- else if(n[0]===169&&n[1]===254)hint="Link-local/APIPA — DHCP may have failed";
- $("ipOut").innerHTML="<b>Valid IPv4 format ✓</b><br>"+n.join(".")+"<br>"+hint+"<br><small>Valid format does not guarantee reachability.</small>"
-};
-function calc(){
- const p=Number($("cidr").value);
- if(!Number.isInteger(p)||p<0||p>32){$("cidrOut").innerHTML="<b>Enter a prefix from 0 to 32.</b>";return}
- const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
- const str=[mask>>>24,(mask>>>16)&255,(mask>>>8)&255,mask&255].join(".");
- const total=2**(32-p),usable=p<=30?total-2:(p===31?2:1);
- $("cidrOut").innerHTML=`<b>/${p} → ${str}</b><br>Total addresses: ${total.toLocaleString()}<br>Usable hosts (traditional): ${usable.toLocaleString()}`
-}
-$("calc").onclick=calc;calc();
-$("passCheck").onclick=()=>{
- const p=$("pass").value;let score=0,tips=[];
- if(p.length>=12)score++;else tips.push("Use 12+ characters.");
- if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;else tips.push("Mix uppercase and lowercase.");
- if(/\d/.test(p))score++;else tips.push("Consider numbers.");
- if(/[^A-Za-z0-9]/.test(p))score++;else tips.push("Consider a symbol or longer passphrase.");
- const label=!p?"Enter a sample":score>=4?"Strong pattern":score>=3?"Fair pattern":"Needs improvement";
- $("passOut").innerHTML="<b>"+label+"</b><br>"+(p?"Length: "+p.length+" characters<br>":"")+tips.join("<br>")+"<br><small>Simple estimate only. Never enter a real password.</small>"
-};
-$("challengeAnswers").querySelectorAll("button").forEach(b=>b.onclick=()=>{
- const good=b.dataset.good==="true";
- $("challengeAnswers").querySelectorAll("button").forEach(x=>x.disabled=true);
- if(good){xp+=15;correct++;$("challengeResult").textContent="🏆 Correct diagnosis! +15 XP"}
- else $("challengeResult").textContent="💡 Read the explanation";
- $("challengeExplanation").textContent="169.254.x.x is a link-local/APIPA address. Check Wi-Fi connectivity, DHCP server/scope and adapter settings; then renew the IP lease if appropriate.";
- $("challengeFeedback").classList.add("show");stats()
+document.querySelectorAll("[data-game]").forEach(b=>b.onclick=()=>{
+ currentGame=b.dataset.game;caseIndex=0;renderGame();
+ document.getElementById("games").scrollIntoView({behavior:"smooth"});
 });
-$("year").textContent=new Date().getFullYear();renderTopics();renderQuestion();stats();
+document.getElementById("game-hint").onclick=()=>{
+ if(gameAnswered||hintUsed)return;hintUsed=true;
+ document.getElementById("game-feedback").textContent="💡 Hint: "+games[currentGame].cases[caseIndex].h;
+};
+document.getElementById("game-next").onclick=()=>{
+ if(caseIndex<games[currentGame].cases.length-1){caseIndex++;renderGame();}
+ else{
+  document.getElementById("game-dialogue").textContent="🎉 Mission complete!";
+  document.getElementById("game-question").textContent=games[currentGame].name+" — well done, Troubleshooter!";
+  document.getElementById("game-answers").innerHTML="";
+  document.getElementById("game-feedback").className="feedback good";
+  document.getElementById("game-feedback").textContent="Choose another game to keep practising.";
+  document.getElementById("game-progress").style.width="100%";
+  document.getElementById("case-count").textContent="Completed";
+  document.getElementById("game-next").disabled=true;
+ }
+};
+document.getElementById("game-restart").onclick=()=>{caseIndex=0;renderGame();};
+renderGame();
+
+/* ---------- IPv4 Checker ---------- */
+function parseIPv4(s){
+ const parts=s.trim().split(".");
+ if(parts.length!==4)return null;
+ const nums=[];
+ for(const p of parts){
+  if(!/^\d{1,3}$/.test(p))return null;
+  const n=Number(p);if(n<0||n>255)return null;nums.push(n);
+ }
+ return nums;
+}
+document.getElementById("ip-check").onclick=()=>{
+ const s=document.getElementById("ip-input").value,ip=parseIPv4(s),r=document.getElementById("ip-result");
+ if(!ip){r.textContent="❌ Invalid IPv4 format. Example: 192.168.1.10";return;}
+ let type="Public or other address range";
+ if(ip[0]===10||(ip[0]===172&&ip[1]>=16&&ip[1]<=31)||(ip[0]===192&&ip[1]===168))type="Private IPv4 address";
+ else if(ip[0]===127)type="Loopback address";
+ else if(ip[0]===169&&ip[1]===254)type="Link-local / APIPA address";
+ else if(ip.every(n=>n===255))type="Limited broadcast address";
+ else if(ip[0]===0)type="Special-purpose address range";
+ r.textContent=`✅ Valid IPv4 syntax: ${ip.join(".")} — ${type}.`;
+};
+
+/* ---------- CIDR Calculator ---------- */
+const prefix=document.getElementById("prefix");
+for(let i=0;i<=32;i++){const o=document.createElement("option");o.value=i;o.textContent="/"+i;if(i===24)o.selected=true;prefix.appendChild(o);}
+document.getElementById("cidr-check").onclick=()=>{
+ const ip=parseIPv4(document.getElementById("cidr-ip").value),p=Number(prefix.value),r=document.getElementById("cidr-result");
+ if(!ip){r.textContent="❌ Enter a valid IPv4 address.";return;}
+ const value=ip.reduce((a,n)=>(a*256+n)>>>0,0)>>>0;
+ const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
+ const network=(value&mask)>>>0, broadcast=(network|(~mask>>>0))>>>0;
+ const toIP=n=>[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join(".");
+ const maskIP=toIP(mask),netIP=toIP(network),bcIP=toIP(broadcast);
+ const total=Math.pow(2,32-p);
+ const usable=p<=30?Math.max(0,total-2):p===31?2:1;
+ r.innerHTML=`Network: <code>${netIP}/${p}</code><br>Subnet mask: <code>${maskIP}</code><br>Broadcast: <code>${bcIP}</code><br>Total addresses: <code>${total.toLocaleString()}</code><br>Conventional usable hosts: <code>${usable.toLocaleString()}</code>`;
+};
+
+/* ---------- Password safety checklist ---------- */
+function updatePw(){
+ const checks=[...document.querySelectorAll(".pw-check")];
+ const n=checks.filter(c=>c.checked).length;
+ document.getElementById("pw-result").textContent=`${n}/4 safety practices checked.`+
+ (n===4?" Great! Keep protecting your accounts.":" Keep improving your account security.");
+}
+document.querySelectorAll(".pw-check").forEach(c=>c.onchange=updatePw);
+
+/* ---------- Funny video category filters ---------- */
+document.querySelectorAll("[data-filter]").forEach(button=>{
+ button.onclick=()=>{
+  const f=button.dataset.filter;
+  document.querySelectorAll(".comedy-card").forEach(card=>{
+   card.hidden=!(f==="all"||card.dataset.category===f);
+  });
+ };
+});
 </script>
 </body>
 </html>
