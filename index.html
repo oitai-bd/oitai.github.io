@@ -4,511 +4,781 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101827">
-<title>Otai — Fun IT Learning Platform</title>
-<meta name="description" content="Learn IT through games, troubleshooting missions, networking tools, and funny AI videos.">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Otai is your One Stop Fun Centre for IT learning, games, troubleshooting tools and AI comedy.">
+<title>Otai — One Stop Fun Centre</title>
+
 <style>
 :root {
-  --bg:#0b1120; --panel:#141e30; --panel2:#1c2940;
-  --text:#edf4ff; --muted:#a9b8d0; --green:#7cf5c5;
-  --purple:#b9a2ff; --border:#2c3b54; --red:#ff929b;
+  --bg: #080d1b;
+  --panel: #111a2e;
+  --panel2: #17233b;
+  --text: #f2f5ff;
+  --muted: #a7b3ca;
+  --primary: #8b7cff;
+  --secondary: #39e5bd;
+  --border: #283650;
+  --danger: #ff7185;
+  --radius: 18px;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
-a{color:var(--green);text-decoration:none}
-button,input,select{font:inherit}
-button{cursor:pointer}
-header{position:sticky;top:0;z-index:10;background:#0b1120ed;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
-.nav{max-width:1150px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.logo{font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--green)}
-nav{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
-nav a{color:var(--muted)}
-nav a:hover{color:var(--green)}
-.container{max-width:1150px;margin:auto;padding:24px 18px}
-.hero{padding:55px 0 35px;display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:center}
-.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:clamp(38px,6vw,65px);line-height:1.04;letter-spacing:-2px;margin:12px 0}
-h2{font-size:clamp(25px,4vw,36px);line-height:1.15;margin:8px 0}
-h3{line-height:1.3}
-p{color:var(--muted)}
-.hero p{font-size:17px;max-width:650px}
-.gradient{background:linear-gradient(90deg,var(--green),var(--purple));background-clip:text;-webkit-background-clip:text;color:transparent}
-.btn{display:inline-block;border:1px solid var(--border);border-radius:10px;padding:10px 15px;background:var(--panel2);color:var(--text);font-weight:700}
-.btn.primary{background:var(--green);color:#092019;border-color:var(--green)}
-.btn:hover{filter:brightness(1.1)}
-.hero-box,.panel,.card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px}
-.hero-box{background:linear-gradient(145deg,#172a38,#211c3b)}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
-.stat{padding:12px;background:#0e1929;border-radius:12px;text-align:center}
-.stat strong{display:block;font-size:23px;color:var(--green)}
-.stat small{color:var(--muted)}
-.section{padding:32px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:18px}
-.section-head p{margin:5px 0 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{transition:transform .15s,border-color .15s}
-.card:hover{transform:translateY(-2px);border-color:#58708f}
-.card .emoji{font-size:30px}
-.card h3{margin:8px 0}
-.card p{font-size:14px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-label{display:block;color:var(--muted);font-size:13px;margin:10px 0 5px}
-input,select{background:#0d1727;color:var(--text);border:1px solid var(--border);border-radius:9px;padding:11px;width:100%;min-width:0}
-.result{padding:12px;background:#0d1727;border:1px solid var(--border);border-radius:10px;color:var(--muted);margin-top:12px;overflow-wrap:anywhere}
-.small{font-size:12px;color:var(--muted)}
-.pill{display:inline-block;padding:4px 9px;background:#26374e;border-radius:20px;font-size:12px;color:var(--green)}
-.answer-list{display:grid;gap:10px;margin:15px 0}
-.answer{padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--text);text-align:left}
-.answer.correct{background:#123a32;border-color:var(--green)}
-.answer.wrong{background:#43252e;border-color:var(--red)}
-.answer:disabled{cursor:default}
-.feedback{background:#0d1727;border-radius:10px;padding:12px;color:var(--muted);margin:12px 0;min-height:44px}
-.feedback.good{color:#baffdf;border:1px solid #367e67}
-.feedback.bad{color:#ffd4d8;border:1px solid #8d5962}
-.progress{height:7px;border-radius:20px;background:#0d1727;overflow:hidden;margin:12px 0}
-.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--purple))}
-footer{border-top:1px solid var(--border);padding:28px 18px;text-align:center;color:var(--muted)}
-.comedy-card{overflow:hidden}
-.comedy-card[hidden]{display:none}
-.comedy-card a{display:inline-block;margin-top:6px}
-.comedy-filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-.comedy-filters button{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:22px;padding:8px 12px}
-.comedy-filters button:hover{border-color:var(--green)}
-code{background:#0b1422;padding:2px 5px;border-radius:5px;color:var(--green)}
-hr{border:0;border-top:1px solid var(--border);margin:20px 0}
-@media(max-width:760px){
- .hero{grid-template-columns:1fr;padding-top:35px}
- nav{gap:10px}
- .container{padding:18px 14px}
- h1{letter-spacing:-1px}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(ellipse at top, #182447 0%, var(--bg) 48%);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button, .btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 11px;
+  padding: 11px 17px;
+  font-weight: 750;
+  transition: .2s;
+}
+button:hover, .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+.primary { background: linear-gradient(135deg, var(--primary), #6555e8); color: white; }
+.secondary { background: var(--secondary); color: #071c1a; }
+.ghost { background: #202d46; color: white; border: 1px solid var(--border); }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,13,27,.91);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  max-width: 1180px;
+  margin: auto;
+  padding: 13px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo { font-size: 27px; font-weight: 950; letter-spacing: -1px; }
+.logo span { color: var(--secondary); }
+nav { display: flex; gap: 18px; flex-wrap: wrap; }
+nav a { color: var(--muted); font-size: 14px; font-weight: 650; }
+nav a:hover { color: white; }
+.hero {
+  max-width: 1180px;
+  margin: auto;
+  padding: 78px 22px 55px;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 35px;
+  align-items: center;
+}
+.eyebrow {
+  display: inline-block;
+  padding: 7px 13px;
+  color: var(--secondary);
+  background: #102e30;
+  border: 1px solid #20514f;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 850;
+}
+h1 { font-size: clamp(43px, 6vw, 76px); line-height: 1.05; letter-spacing: -3px; margin: 20px 0; }
+h1 span { color: var(--secondary); }
+.hero p { max-width: 620px; color: var(--muted); font-size: 18px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+.hero-art {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #1b2c4b, #111629);
+  position: relative;
+  overflow: hidden;
+}
+.hero-art:before, .hero-art:after {
+  content: ""; position: absolute; border-radius: 50%;
+  filter: blur(1px);
+}
+.hero-art:before { width: 230px; height: 230px; background: #8b7cff25; top: -60px; right: -30px; }
+.hero-art:after { width: 170px; height: 170px; background: #39e5bd20; bottom: -50px; left: -20px; }
+.big-emoji { font-size: 112px; z-index: 1; filter: drop-shadow(0 10px 25px #0008); }
+.art-caption { position: absolute; bottom: 20px; z-index: 1; color: var(--muted); font-weight: 700; }
+.stats {
+  max-width: 1136px;
+  margin: 0 auto 35px;
+  padding: 0 22px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+.stat, .card, .toolbox, .quizbox {
+  background: linear-gradient(145deg, var(--panel), #0e1526);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.stat { padding: 18px; text-align: center; }
+.stat strong { display: block; font-size: 25px; color: var(--secondary); }
+.stat small { color: var(--muted); }
+section { max-width: 1180px; margin: auto; padding: 36px 22px; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 22px; }
+h2 { font-size: clamp(27px,4vw,38px); letter-spacing: -1px; margin: 0 0 5px; }
+.section-head p { color: var(--muted); margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.card { padding: 22px; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.card .emoji { font-size: 36px; margin-bottom: 9px; }
+.card h3 { margin: 0 0 7px; font-size: 20px; }
+.card p { color: var(--muted); margin: 0 0 17px; font-size: 14px; flex: 1; }
+.card button, .card .btn { margin-top: auto; }
+.pill {
+  display: inline-block; border-radius: 99px; padding: 4px 9px;
+  background: #242347; color: #c8c2ff; font-size: 11px; font-weight: 800;
+  margin-bottom: 10px;
+}
+.quizbox, .toolbox { padding: 24px; }
+.quiz-top { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+select, input[type="text"], input[type="number"], input[type="password"] {
+  width: 100%; padding: 12px 13px; color: var(--text);
+  background: #0a1120; border: 1px solid var(--border); border-radius: 10px;
+}
+.quiz-top select { width: auto; min-width: 180px; }
+.question { font-size: 21px; font-weight: 800; margin: 12px 0 17px; }
+.answers { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+.answer {
+  text-align: left; background: var(--panel2); color: var(--text);
+  border: 1px solid var(--border); padding: 14px;
+}
+.answer.correct { border-color: var(--secondary); background: #10352f; }
+.answer.wrong { border-color: var(--danger); background: #3b1c2b; }
+.answer:disabled { cursor: default; transform: none; }
+.feedback { margin: 15px 0; font-weight: 700; min-height: 25px; }
+.progress { height: 7px; background: #263149; border-radius: 99px; overflow: hidden; margin: 15px 0; }
+.progress div { height: 100%; background: var(--secondary); width: 0; transition: width .25s; }
+.tools-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.toolbox h3 { margin-top: 0; }
+.field { margin: 13px 0; }
+.field label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 5px; }
+.result { margin-top: 14px; padding: 13px; background: #0b1323; border-radius: 10px; border: 1px solid var(--border); overflow-wrap: anywhere; }
+.checklist { display: grid; gap: 10px; }
+.checklist label { display: flex; gap: 10px; align-items: start; color: var(--muted); }
+.checklist input { margin-top: 6px; accent-color: var(--secondary); }
+.filterbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.filterbar button.active { background: var(--secondary); color: #071c1a; }
+.comedy-card { transition: .2s; }
+footer { border-top: 1px solid var(--border); margin-top: 45px; padding: 30px 22px; text-align: center; color: var(--muted); }
+footer strong { color: var(--secondary); }
+.notice { color: var(--muted); font-size: 12px; }
+.mobile-menu { display: none; }
+@media(max-width:800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-art { min-height: 220px; }
+  .grid { grid-template-columns: repeat(2,1fr); }
+  .tools-grid { grid-template-columns: 1fr; }
+  nav { gap: 10px; }
+}
+@media(max-width:560px) {
+  .nav { align-items: flex-start; flex-direction: column; }
+  nav { width: 100%; }
+  nav a { font-size: 12px; }
+  .grid, .stats, .answers { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -1.7px; }
+  .section-head { align-items: flex-start; flex-direction: column; }
 }
 </style>
 </head>
+
 <body>
 <header>
   <div class="nav">
-    <a class="logo" href="#home">Otai<span style="color:var(--purple)">.</span></a>
-    <nav>
-      <a href="#learn">Learn</a>
+    <a class="logo" href="#home" aria-label="Otai home">Otai<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#quiz">IT Quiz</a>
       <a href="#games">Games</a>
       <a href="#tools">IT Tools</a>
-      <a href="#comedy">Funny Videos</a>
+      <a href="#comedy">Comedy</a>
+      <a href="#about">About</a>
     </nav>
   </div>
 </header>
 
-<main class="container" id="home">
-  <section class="hero">
-    <div>
-      <div class="eyebrow">One Stop Resolve Centre</div>
-      <h1>IT শেখো <span class="gradient">মজা করে!</span></h1>
-      <p>Learn IT. Play IT. Fix IT. বাস্তব IT support problem সমাধান করো, networking শেখো, quiz খেলো আর AI-এর funny কাণ্ড দেখে হাসো!</p>
-      <div class="row">
-        <a class="btn primary" href="#games">🎮 Play Games</a>
-        <a class="btn" href="#tools">🛠️ Explore Tools</a>
-      </div>
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">Learn IT • Play IT • Fix IT</div>
+    <h1>Otai — One Stop <span>Fun Centre</span></h1>
+    <p>
+      Learn technology without getting bored. Play IT games, test your
+      knowledge, solve tech challenges and enjoy the funny side of AI.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#quiz">Start Learning 🚀</a>
+      <a class="btn ghost" href="#games">Explore Games 🎮</a>
     </div>
-    <div class="hero-box">
-      <div class="eyebrow">Your IT journey</div>
-      <h2>From IT Beginner to <span class="gradient">IT Hero</span></h2>
-      <p>Practice real-world troubleshooting, one funny mission at a time.</p>
-      <div class="stat-grid">
-        <div class="stat"><strong id="xp">0</strong><small>Total XP</small></div>
-        <div class="stat"><strong id="solved">0</strong><small>Solved</small></div>
-        <div class="stat"><strong id="level">1</strong><small>Level</small></div>
-      </div>
-      <p class="small" id="rank">Rank: IT Intern</p>
-    </div>
-  </section>
+    <p class="notice">Simple Concept. More Effective.</p>
+  </div>
+  <div class="hero-art">
+    <div class="big-emoji">🤖</div>
+    <div class="art-caption">IT skills + fun = Otai</div>
+  </div>
+</section>
 
-  <section class="section" id="learn">
-    <div class="section-head">
-      <div><div class="eyebrow">Learn by playing</div><h2>🎯 IT Knowledge Quiz</h2>
-      <p>প্রশ্নের উত্তর দাও, explanation পড়ো, XP অর্জন করো।</p></div>
-    </div>
-    <div class="panel">
-      <label for="topic">Choose a topic</label>
-      <select id="topic">
-        <option value="all">Mixed IT Quiz</option>
-        <option value="network">Networking</option>
+<div class="stats">
+  <div class="stat"><strong id="xp">0 XP</strong><small>Total experience</small></div>
+  <div class="stat"><strong id="rank">Beginner</strong><small>Your IT rank</small></div>
+  <div class="stat"><strong id="played">0</strong><small>Quiz answers attempted</small></div>
+</div>
+
+<section id="quiz">
+  <div class="section-head">
+    <div><h2>🧠 IT Knowledge Arena</h2><p>Answer questions and earn XP.</p></div>
+  </div>
+  <div class="quizbox">
+    <div class="quiz-top">
+      <select id="category" aria-label="Choose quiz category">
+        <option value="all">All Topics</option>
+        <option value="networking">Networking</option>
         <option value="windows">Windows & IT Support</option>
         <option value="security">Cybersecurity</option>
         <option value="linux">Linux</option>
         <option value="cloud">Cloud & Microsoft 365</option>
-        <option value="web">Web & Coding</option>
+        <option value="coding">Web & Coding</option>
       </select>
-      <div class="progress"><span id="quiz-progress"></span></div>
-      <div class="small" id="quiz-count">Question 1</div>
-      <h3 id="quiz-question">Ready to test your IT skills?</h3>
-      <div class="answer-list" id="quiz-answers"></div>
-      <div class="feedback" id="quiz-feedback">Choose the correct answer to begin.</div>
-      <div class="row">
-        <button class="btn primary" id="quiz-next" disabled>Next question →</button>
-        <button class="btn" id="quiz-reset">Restart quiz</button>
-      </div>
+      <button class="ghost" id="restartQuiz">Restart Quiz</button>
     </div>
-  </section>
+    <div class="progress"><div id="quizProgress"></div></div>
+    <div id="quizContent" aria-live="polite"></div>
+  </div>
+</section>
 
-  <section class="section" id="games">
-    <div class="section-head">
-      <div><div class="eyebrow">Funny real-world missions</div><h2>🛠️ IT Support Game Zone</h2>
-      <p>User-এর problem শুনে সঠিক troubleshooting step বেছে নাও।</p></div>
-      <span class="pill">Earn up to 20 XP per case</span>
-    </div>
-    <div class="grid" style="margin-bottom:16px">
-      <button class="card" data-game="helpdesk" style="color:var(--text);text-align:left">
-        <span class="emoji">🦸</span><h3>Helpdesk Hero</h3><p>Wi-Fi, printer, Outlook আর slow PC fix করো।</p>
-      </button>
-      <button class="card" data-game="network" style="color:var(--text);text-align:left">
-        <span class="emoji">🥷</span><h3>Network Ninja</h3><p>DHCP, DNS, IP ও gateway mystery solve করো।</p>
-      </button>
-      <button class="card" data-game="cyber" style="color:var(--text);text-align:left">
-        <span class="emoji">🕵️</span><h3>Cyber Detective</h3><p>Phishing, MFA এবং password safety চিনে নাও।</p>
-      </button>
-      <button class="card" data-game="speed" style="color:var(--text);text-align:left">
-        <span class="emoji">⚡</span><h3>Ticket Speedrun</h3><p>দ্রুত incident-solving challenge!</p>
-      </button>
-    </div>
-    <div class="panel">
-      <div class="row" style="justify-content:space-between">
-        <span class="pill" id="game-name">🦸 Helpdesk Hero</span>
-        <span class="small" id="case-count">Case 1</span>
-      </div>
-      <div class="progress"><span id="game-progress"></span></div>
-      <div class="result" id="game-dialogue">👩‍💼 User: “Wi-Fi নাই! Internet আমার সঙ্গে কথা বলা বন্ধ করে দিয়েছে!”</div>
-      <h3 id="game-question">প্রথমে কী করবে?</h3>
-      <div class="answer-list" id="game-answers"></div>
-      <div class="feedback" id="game-feedback">Hint চাইলে Hint চাপো। Evidence first, panic never!</div>
-      <div class="row">
-        <button class="btn" id="game-hint">💡 Hint</button>
-        <button class="btn primary" id="game-next" disabled>Next case →</button>
-        <button class="btn" id="game-restart">Restart</button>
-      </div>
-      <p class="small">Educational simulator. Real incidents-এ organisation policy ও proper permission follow করবে।</p>
-    </div>
-  </section>
+<section id="games">
+  <div class="section-head">
+    <div><h2>🎮 IT Fun Games</h2><p>Practice your IT skills through mini challenges.</p></div>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="emoji">🧰</div><span class="pill">HELPDESK</span>
+      <h3>Helpdesk Hero</h3>
+      <p>A user says the computer has no internet. What should you check first?</p>
+      <button class="primary" onclick="playScenario('helpdesk')">Start Challenge</button>
+    </article>
+    <article class="card">
+      <div class="emoji">🌐</div><span class="pill">NETWORKING</span>
+      <h3>Network Ninja</h3>
+      <p>Choose the correct command to test connectivity to another device.</p>
+      <button class="primary" onclick="playScenario('network')">Start Challenge</button>
+    </article>
+    <article class="card">
+      <div class="emoji">🕵️</div><span class="pill">SECURITY</span>
+      <h3>Cyber Detective</h3>
+      <p>Spot suspicious messages and learn how to avoid phishing attacks.</p>
+      <button class="primary" onclick="playScenario('cyber')">Start Challenge</button>
+    </article>
+    <article class="card">
+      <div class="emoji">🖨️</div><span class="pill">IT SUPPORT</span>
+      <h3>Printer Panic</h3>
+      <p>The printer is offline five minutes before a meeting. Stay calm!</p>
+      <button class="primary" onclick="playScenario('printer')">Start Challenge</button>
+    </article>
+    <article class="card">
+      <div class="emoji">🐧</div><span class="pill">LINUX</span>
+      <h3>Terminal Rookie</h3>
+      <p>Test your knowledge of everyday Linux commands.</p>
+      <button class="primary" onclick="playScenario('linux')">Start Challenge</button>
+    </article>
+    <article class="card">
+      <div class="emoji">⚡</div><span class="pill">SPEED ROUND</span>
+      <h3>Ticket Speedrun</h3>
+      <p>Practice prioritizing common helpdesk incidents.</p>
+      <button class="primary" onclick="playScenario('speed')">Start Challenge</button>
+    </article>
+  </div>
+  <div class="quizbox" id="gameArea" style="margin-top:18px" aria-live="polite">
+    <h3>Ready, IT Hero? 🦸</h3>
+    <p>Choose any challenge above to begin.</p>
+  </div>
+</section>
 
-  <section class="section" id="tools">
-    <div class="section-head"><div><div class="eyebrow">Practical IT utilities</div><h2>🧰 IT Tools Lab</h2>
-    <p>Browser-এর ভেতরেই কিছু basic calculation ও validation করো।</p></div></div>
-    <div class="grid">
-      <div class="panel">
-        <h3>🌐 IPv4 Address Checker</h3>
-        <label for="ip-input">IPv4 address</label>
-        <input id="ip-input" placeholder="Example: 192.168.1.10">
-        <button class="btn primary" style="margin-top:10px" id="ip-check">Check IP</button>
-        <div class="result" id="ip-result">Enter an IPv4 address to check its format.</div>
+<section id="tools">
+  <div class="section-head">
+    <div><h2>🛠️ IT Toolbox</h2><p>Handy utilities for everyday IT tasks.</p></div>
+  </div>
+  <div class="tools-grid">
+    <div class="toolbox">
+      <h3>🌐 IPv4 Address Checker</h3>
+      <p class="notice">Check whether an address is valid IPv4.</p>
+      <div class="field">
+        <label for="ipInput">IPv4 address</label>
+        <input type="text" id="ipInput" placeholder="192.168.1.10" autocomplete="off">
       </div>
-      <div class="panel">
-        <h3>🧮 CIDR Calculator</h3>
-        <label for="cidr-ip">Network IPv4 address</label>
-        <input id="cidr-ip" value="192.168.1.10" placeholder="192.168.1.10">
-        <label for="prefix">Prefix length</label>
-        <select id="prefix"></select>
-        <button class="btn primary" style="margin-top:10px" id="cidr-check">Calculate subnet</button>
-        <div class="result" id="cidr-result">Choose an IPv4 address and prefix.</div>
-      </div>
-      <div class="panel">
-        <h3>🔐 Password Safety Tips</h3>
-        <p>এই tool-এ real password দেবে না। নিচের checklist ব্যবহার করো।</p>
-        <label><input type="checkbox" class="pw-check" style="width:auto"> Unique password/passphrase</label>
-        <label><input type="checkbox" class="pw-check" style="width:auto"> Long enough (prefer 14+ characters)</label>
-        <label><input type="checkbox" class="pw-check" style="width:auto"> MFA enabled</label>
-        <label><input type="checkbox" class="pw-check" style="width:auto"> Password manager used</label>
-        <div class="result" id="pw-result">0/4 safety practices checked.</div>
-      </div>
+      <button class="primary" onclick="checkIP()">Check Address</button>
+      <div class="result" id="ipResult" aria-live="polite">Enter an IPv4 address.</div>
     </div>
-  </section>
 
-  <section class="section" id="comedy">
-    <div class="section-head">
-      <div><div class="eyebrow">Laugh • Learn • Reboot</div>
-      <h2>🤣 IT Fails & AI Comedy</h2>
-      <p>AI fails, programmer bugs, printer drama আর helpdesk comedy—fun video খুঁজে দেখো!</p></div>
+    <div class="toolbox">
+      <h3>🧮 CIDR Calculator</h3>
+      <p class="notice">Calculate basic IPv4 network details.</p>
+      <div class="field">
+        <label for="cidrIP">IPv4 address</label>
+        <input type="text" id="cidrIP" value="192.168.1.10" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="prefix">Prefix length (0–32)</label>
+        <input type="number" id="prefix" min="0" max="32" value="24">
+      </div>
+      <button class="primary" onclick="calculateCIDR()">Calculate Network</button>
+      <div class="result" id="cidrResult" aria-live="polite">Your network details will appear here.</div>
     </div>
-    <div class="comedy-filters">
-      <button data-filter="all">🎬 All</button>
-      <button data-filter="it">🖥️ IT Support</button>
-      <button data-filter="ai">🤖 AI Funny</button>
-      <button data-filter="code">🐛 Coding Fails</button>
-      <button data-filter="printer">🖨️ Printer Drama</button>
-    </div>
-    <div class="grid">
-      <article class="card comedy-card" data-category="it">
-        <div class="emoji">🦸‍♂️</div><h3>IT Support Gone Wrong</h3>
-        <p>User: “Internet নাই!” Tech: “Wi-Fi connected?” User: “না, আমি Wi-Fi বন্ধ করে রেখেছি!” 😭</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+helpdesk+comedy">▶ Find IT support comedy ↗</a>
-      </article>
-      <article class="card comedy-card" data-category="ai">
-        <div class="emoji">🤖</div><h3>AI Gone Crazy</h3>
-        <p>AI-কে simple question করো, answer শুনে মনে হবে robot-এরও Monday চলছে!</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails+comedy+shorts">▶ Watch AI fails ↗</a>
-      </article>
-      <article class="card comedy-card" data-category="code">
-        <div class="emoji">🐛</div><h3>Programmer vs Bugs</h3>
-        <p>একটা bug fix করলাম। Gift হিসেবে আরও পাঁচটা bug পেলাম। 🎁</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+programmer+coding+bugs+memes">▶ Watch coding comedy ↗</a>
-      </article>
-      <article class="card comedy-card" data-category="printer">
-        <div class="emoji">🖨️</div><h3>Printer Horror Stories</h3>
-        <p>Printer offline, paper jam, driver error. IT engineer-এর final boss!</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+IT+support+memes">▶ Find printer memes ↗</a>
-      </article>
-      <article class="card comedy-card" data-category="it">
-        <div class="emoji">💻</div><h3>Windows Update Surprise</h3>
-        <p>Meeting শুরু হতে ১ মিনিট বাকি—Windows বলছে “Updating 1%”. 💀</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+Windows+update+IT+memes">▶ Find Windows memes ↗</a>
-      </article>
-      <article class="card comedy-card" data-category="ai">
-        <div class="emoji">🧠</div><h3>Human vs AI</h3>
-        <p>AI বলে “I can help with that.” তারপর user-কে আরও 17টা প্রশ্ন করে। 😅</p>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=AI+assistant+funny+skit+robot+comedy">▶ Watch AI comedy ↗</a>
-      </article>
-    </div>
-    <p class="small">ভিডিওগুলো YouTube search-এ খোলে। Search result ও availability সময়ের সঙ্গে বদলাতে পারে।</p>
-  </section>
 
-  <section class="section">
-    <div class="panel">
-      <div class="eyebrow">Our mission</div>
-      <h2>One Stop Resolve Centre</h2>
-      <p><strong>Simple Concept. More Effective.</strong> IT শেখাকে সহজ, practical এবং enjoyable করাই Otai-এর লক্ষ্য।</p>
-      <p class="small">Learning prototype • No account required • XP saved in this browser</p>
+    <div class="toolbox">
+      <h3>🔐 Password Safety Checklist</h3>
+      <p>Check password characteristics locally. Never enter a real password here.</p>
+      <div class="field">
+        <label for="demoPassword">Demo password only</label>
+        <input type="password" id="demoPassword" placeholder="Use a made-up example" autocomplete="off">
+      </div>
+      <div class="checklist" id="passwordChecks">
+        <label><input type="checkbox" disabled> At least 12 characters</label>
+        <label><input type="checkbox" disabled> Uppercase and lowercase letters</label>
+        <label><input type="checkbox" disabled> Includes a number</label>
+        <label><input type="checkbox" disabled> Includes a symbol</label>
+      </div>
+      <p id="passwordResult" class="result" aria-live="polite">No password is sent anywhere by this page.</p>
+      <button class="ghost" style="margin-top:10px" onclick="clearPassword()">Clear Input</button>
     </div>
-  </section>
+
+    <div class="toolbox">
+      <h3>📚 Quick IT Reference</h3>
+      <p>Useful commands for learning and troubleshooting.</p>
+      <div class="field">
+        <label for="commandSelect">Choose a command</label>
+        <select id="commandSelect" onchange="showCommand()">
+          <option value="ipconfig">Windows: ipconfig</option>
+          <option value="ping">Windows/Linux: ping</option>
+          <option value="tracert">Windows: tracert</option>
+          <option value="nslookup">Windows/Linux: nslookup</option>
+          <option value="linuxls">Linux: ls -la</option>
+          <option value="linuxpwd">Linux: pwd</option>
+          <option value="linuxdf">Linux: df -h</option>
+        </select>
+      </div>
+      <div class="result" id="commandResult"></div>
+      <button class="ghost" onclick="copyCommand()">Copy Command</button>
+      <span id="copyFeedback" class="notice" aria-live="polite"></span>
+    </div>
+  </div>
+</section>
+
+<section id="comedy">
+  <div class="section-head">
+    <div><h2>😂 IT Comedy Zone</h2><p>Because even computers have bad days.</p></div>
+  </div>
+  <div class="filterbar" aria-label="Filter comedy topics">
+    <button class="ghost active" data-filter="all">All</button>
+    <button class="ghost" data-filter="support">IT Support</button>
+    <button class="ghost" data-filter="printer">Printer Drama</button>
+    <button class="ghost" data-filter="ai">AI Fails</button>
+    <button class="ghost" data-filter="coding">Coding Bugs</button>
+  </div>
+  <div class="grid" id="comedyGrid">
+    <article class="card comedy-card" data-type="support">
+      <div class="emoji">🧑‍💻</div><h3>The Classic Ticket</h3>
+      <p>User: “The whole internet is broken!”<br>IT: “Is Wi-Fi turned on?”<br>User: “...Oh.”</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+support+memes">Watch IT Support Videos ↗</a>
+    </article>
+    <article class="card comedy-card" data-type="printer">
+      <div class="emoji">🖨️</div><h3>Printer Logic</h3>
+      <p>Printer status: Ready.<br>Printer behavior: Absolutely not.</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+printer+problems+IT+memes">Printer Comedy ↗</a>
+    </article>
+    <article class="card comedy-card" data-type="ai">
+      <div class="emoji">🤖</div><h3>AI Confidence</h3>
+      <p>AI: “I am 100% confident.”<br>Also AI: invents a setting that doesn't exist.</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+fails">AI Fails Videos ↗</a>
+    </article>
+    <article class="card comedy-card" data-type="coding">
+      <div class="emoji">🐛</div><h3>One Tiny Bug</h3>
+      <p>Developer fixes one bug and accidentally creates three new features.</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+coding+bugs+programming+memes">Coding Memes ↗</a>
+    </article>
+    <article class="card comedy-card" data-type="support">
+      <div class="emoji">🔄</div><h3>Have You Restarted?</h3>
+      <p>IT support's most powerful spell: “Please restart your computer.”</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+IT+helpdesk+skits">Helpdesk Skits ↗</a>
+    </article>
+    <article class="card comedy-card" data-type="ai">
+      <div class="emoji">💬</div><h3>Prompt Engineering</h3>
+      <p>“Make it simple.”<br>AI returns a 47-page explanation.</p>
+      <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=funny+AI+chatbot+fails">AI Comedy ↗</a>
+    </article>
+  </div>
+  <p class="notice">Video links open YouTube search results; they are not embedded or individually verified videos.</p>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div><h2>The Fun Side of IT & AI</h2><p>What is Otai?</p></div>
+  </div>
+  <div class="quizbox">
+    <h3>Otai — One Stop Fun Centre 🚀</h3>
+    <p>
+      Otai is a fun learning platform concept where technology meets games,
+      practical tools and comedy. Our goal is to make IT concepts easier to
+      understand and more enjoyable to practice.
+    </p>
+    <p><strong style="color:var(--secondary)">Learn IT • Play IT • Fix IT</strong></p>
+    <p class="notice">Simple Concept. More Effective.</p>
+  </div>
+</section>
 </main>
 
 <footer>
-  <strong>Otai.</strong> — Learn IT. Play IT. Fix IT.<br>
-  <span class="small">Made for curious minds and future IT heroes.</span>
+  <div class="logo">Otai<span>.</span></div>
+  <p><strong>One Stop Fun Centre</strong></p>
+  <p>Learn IT • Play IT • Fix IT</p>
+  <p class="notice">Built for curious minds, future IT pros and tech lovers.</p>
+  <p class="notice">© <span id="year"></span> Otai. Learn something. Laugh a little. Fix something.</p>
 </footer>
 
 <script>
-/* ---------- Progress / XP ---------- */
-const STORAGE_KEY = "otaiFullPlatformV1";
-let progress = {xp:0,solved:0,correct:0};
-try { progress = {...progress,...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")}; } catch(e){}
-function saveProgress(){
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));}catch(e){}
-  updateStats();
+"use strict";
+
+/* ---------- XP AND LOCAL PROGRESS ---------- */
+const STORE_KEY = "otai-fun-centre-v1";
+let progressData = { xp: 0, played: 0 };
+
+try {
+  const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+  progressData.xp = Number.isFinite(saved.xp) ? Math.max(0, saved.xp) : 0;
+  progressData.played = Number.isFinite(saved.played) ? Math.max(0, saved.played) : 0;
+} catch (_) {}
+
+function saveProgress() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(progressData)); }
+  catch (_) {}
+  renderProgress();
 }
-function updateStats(){
-  document.getElementById("xp").textContent=progress.xp;
-  document.getElementById("solved").textContent=progress.solved;
-  document.getElementById("level").textContent=Math.floor(progress.xp/50)+1;
-  let rank=progress.xp>=250?"IT Legend 🏆":progress.xp>=150?"Senior Tech 🔧":progress.xp>=75?"Troubleshooter 🧠":progress.xp>=25?"Junior Tech 💻":"IT Intern";
-  document.getElementById("rank").textContent="Rank: "+rank;
-}
-function earn(points,correct=true){
-  progress.xp+=points;progress.solved++;
-  if(correct)progress.correct++;
+function addXP(amount) {
+  progressData.xp += amount;
   saveProgress();
 }
-updateStats();
+function recordAnswer() {
+  progressData.played++;
+  saveProgress();
+}
+function renderProgress() {
+  document.getElementById("xp").textContent = progressData.xp + " XP";
+  document.getElementById("played").textContent = progressData.played;
+  let rank = "Beginner";
+  if (progressData.xp >= 1000) rank = "IT Legend";
+  else if (progressData.xp >= 500) rank = "IT Expert";
+  else if (progressData.xp >= 200) rank = "Tech Pro";
+  else if (progressData.xp >= 50) rank = "Tech Explorer";
+  document.getElementById("rank").textContent = rank;
+}
 
-/* ---------- Knowledge Quiz ---------- */
-const quizBank=[
- {t:"network",q:"Which service automatically assigns IP addresses to clients?",a:["DNS","DHCP","HTTP"],c:1,e:"DHCP dynamically provides IP configuration to clients."},
- {t:"network",q:"What does DNS mainly do?",a:["Resolves domain names to IP addresses","Prints documents","Encrypts every file"],c:0,e:"DNS resolves names such as example.com to IP addresses."},
- {t:"network",q:"A Windows PC has 169.254.x.x. What is a common cause?",a:["DHCP lease failed","The monitor is off","The keyboard is broken"],c:0,e:"APIPA/link-local addressing often appears when a DHCP lease cannot be obtained."},
- {t:"network",q:"Which command shows Windows IP configuration?",a:["ipconfig","mkdir","format"],c:0,e:"Use ipconfig; ipconfig /all shows more details."},
- {t:"windows",q:"Which shortcut opens Task Manager directly?",a:["Ctrl + Shift + Esc","Alt + F4 only","Win + L"],c:0,e:"Ctrl + Shift + Esc opens Task Manager."},
- {t:"windows",q:"A printer is offline. What is a good first step?",a:["Check power, connection and print queue","Delete System32","Replace every PC"],c:0,e:"Start with safe physical checks, printer status and queue."},
- {t:"windows",q:"What should you do before a risky change?",a:["Check impact and backup/policy requirements","Guess settings","Disable all security"],c:0,e:"Assess impact and follow approved change procedures."},
- {t:"security",q:"An email demands your password urgently. What should you do?",a:["Click immediately","Verify independently and report if suspicious","Forward to everyone"],c:1,e:"Urgency and unexpected credential requests are phishing warning signs."},
- {t:"security",q:"What is MFA?",a:["Multi-factor authentication","Multiple file attachment","Monitor frequency adjustment"],c:0,e:"MFA uses two or more types of evidence to verify identity."},
- {t:"security",q:"Should you share a one-time MFA code with a caller?",a:["Yes if they sound important","No; verify through approved channels","Post it in a group"],c:1,e:"Never share one-time codes or approve unexpected authentication requests."},
- {t:"linux",q:"Which command lists files in Linux?",a:["ls","ipconfig","tasklist /delete"],c:0,e:"The ls command lists directory contents."},
- {t:"linux",q:"Which command shows the current directory?",a:["pwd","cdrom","show-ip"],c:0,e:"pwd prints the current working directory."},
- {t:"cloud",q:"Microsoft Entra ID is mainly associated with what?",a:["Identity and access management","Printer toner","Laptop screen brightness"],c:0,e:"Microsoft Entra ID provides cloud identity and access capabilities."},
- {t:"cloud",q:"What does SaaS stand for?",a:["Software as a Service","Storage as a Switch","Security at a Site"],c:0,e:"SaaS delivers software as a service over a network."},
- {t:"web",q:"What does HTML primarily define?",a:["Web page structure","Network cable length","Wi-Fi password strength"],c:0,e:"HTML provides the structure and content of web pages."},
- {t:"web",q:"What does CSS control?",a:["Visual presentation and layout","IP address leasing","DNS records only"],c:0,e:"CSS styles the presentation and layout of web content."}
+/* ---------- QUIZ ---------- */
+const questions = [
+  {c:"networking",q:"Which device commonly connects different IP networks?",a:["Switch","Router","Repeater","Patch panel"],correct:1,why:"A router forwards packets between IP networks."},
+  {c:"networking",q:"Which command tests connectivity to another host?",a:["ping","mkdir","format","tasklist"],correct:0,why:"Ping sends ICMP Echo requests when supported by the destination and network."},
+  {c:"networking",q:"What is the default port for HTTPS?",a:["21","25","443","3389"],correct:2,why:"HTTPS commonly uses TCP port 443."},
+  {c:"networking",q:"What does DHCP usually provide to clients?",a:["IP configuration","Screen resolution","Antivirus license","User photo"],correct:0,why:"DHCP can assign IP addresses, subnet masks, gateways and DNS servers."},
+  {c:"networking",q:"Which address is a private IPv4 address?",a:["8.8.8.8","192.168.1.20","1.1.1.1","203.0.113.9"],correct:1,why:"192.168.0.0/16 is reserved for private networks."},
+  {c:"windows",q:"What should you check first if a PC has no network connection?",a:["Replace the motherboard","Check connection and status","Reinstall Windows","Delete user profile"],correct:1,why:"Start with basic checks: cable or Wi-Fi, airplane mode, link status and scope of impact."},
+  {c:"windows",q:"Which Windows command shows IP configuration?",a:["ipconfig","chmod","grep","ls"],correct:0,why:"ipconfig displays Windows network configuration."},
+  {c:"windows",q:"What is the usual purpose of Task Manager?",a:["View processes and performance","Create DNS zones","Configure VLAN trunks","Issue certificates"],correct:0,why:"Task Manager helps inspect running apps, processes and system performance."},
+  {c:"security",q:"What is phishing?",a:["A backup method","A deceptive attempt to steal information","A network cable type","A disk format"],correct:1,why:"Phishing tricks people into revealing credentials or opening malicious content."},
+  {c:"security",q:"Which is the safest response to an unexpected attachment?",a:["Open it immediately","Forward it to everyone","Verify the sender and report suspicion","Disable antivirus"],correct:2,why:"Verify unexpected attachments using trusted channels and follow security policy."},
+  {c:"security",q:"What does MFA add to sign-in?",a:["Another verification factor","More disk space","Faster Wi-Fi","A new IP subnet"],correct:0,why:"Multi-factor authentication requires multiple types of verification."},
+  {c:"linux",q:"Which Linux command shows the current directory?",a:["pwd","cdrom","ipconfig","cls"],correct:0,why:"pwd prints the working directory."},
+  {c:"linux",q:"Which command lists files in Linux?",a:["ls","dirping","showip","taskmgr"],correct:0,why:"ls lists directory entries."},
+  {c:"linux",q:"Which command changes file permissions?",a:["chmod","chname","ipconfig","mkdiruser"],correct:0,why:"chmod changes file mode permission bits."},
+  {c:"cloud",q:"What does SaaS stand for?",a:["Storage as a Switch","Software as a Service","Security as a Server","System and Software"],correct:1,why:"SaaS delivers software as a service over a network."},
+  {c:"cloud",q:"Microsoft Entra ID is primarily associated with what?",a:["Identity and access","Physical cabling","Printer toner","CPU cooling"],correct:0,why:"Microsoft Entra ID provides identity and access management capabilities."},
+  {c:"cloud",q:"What is a cloud backup useful for?",a:["Recovering data after loss","Increasing monitor size","Replacing all passwords","Removing all outages"],correct:0,why:"Backups support recovery from accidental deletion, failures and other incidents."},
+  {c:"coding",q:"Which language is used to structure a basic web page?",a:["HTML","SMTP","DHCP","SNMP"],correct:0,why:"HTML defines the structure and content of web pages."},
+  {c:"coding",q:"Which CSS property changes text color?",a:["color","font-file","text-device","paint-ip"],correct:0,why:"The CSS color property sets foreground text color."},
+  {c:"coding",q:"What does JavaScript commonly add to a web page?",a:["Interactivity","Physical RAM","A network cable","Electric power"],correct:0,why:"JavaScript enables interactive behavior and dynamic page updates."}
 ];
-let quizQuestions=[],quizIndex=0,quizAnswered=false;
-function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
-function startQuiz(){
-  const topic=document.getElementById("topic").value;
-  quizQuestions=shuffle(quizBank.filter(x=>topic==="all"||x.t===topic)).slice(0,8);
-  quizIndex=0;renderQuiz();
+let quizList = [];
+let quizIndex = 0;
+let quizLocked = false;
+
+function startQuiz() {
+  const category = document.getElementById("category").value;
+  quizList = questions.filter(q => category === "all" || q.c === category);
+  quizIndex = 0;
+  quizLocked = false;
+  renderQuestion();
 }
-function renderQuiz(){
-  quizAnswered=false;
-  const q=quizQuestions[quizIndex];
-  document.getElementById("quiz-count").textContent=`Question ${quizIndex+1} / ${quizQuestions.length}`;
-  document.getElementById("quiz-progress").style.width=`${quizIndex/quizQuestions.length*100}%`;
-  document.getElementById("quiz-question").textContent=q.q;
-  document.getElementById("quiz-feedback").className="feedback";
-  document.getElementById("quiz-feedback").textContent="Choose the best answer.";
-  document.getElementById("quiz-next").disabled=true;
-  document.getElementById("quiz-next").textContent=quizIndex===quizQuestions.length-1?"Finish quiz ✓":"Next question →";
-  const box=document.getElementById("quiz-answers");box.innerHTML="";
-  q.a.forEach((answer,i)=>{
-    const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+answer;
-    b.onclick=()=>answerQuiz(i);box.appendChild(b);
+function renderQuestion() {
+  const root = document.getElementById("quizContent");
+  const bar = document.getElementById("quizProgress");
+  if (quizIndex >= quizList.length) {
+    bar.style.width = "100%";
+    root.innerHTML = `<h3>🎉 Quiz complete!</h3>
+      <p>You completed ${quizList.length} questions. Keep practicing to earn more XP.</p>
+      <button class="primary" id="againQuiz">Play Again</button>`;
+    document.getElementById("againQuiz").addEventListener("click", startQuiz);
+    return;
+  }
+  quizLocked = false;
+  const item = quizList[quizIndex];
+  bar.style.width = (quizIndex / quizList.length * 100) + "%";
+  root.innerHTML = `<p class="notice">Question ${quizIndex + 1} of ${quizList.length}</p>
+    <div class="question">${escapeHTML(item.q)}</div>
+    <div class="answers">${item.a.map((answer,i) =>
+      `<button class="answer" data-answer="${i}">${escapeHTML(answer)}</button>`
+    ).join("")}</div>
+    <div class="feedback" id="quizFeedback"></div>
+    <button class="primary" id="nextQuestion" hidden>Next Question →</button>`;
+  root.querySelectorAll("[data-answer]").forEach(button => {
+    button.addEventListener("click", () => answerQuestion(Number(button.dataset.answer)));
+  });
+  document.getElementById("nextQuestion").addEventListener("click", () => {
+    quizIndex++;
+    renderQuestion();
   });
 }
-function answerQuiz(i){
-  if(quizAnswered)return;quizAnswered=true;
-  const q=quizQuestions[quizIndex],ok=i===q.c;
-  [...document.querySelectorAll("#quiz-answers button")].forEach((b,j)=>{
-    b.disabled=true;if(j===q.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("wrong");
+function answerQuestion(choice) {
+  if (quizLocked) return;
+  quizLocked = true;
+  recordAnswer();
+  const item = quizList[quizIndex];
+  const buttons = document.querySelectorAll("#quizContent .answer");
+  buttons.forEach((button,i) => {
+    button.disabled = true;
+    if (i === item.correct) button.classList.add("correct");
+    if (i === choice && choice !== item.correct) button.classList.add("wrong");
   });
-  const f=document.getElementById("quiz-feedback");
-  f.className="feedback "+(ok?"good":"bad");
-  if(ok){earn(10);f.textContent="✅ Correct! +10 XP. "+q.e;}
-  else{f.textContent="❌ Not quite. Correct: "+q.a[q.c]+". "+q.e;}
-  document.getElementById("quiz-progress").style.width=`${(quizIndex+1)/quizQuestions.length*100}%`;
-  document.getElementById("quiz-next").disabled=false;
+  const correct = choice === item.correct;
+  if (correct) addXP(10);
+  document.getElementById("quizFeedback").textContent =
+    (correct ? "✅ Correct! +10 XP. " : "❌ Not quite. ") + item.why;
+  document.getElementById("nextQuestion").hidden = false;
+  document.getElementById("nextQuestion").textContent =
+    quizIndex === quizList.length - 1 ? "See Results →" : "Next Question →";
 }
-document.getElementById("topic").onchange=startQuiz;
-document.getElementById("quiz-reset").onclick=startQuiz;
-document.getElementById("quiz-next").onclick=()=>{
-  if(quizIndex<quizQuestions.length-1){quizIndex++;renderQuiz();}
-  else{document.getElementById("quiz-question").textContent="🎉 Quiz complete! Play again to practice more.";document.getElementById("quiz-answers").innerHTML="";document.getElementById("quiz-feedback").textContent="Great work! Choose another topic or restart.";document.getElementById("quiz-next").disabled=true;document.getElementById("quiz-progress").style.width="100%";}
+document.getElementById("category").addEventListener("change", startQuiz);
+document.getElementById("restartQuiz").addEventListener("click", startQuiz);
+
+/* ---------- MINI GAMES ---------- */
+const scenarios = {
+  helpdesk: {
+    title:"🧰 Helpdesk Hero",
+    q:"One user cannot access the internet. What is a sensible first step?",
+    a:["Replace the switch","Check the user's connection and IP settings","Reinstall the operating system","Reset every office password"],
+    correct:1,why:"Start with the basics and determine whether the issue affects one user or many."
+  },
+  network: {
+    title:"🌐 Network Ninja",
+    q:"Which command is commonly used to test whether a host responds over the network?",
+    a:["ping","mkdir","notepad","chmod"],
+    correct:0,why:"Ping is a useful first test, although firewalls may block ICMP."
+  },
+  cyber: {
+    title:"🕵️ Cyber Detective",
+    q:"You receive an urgent email asking you to sign in through an unfamiliar link. What should you do?",
+    a:["Click quickly","Enter your password","Verify through a trusted channel and report it","Forward it to colleagues"],
+    correct:2,why:"Urgency and unfamiliar sign-in links can indicate phishing. Use your organization's reporting process."
+  },
+  printer: {
+    title:"🖨️ Printer Panic",
+    q:"A printer appears offline for one user. What should you check first?",
+    a:["Printer status, connection and queue","Replace all office computers","Delete the print server","Change the domain"],
+    correct:0,why:"Check power, network or USB connection, printer status and stuck jobs before deeper changes."
+  },
+  linux: {
+    title:"🐧 Terminal Rookie",
+    q:"Which command displays the current working directory?",
+    a:["pwd","chmod","ping","mkdir"],
+    correct:0,why:"pwd prints the path of your current working directory."
+  },
+  speed: {
+    title:"⚡ Ticket Speedrun",
+    q:"Several users report that the whole office network is down. What is a good next step?",
+    a:["Ignore the tickets","Treat it as a possible shared outage and investigate scope","Change one user's wallpaper","Close every ticket"],
+    correct:1,why:"Multiple users with the same symptom can indicate a shared service or network incident. Follow incident priority and escalation procedures."
+  }
 };
+function playScenario(key) {
+  const s = scenarios[key];
+  const root = document.getElementById("gameArea");
+  root.innerHTML = `<span class="pill">MINI CHALLENGE</span>
+    <h3>${s.title}</h3><div class="question">${escapeHTML(s.q)}</div>
+    <div class="answers">${s.a.map((a,i)=>`<button class="answer" data-game-answer="${i}">${escapeHTML(a)}</button>`).join("")}</div>
+    <div class="feedback" id="gameFeedback"></div>`;
+  root.querySelectorAll("[data-game-answer]").forEach(button => {
+    button.addEventListener("click", () => {
+      if (root.dataset.done === "yes") return;
+      root.dataset.done = "yes";
+      const choice = Number(button.dataset.gameAnswer);
+      recordAnswer();
+      const correct = choice === s.correct;
+      if (correct) addXP(15);
+      root.querySelectorAll(".answer").forEach((b,i) => {
+        b.disabled = true;
+        if (i === s.correct) b.classList.add("correct");
+        if (i === choice && !correct) b.classList.add("wrong");
+      });
+      document.getElementById("gameFeedback").textContent =
+        (correct ? "🎉 Correct! +15 XP. " : "Try again next time. ") + s.why;
+      const retry = document.createElement("button");
+      retry.className = "ghost";
+      retry.textContent = "Play Again";
+      retry.style.marginTop = "10px";
+      retry.addEventListener("click", () => {
+        delete root.dataset.done;
+        playScenario(key);
+      });
+      root.appendChild(retry);
+    });
+  });
+  delete root.dataset.done;
+  root.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+/* ---------- IPV4 VALIDATION ---------- */
+function parseIPv4(value) {
+  const parts = value.trim().split(".");
+  if (parts.length !== 4) return null;
+  const octets = [];
+  for (const part of parts) {
+    if (!/^\d{1,3}$/.test(part)) return null;
+    const n = Number(part);
+    if (n < 0 || n > 255) return null;
+    octets.push(n);
+  }
+  return octets;
+}
+function checkIP() {
+  const value = document.getElementById("ipInput").value;
+  const result = document.getElementById("ipResult");
+  const ip = parseIPv4(value);
+  if (!ip) {
+    result.textContent = "❌ Invalid IPv4 address. Enter four decimal octets between 0 and 255.";
+    return;
+  }
+  let note = "Valid IPv4 format.";
+  if (ip.every(n=>n===0)) note += " This is the unspecified address.";
+  else if (ip[0]===127) note += " This belongs to the loopback range.";
+  else if (ip[0]===169 && ip[1]===254) note += " This is in the link-local range.";
+  else if (ip[0]===10 || (ip[0]===172 && ip[1]>=16 && ip[1]<=31) ||
+    (ip[0]===192 && ip[1]===168)) note += " This is a private IPv4 address.";
+  else if (ip[0]>=224 && ip[0]<=239) note += " This is in the multicast range.";
+  result.textContent = "✅ " + note;
+}
+
+/* ---------- CIDR CALCULATOR ---------- */
+function ipToInt(octets) {
+  return (((octets[0] * 256 + octets[1]) * 256 + octets[2]) * 256 + octets[3]) >>> 0;
+}
+function intToIP(value) {
+  return [value>>>24,(value>>>16)&255,(value>>>8)&255,value&255].join(".");
+}
+function calculateCIDR() {
+  const result = document.getElementById("cidrResult");
+  const octets = parseIPv4(document.getElementById("cidrIP").value);
+  const prefix = Number(document.getElementById("prefix").value);
+  if (!octets || !Number.isInteger(prefix) || prefix < 0 || prefix > 32) {
+    result.textContent = "Please enter a valid IPv4 address and a prefix from 0 to 32.";
+    return;
+  }
+  const ip = ipToInt(octets);
+  const mask = prefix === 0 ? 0 : (0xffffffff << (32-prefix)) >>> 0;
+  const network = (ip & mask) >>> 0;
+  const broadcast = (network | (~mask >>> 0)) >>> 0;
+  const total = Math.pow(2,32-prefix);
+  const maskIP = intToIP(mask);
+  let usable = "Depends on address and network use";
+  if (prefix <= 30) usable = String(Math.max(0,total-2)) + " conventional host addresses";
+  if (prefix === 31) usable = "2 addresses (commonly point-to-point)";
+  if (prefix === 32) usable = "1 single address";
+  result.innerHTML = `<strong>Network:</strong> ${intToIP(network)}/${prefix}<br>
+    <strong>Subnet mask:</strong> ${maskIP}<br>
+    <strong>Broadcast:</strong> ${intToIP(broadcast)}<br>
+    <strong>Total addresses:</strong> ${total.toLocaleString()}<br>
+    <strong>Address count:</strong> ${usable}`;
+}
+
+/* ---------- PASSWORD CHECKLIST ---------- */
+const passwordInput = document.getElementById("demoPassword");
+passwordInput.addEventListener("input", () => {
+  const p = passwordInput.value;
+  const tests = [
+    p.length >= 12,
+    /[a-z]/.test(p) && /[A-Z]/.test(p),
+    /\d/.test(p),
+    /[^A-Za-z0-9]/.test(p)
+  ];
+  document.querySelectorAll("#passwordChecks input").forEach((box,i) => box.checked = tests[i]);
+  const count = tests.filter(Boolean).length;
+  const result = document.getElementById("passwordResult");
+  result.textContent = p.length === 0 ? "No password is sent anywhere by this page." :
+    `${count}/4 characteristics met. This is a basic checklist, not a security guarantee. Use a unique passphrase and MFA where available.`;
+});
+function clearPassword() {
+  passwordInput.value = "";
+  passwordInput.dispatchEvent(new Event("input"));
+}
+
+/* ---------- COMMAND REFERENCE ---------- */
+const commandInfo = {
+  ipconfig: ["ipconfig /all","Displays detailed Windows network configuration."],
+  ping: ["ping 8.8.8.8","Tests reachability to an example IP address; ICMP may be blocked."],
+  tracert: ["tracert example.com","Shows the route toward a destination on Windows."],
+  nslookup: ["nslookup example.com","Queries DNS for a domain name."],
+  linuxls: ["ls -la","Lists directory contents, including hidden entries."],
+  linuxpwd: ["pwd","Prints the current working directory."],
+  linuxdf: ["df -h","Shows filesystem disk space in human-readable units."]
+};
+function showCommand() {
+  const item = commandInfo[document.getElementById("commandSelect").value];
+  document.getElementById("commandResult").innerHTML =
+    `<code>${escapeHTML(item[0])}</code><br>${escapeHTML(item[1])}`;
+  document.getElementById("copyFeedback").textContent = "";
+}
+async function copyCommand() {
+  const item = commandInfo[document.getElementById("commandSelect").value];
+  const feedback = document.getElementById("copyFeedback");
+  try {
+    await navigator.clipboard.writeText(item[0]);
+    feedback.textContent = " Copied!";
+  } catch (_) {
+    feedback.textContent = " Select and copy: " + item[0];
+  }
+}
+
+/* ---------- COMEDY FILTER ---------- */
+document.querySelectorAll("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-filter]").forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    const filter = button.dataset.filter;
+    document.querySelectorAll(".comedy-card").forEach(card => {
+      card.hidden = filter !== "all" && card.dataset.type !== filter;
+    });
+  });
+});
+
+/* ---------- SAFE TEXT RENDERING ---------- */
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+  })[ch]);
+}
+
+/* ---------- STARTUP ---------- */
+document.getElementById("year").textContent = new Date().getFullYear();
+renderProgress();
+showCommand();
 startQuiz();
-
-/* ---------- Troubleshooting Games ---------- */
-const games={
-helpdesk:{name:"🦸 Helpdesk Hero",cases:[
-{d:"👩‍💼 User: “Wi-Fi নাই! Internet আমার সঙ্গে breakup করেছে!”",q:"What is the best first step?",a:["Factory reset the router","Check Wi-Fi status and whether other devices are affected","Order a new laptop"],c:1,h:"Find out if the issue affects one device or the whole network.",e:"Check connection status, scope and other devices before changing network settings."},
-{d:"🖨️ User: “Printer offline! আমি printer-কে motivation দিয়েছি!”",q:"What should you check first?",a:["Power, paper, connection and print queue","Uninstall every driver in the office","Hit the printer"],c:0,h:"Start with simple physical checks and printer status.",e:"Check power, paper, errors, connection and queue before driver troubleshooting."},
-{d:"📧 User: “Outlook কাজ করছে না। আমার career শেষ!”",q:"What evidence should you collect?",a:["Delete the mailbox","Error message, connectivity and webmail status","Ask for their password in chat"],c:1,h:"Find the exact error and check whether webmail works.",e:"Compare Outlook and webmail, inspect the error and follow approved account recovery. Never ask for passwords in chat."},
-{d:"💻 User: “Laptop slow. Mouse-ও loading নিচ্ছে!”",q:"What is a safe first diagnostic step?",a:["Delete system folders","Check Task Manager CPU, RAM and Disk usage","Install an unknown booster"],c:1,h:"Identify the resource bottleneck first.",e:"Review resource usage, startup apps, disk space and approved updates before making changes."}
-]},
-network:{name:"🥷 Network Ninja",cases:[
-{d:"🌐 User: “IP 169.254.x.x! PC নিজের network বানিয়েছে?”",q:"What is a likely cause?",a:["DHCP lease failed","DNS is too fast","Monitor brightness is low"],c:0,h:"This is a common APIPA/link-local address range.",e:"Check link, VLAN, DHCP server/scope and relay. If authorised, try ipconfig /renew."},
-{d:"🧭 User: “IP ping হয়, কিন্তু website খোলে না!”",q:"Which test helps investigate DNS?",a:["nslookup example.com","Change wallpaper","Unplug the keyboard"],c:0,h:"Test name resolution separately.",e:"Use nslookup and compare name resolution with IP connectivity. Also consider proxy, firewall and browser issues."},
-{d:"🚪 User: “Local network চলে, internet নেই!”",q:"What should you check?",a:["Default gateway and upstream route","Keyboard language","Desktop icons"],c:0,h:"The default gateway routes traffic beyond the local subnet.",e:"Check IP/subnet, gateway reachability, routing and upstream service."},
-{d:"🔌 User: “One desk has no network, nearby desk works.”",q:"Best next step?",a:["Restart the entire office switch","Compare cable, link, NIC and switch port/VLAN","Change everyone's IP"],c:1,h:"Isolate the affected endpoint or port.",e:"Compare cable, NIC, link light, port status and VLAN before broader changes."}
-]},
-cyber:{name:"🕵️ Cyber Detective",cases:[
-{d:"📩 Email: “Account closes in 5 minutes! Click NOW!”",q:"What is the safest action?",a:["Click and enter password","Verify sender independently and report if suspicious","Forward it to everyone"],c:1,h:"Urgency and unexpected links are red flags.",e:"Avoid the link and follow your organisation's phishing-report process."},
-{d:"🔐 User: “Password123! Safe তো?”",q:"What is better advice?",a:["Reuse it everywhere","Use unique long passwords, a manager and MFA","Write it on a public note"],c:1,h:"Password reuse makes multiple accounts vulnerable.",e:"Use unique passwords/passphrases, an approved password manager and MFA."},
-{d:"☎️ Caller: “I am the CEO. Tell me your MFA code!”",q:"What should you do?",a:["Share the code","Never share it; verify through approved channels","Post it in the team chat"],c:1,h:"Urgency is not identity verification.",e:"Never share MFA codes. Verify requests using approved contact details."},
-{d:"💾 A USB labelled FREE RAM BOOST is found.",q:"What is the safe action?",a:["Plug it into your work PC","Report and hand it over according to security policy","Install its software"],c:1,h:"Unknown removable media may contain malware.",e:"Do not connect unknown media; follow your organisation's security procedure."}
-]},
-speed:{name:"⚡ Ticket Speedrun",cases:[
-{d:"🎧 User: “No sound! Meeting-এ lip-reading করছি!”",q:"First checks?",a:["Output device, mute, volume and headset","Delete the audio driver immediately","Kick everyone out"],c:0,h:"The selected output device or mute setting may be responsible.",e:"Check output, system/app volume, connection and meeting settings."},
-{d:"🔑 User: “Account locked. Guess করতে করতে হাত ব্যথা!”",q:"Best next step?",a:["Keep guessing","Verify identity and use approved unlock/reset process","Send passwords in a spreadsheet"],c:1,h:"Repeated attempts may worsen lockout.",e:"Verify identity, review the lockout state and follow the approved recovery workflow."},
-{d:"🖥️ User: “External monitor says No Signal!”",q:"What should you check first?",a:["Input source, cable and display mode","Pour water on the monitor","Change random settings"],c:0,h:"Start with the signal path and selected input.",e:"Check monitor input, cable/dock and Windows display mode (Win+P)."},
-{d:"🧹 User: “Disk almost full. 0 bytes free!”",q:"Safe first step?",a:["Delete random system files","Review storage usage and approved cleanup options","Install an unknown cleaner"],c:1,h:"Find what consumes space before removing files.",e:"Use Storage settings and approved cleanup; protect user data and system files."}
-]}
-};
-let currentGame="helpdesk",caseIndex=0,gameAnswered=false,hintUsed=false;
-function renderGame(){
- const g=games[currentGame],c=g.cases[caseIndex];gameAnswered=false;hintUsed=false;
- document.getElementById("game-name").textContent=g.name;
- document.getElementById("case-count").textContent=`Case ${caseIndex+1} / ${g.cases.length}`;
- document.getElementById("game-progress").style.width=`${caseIndex/g.cases.length*100}%`;
- document.getElementById("game-dialogue").textContent=c.d;
- document.getElementById("game-question").textContent=c.q;
- document.getElementById("game-feedback").className="feedback";
- document.getElementById("game-feedback").textContent="Choose the safest troubleshooting step.";
- document.getElementById("game-next").disabled=true;
- document.getElementById("game-next").textContent=caseIndex===g.cases.length-1?"Finish mission 🏁":"Next case →";
- document.getElementById("game-hint").disabled=false;
- const box=document.getElementById("game-answers");box.innerHTML="";
- c.a.forEach((answer,i)=>{
-  const b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+". "+answer;
-  b.onclick=()=>answerGame(i);box.appendChild(b);
- });
-}
-function answerGame(i){
- if(gameAnswered)return;gameAnswered=true;
- const c=games[currentGame].cases[caseIndex],ok=i===c.c;
- [...document.querySelectorAll("#game-answers button")].forEach((b,j)=>{b.disabled=true;if(j===c.c)b.classList.add("correct");if(j===i&&!ok)b.classList.add("wrong");});
- const f=document.getElementById("game-feedback");
- f.className="feedback "+(ok?"good":"bad");
- if(ok){const pts=hintUsed?10:15;earn(pts);f.textContent=`✅ Mission success! +${pts} XP. ${c.e}`;}
- else{f.textContent=`❌ Correct answer: ${c.a[c.c]}. ${c.e}`;}
- document.getElementById("game-progress").style.width=`${(caseIndex+1)/games[currentGame].cases.length*100}%`;
- document.getElementById("game-next").disabled=false;
- document.getElementById("game-hint").disabled=true;
-}
-document.querySelectorAll("[data-game]").forEach(b=>b.onclick=()=>{
- currentGame=b.dataset.game;caseIndex=0;renderGame();
- document.getElementById("games").scrollIntoView({behavior:"smooth"});
-});
-document.getElementById("game-hint").onclick=()=>{
- if(gameAnswered||hintUsed)return;hintUsed=true;
- document.getElementById("game-feedback").textContent="💡 Hint: "+games[currentGame].cases[caseIndex].h;
-};
-document.getElementById("game-next").onclick=()=>{
- if(caseIndex<games[currentGame].cases.length-1){caseIndex++;renderGame();}
- else{
-  document.getElementById("game-dialogue").textContent="🎉 Mission complete!";
-  document.getElementById("game-question").textContent=games[currentGame].name+" — well done, Troubleshooter!";
-  document.getElementById("game-answers").innerHTML="";
-  document.getElementById("game-feedback").className="feedback good";
-  document.getElementById("game-feedback").textContent="Choose another game to keep practising.";
-  document.getElementById("game-progress").style.width="100%";
-  document.getElementById("case-count").textContent="Completed";
-  document.getElementById("game-next").disabled=true;
- }
-};
-document.getElementById("game-restart").onclick=()=>{caseIndex=0;renderGame();};
-renderGame();
-
-/* ---------- IPv4 Checker ---------- */
-function parseIPv4(s){
- const parts=s.trim().split(".");
- if(parts.length!==4)return null;
- const nums=[];
- for(const p of parts){
-  if(!/^\d{1,3}$/.test(p))return null;
-  const n=Number(p);if(n<0||n>255)return null;nums.push(n);
- }
- return nums;
-}
-document.getElementById("ip-check").onclick=()=>{
- const s=document.getElementById("ip-input").value,ip=parseIPv4(s),r=document.getElementById("ip-result");
- if(!ip){r.textContent="❌ Invalid IPv4 format. Example: 192.168.1.10";return;}
- let type="Public or other address range";
- if(ip[0]===10||(ip[0]===172&&ip[1]>=16&&ip[1]<=31)||(ip[0]===192&&ip[1]===168))type="Private IPv4 address";
- else if(ip[0]===127)type="Loopback address";
- else if(ip[0]===169&&ip[1]===254)type="Link-local / APIPA address";
- else if(ip.every(n=>n===255))type="Limited broadcast address";
- else if(ip[0]===0)type="Special-purpose address range";
- r.textContent=`✅ Valid IPv4 syntax: ${ip.join(".")} — ${type}.`;
-};
-
-/* ---------- CIDR Calculator ---------- */
-const prefix=document.getElementById("prefix");
-for(let i=0;i<=32;i++){const o=document.createElement("option");o.value=i;o.textContent="/"+i;if(i===24)o.selected=true;prefix.appendChild(o);}
-document.getElementById("cidr-check").onclick=()=>{
- const ip=parseIPv4(document.getElementById("cidr-ip").value),p=Number(prefix.value),r=document.getElementById("cidr-result");
- if(!ip){r.textContent="❌ Enter a valid IPv4 address.";return;}
- const value=ip.reduce((a,n)=>(a*256+n)>>>0,0)>>>0;
- const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
- const network=(value&mask)>>>0, broadcast=(network|(~mask>>>0))>>>0;
- const toIP=n=>[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join(".");
- const maskIP=toIP(mask),netIP=toIP(network),bcIP=toIP(broadcast);
- const total=Math.pow(2,32-p);
- const usable=p<=30?Math.max(0,total-2):p===31?2:1;
- r.innerHTML=`Network: <code>${netIP}/${p}</code><br>Subnet mask: <code>${maskIP}</code><br>Broadcast: <code>${bcIP}</code><br>Total addresses: <code>${total.toLocaleString()}</code><br>Conventional usable hosts: <code>${usable.toLocaleString()}</code>`;
-};
-
-/* ---------- Password safety checklist ---------- */
-function updatePw(){
- const checks=[...document.querySelectorAll(".pw-check")];
- const n=checks.filter(c=>c.checked).length;
- document.getElementById("pw-result").textContent=`${n}/4 safety practices checked.`+
- (n===4?" Great! Keep protecting your accounts.":" Keep improving your account security.");
-}
-document.querySelectorAll(".pw-check").forEach(c=>c.onchange=updatePw);
-
-/* ---------- Funny video category filters ---------- */
-document.querySelectorAll("[data-filter]").forEach(button=>{
- button.onclick=()=>{
-  const f=button.dataset.filter;
-  document.querySelectorAll(".comedy-card").forEach(card=>{
-   card.hidden=!(f==="all"||card.dataset.category===f);
-  });
- };
-});
 </script>
 </body>
 </html>
